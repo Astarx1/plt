@@ -1,6 +1,6 @@
 cmake_minimum_required (VERSION 3.5)
 project (plt)
-
+   
 # Directories
 include_directories ("${PROJECT_SOURCE_DIR}/src")
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib)
