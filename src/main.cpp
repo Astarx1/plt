@@ -18,5 +18,6 @@ int main(int argc,char* argv[])
 
     cout << "It works !" << endl;
     cout << "cc" << endl;
+    cout << "tout va bien" << endl;
     return 0;
 }
