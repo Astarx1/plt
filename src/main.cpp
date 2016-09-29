@@ -42,6 +42,11 @@ int main(int argc,char* argv[])
     }
     
     cout << "It works !" << endl;
+<<<<<<< HEAD
   
+=======
+    cout << "cc" << endl;
+    cout << "tout va bien" << endl;
+>>>>>>> 39d4ef848f9c248dc22d2391ee373e00637185c0
     return 0;
 }
