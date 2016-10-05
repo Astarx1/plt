@@ -2,6 +2,7 @@
 #ifndef STATE__EXEMPLE__H
 #define STATE__EXEMPLE__H
 
+
 namespace state {
 
   /// class Exemple - 
