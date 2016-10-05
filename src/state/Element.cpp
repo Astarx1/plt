@@ -2,28 +2,32 @@
 #include "Element.h"
 
 Element::Element () {
+    //à voir si on laisse vide
 }
 
 Element::~Element () {
 }
 
 int Element::getX () {
-	return 0;
+	return this->x;
 }
 
 int Element::getY () {
-	return 0;
+	return this->y;
 }
 
 void Element::setX (int const x) {
+    this->x=x;
 }
 
 void Element::setY (int const y) {
+    this->y=y;
 }
 
 int Element::getElemID () {
-	return 0;
+	return this->elemID;
 }
 
 void Element::setElemID (int i) {
+    this->elemID=i;
 }

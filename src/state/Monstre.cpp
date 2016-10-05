@@ -2,6 +2,9 @@
 #include "Monstre.h"
 
 Monstre::Monstre (int i, int j, int nv) : Personnage (i, HEROS) {
+    this->x=i;
+    this->y=j;
+    this->niveau=nv;
 }
 
 bool Monstre::isJoueur () {
@@ -13,4 +16,5 @@ TypeID Monstre::getTypeID () {
 }
 
 void Monstre::accepte (IVisiteur & v) {
+    v.visiter(this);
 }

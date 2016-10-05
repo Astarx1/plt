@@ -2,10 +2,14 @@
 #include "Acces.h"
 
 Acces::Acces (int i, int j) {
+
+    this->x=i;
+    this->y=j;
+    this->typeID=ACCES;
 }
 
 bool Acces::isAcces () {
-	return false;
+	return true;
 }
 
 TypeID Acces::getTypeID () {
@@ -13,4 +17,5 @@ TypeID Acces::getTypeID () {
 }
 
 void Acces::accepte (IVisiteur & v) {
+    v.visiter(this);
 }

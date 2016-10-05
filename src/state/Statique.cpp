@@ -5,5 +5,5 @@ Statique::Statique () {
 }
 
 bool Statique::isStatic () {
-	return false;
+	return true;
 }
