@@ -2,70 +2,81 @@
 #include "Personnage.h"
 
 Personnage::Personnage (int niveau, TypePersonnage type) {
+    this->niveau = niveau;
+    this->typePerso = type;
 }
 
 Personnage::~Personnage () {
 }
 
 TypePersonnage Personnage::getTypePersonnage () {
-	return TypePersonnage ();
+	return this->typePerso;
 }
 
 int Personnage::getForce () {
-	return 0;
+	return this->force;
 }
 
 int Personnage::getNiveau () {
-	return 0;
+	return this->niveau;
 }
 
 int Personnage::getPA () {
-	return 0;
+	return this->ptAction;
 }
 
 int Personnage::getPM () {
-	return 0;
+	return this->ptMouvement;
 }
 
 int Personnage::getVie () {
-	return 0;
+	return this->vie;
 }
 
 Attaque Personnage::getAttaqueDistance () {
-	return Attaque ();
+	return this->attaqueDistance;
 }
 
 Attaque Personnage::getAttaqueCAC () {
-	return Attaque ();
+	return this->attaqueCAC;
 }
 
 EtatPerso Personnage::getEtatPerso () {
-	return EtatPerso ();
+	return this->etatPerso;
 }
 
 void Personnage::setTypePersonnage (TypePersonnage type) {
+    this->typePerso = type;
 }
 
 void Personnage::setForce (int i) {
+    this->force = i;
 }
 
 void Personnage::setNiveau (int i) {
+    this->niveau = i;
 }
 
 void Personnage::setPA (int i) {
+    this->ptAction = i;
 }
 
 void Personnage::setPM (int i) {
+    this->ptMouvement = i;
 }
 
 void Personnage::setVie (int i) {
+    this->vie = i;
 }
 
 void Personnage::setAttaqueDistance (Attaque attaqueDist) {
+    this->attaqueDistance = attaqueDist;
 }
 
 void Personnage::setAttaqueCAC (Attaque AttaqueCorps) {
+    this->attaqueCAC = AttaqueCorps;
 }
 
 void Personnage::setEtatPerso (EtatPerso etatPerso) {
+    this->etatPerso = etatPerso;
 }

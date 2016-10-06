@@ -8,14 +8,15 @@ ListeElements::~ListeElements () {
 }
 
 int ListeElements::size () {
-	return 0;
+	return (this->elements).size();
 }
 
 Element * ListeElements::getElement (int n) {
-	return nullptr;
+	return this->elements[n];
 }
 
 void ListeElements::setElement (int i, Element * e) {
+    this->elements[i] = e;
 }
 
 void ListeElements::ajoutElement (Element * e) {
@@ -23,5 +24,5 @@ void ListeElements::ajoutElement (Element * e) {
 }
 
 bool const ListeElements::isPerso (int i, int j) {
-	return nullptr;
+	return false;
 }

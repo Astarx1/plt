@@ -8,8 +8,9 @@ Attaque::~Attaque () {
 }
 
 int Attaque::getCoutPA () {
-	return 0;
+	return this->coutPA;
 }
 
 void Attaque::setCoutPA (int i) {
+    this->coutPA = i;
 }

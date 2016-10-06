@@ -5,26 +5,32 @@ Mobile::Mobile () {
 }
 
 bool const Mobile::isStatic () {
-	return nullptr;
+	return true;
 }
 
 Direction Mobile::getDirection () {
-	return Direction ();
+	return this->direction;
 }
 
 void Mobile::setDirection (Direction d) {
+    this->direction = d;
 }
 
 bool Mobile::getEnDeplacement () {
-	return false;
+    if(this->enDeplacement == true)
+	return true;
+    else 
+        return false;
 }
 
 void Mobile::setEnDeplacement (bool b) {
+    this->enDeplacement = b;
 }
 
 int Mobile::getTimer () {
-	return 0;
+	return this->timer;
 }
 
 void Mobile::setTimer (int timer) {
+    this->timer = timer;
 }
