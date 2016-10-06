@@ -1,3 +1,0 @@
-/home/romain/plt/CMakeFiles/edit_cache.dir
-/home/romain/plt/CMakeFiles/rebuild_cache.dir
-/home/romain/plt/CMakeFiles/run.dir
