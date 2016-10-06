@@ -6,5 +6,5 @@ CXX_FLAGS =  -Wall -std=c++11 -pthread -g -O3 -DNDEBUG   -std=gnu++11
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/kevipole/Documents/IS/plt/src 
+CXX_INCLUDES = -I/home/romain/plt/src 
 
