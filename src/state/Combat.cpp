@@ -8,6 +8,7 @@ Combat::~Combat () {
 }
 
 void Combat::createListe (ListeElements listePersonnages) {
+	;
 }
 
 void Combat::tourSuivant (int clk) {
