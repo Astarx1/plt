@@ -5,5 +5,5 @@ AccesAlloc::AccesAlloc (int id) {
 }
 
 Element * AccesAlloc::newInstance () {
-	return nullptr;
+	return new Acces(0,0);
 }

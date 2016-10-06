@@ -5,5 +5,5 @@ MonstreAlloc::MonstreAlloc (int id) {
 }
 
 Element * MonstreAlloc::newInstance () {
-	return nullptr;
+	return new Monstre(0,0,0);
 }

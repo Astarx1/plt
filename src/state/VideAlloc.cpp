@@ -5,5 +5,5 @@ VideAlloc::VideAlloc (int id) {
 }
 
 Element * VideAlloc::newInstance () {
-	return nullptr;
+	return new Vide(0,0);
 }
