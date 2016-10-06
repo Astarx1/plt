@@ -1,0 +1,3 @@
+/home/kevipole/Documents/IS/plt/CMakeFiles/edit_cache.dir
+/home/kevipole/Documents/IS/plt/CMakeFiles/rebuild_cache.dir
+/home/kevipole/Documents/IS/plt/CMakeFiles/run.dir
