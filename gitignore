@@ -1,0 +1,10 @@
+*~
+build
+bin
+nbproject
+dia2code
+CMakeFiles
+CMakeCache.txt
+cmake_install.cmake
+
+
