@@ -1,5 +1,6 @@
-#include "state.hpp"
 #include "IElementAlloc.h"
+
+using namespace state;
 
 IElementAlloc::IElementAlloc () {
 	;

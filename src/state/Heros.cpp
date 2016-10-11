@@ -1,5 +1,7 @@
-#include "state.hpp"
 #include "Heros.h"
+#include "Visiteur.h"
+
+using namespace state;
 
 Heros::Heros (int i, int j, int exp) : Personnage (i, HEROS) {
     this->x=i;

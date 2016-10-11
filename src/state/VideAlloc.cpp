@@ -1,5 +1,7 @@
-#include "state.hpp"
 #include "VideAlloc.h"
+#include "Vide.h"
+
+using namespace state;
 
 VideAlloc::VideAlloc (int id) {
 }

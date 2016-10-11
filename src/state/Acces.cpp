@@ -1,5 +1,6 @@
-#include "state.hpp"
 #include "Acces.h"
+#include "Visiteur.h"
+using namespace state;
 
 Acces::Acces (int i, int j) {
 

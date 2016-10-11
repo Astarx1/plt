@@ -1,5 +1,6 @@
-#include "state.hpp"
 #include "Attaque.h"
+
+using namespace state;
 
 Attaque::Attaque () {
 }

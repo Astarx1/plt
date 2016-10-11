@@ -1,5 +1,7 @@
-#include "state.hpp"
 #include "Etat.h"
+#include "Heros.h"
+
+using namespace state;
 
 Etat::Etat () : grille(1), personnages() {
 	;

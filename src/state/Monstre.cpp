@@ -1,5 +1,6 @@
-#include "state.hpp"
 #include "Monstre.h"
+#include "Visiteur.h"
+using namespace state;
 
 Monstre::Monstre (int i, int j, int nv) : Personnage (i, HEROS) {
     this->x=i;

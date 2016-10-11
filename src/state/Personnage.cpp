@@ -1,5 +1,6 @@
-#include "state.hpp"
 #include "Personnage.h"
+
+using namespace state;
 
 Personnage::Personnage (int niveau, TypePersonnage type) {
     this->niveau = niveau;

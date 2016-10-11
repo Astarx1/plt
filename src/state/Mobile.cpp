@@ -1,5 +1,6 @@
-#include "state.hpp"
 #include "Mobile.h"
+
+using namespace state;
 
 Mobile::Mobile () {
 }

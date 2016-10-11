@@ -1,5 +1,6 @@
-#include "state.hpp"
 #include "Element.h"
+
+using namespace state;
 
 Element::Element () {
     //à voir si on laisse vide
@@ -17,7 +18,7 @@ int Element::getY () {
 }
 
 void Element::setX (int const x) {
-    this->x=x;
+	this->x=x;
 }
 
 void Element::setY (int const y) {

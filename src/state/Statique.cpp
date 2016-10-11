@@ -1,5 +1,6 @@
-#include "state.hpp"
 #include "Statique.h"
+
+using namespace state;
 
 Statique::Statique () {
 }

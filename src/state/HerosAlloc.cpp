@@ -1,5 +1,6 @@
-#include "state.hpp"
 #include "HerosAlloc.h"
+#include "Heros.h"
+using namespace state;
 
 HerosAlloc::HerosAlloc (int id) {
 	this->id = id;

@@ -1,5 +1,6 @@
-#include "state.hpp"
 #include "GrilleElements.h"
+
+using namespace state;
 
 GrilleElements::GrilleElements (int nv) {
     switch (nv)
@@ -31,7 +32,7 @@ int GrilleElements::getLargeur () {
 }
 
 bool const GrilleElements::isAcces (int i, int j) {
-    return nullptr;
+    return false;
 }
 
 void GrilleElements::setCase (Element * e, int i, int j) {
@@ -52,9 +53,8 @@ void GrilleElements::setLargeur (int i) {
 
 void GrilleElements::ajoutCaseAcces (int i, int j) {
     Element * e;
-    this->ajoutElement(e);
     e->setX(i);
     e->setY(j);
     // e.setTypeID(2) //en attente ajout de la méthode dans élement
-    
+    this->ajoutElement(e);    
 }

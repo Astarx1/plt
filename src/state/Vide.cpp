@@ -1,5 +1,7 @@
-#include "state.hpp"
 #include "Vide.h"
+#include "Visiteur.h"
+
+using namespace state;
 
 Vide::Vide (int i, int j) {
     this->x=i;

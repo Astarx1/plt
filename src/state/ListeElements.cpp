@@ -1,5 +1,6 @@
-#include "state.hpp"
 #include "ListeElements.h"
+
+using namespace state;
 
 ListeElements::ListeElements () {
 }

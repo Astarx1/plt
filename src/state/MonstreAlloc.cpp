@@ -1,5 +1,6 @@
-#include "state.hpp"
 #include "MonstreAlloc.h"
+#include "Monstre.h"
+using namespace state;
 
 MonstreAlloc::MonstreAlloc (int id) {
 }

@@ -1,5 +1,6 @@
-#include "state.hpp"
 #include "AccesAlloc.h"
+#include "Acces.h"
+using namespace state;
 
 AccesAlloc::AccesAlloc (int id) {
 }
