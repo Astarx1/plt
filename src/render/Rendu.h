@@ -8,24 +8,20 @@ namespace render {
   class RenduGrille;
   class RenduPerso;
   class RenduCombat;
-  class Observer;
 }
 
 #include "RenduGrille.h"
 #include "RenduPerso.h"
 #include "RenduCombat.h"
-#include "Observer.h"
 
 namespace render {
 
   /// class Rendu - 
-  class Rendu : public render::Observer {
-    // Associations
+  class Rendu {
     // Attributes
   public:
     RenduGrille rg;
     RenduPerso rp;
-    RenduBackground rb;
     RenduCombat rc;
     sf::Music son;
     // Operations

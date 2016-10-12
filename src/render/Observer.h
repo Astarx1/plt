@@ -2,6 +2,11 @@
 #ifndef RENDER__OBSERVER__H
 #define RENDER__OBSERVER__H
 
+#include <../state.h>
+
+namespace state {
+  class Etat;
+}
 
 namespace render {
 
@@ -9,7 +14,7 @@ namespace render {
   class Observer {
     // Operations
   public:
-    virtual void run (etat* e, char typechang, int id) = 0;
+    virtual void run (state::Etat* e, char typechang, int id) = 0;
   };
 
 };
