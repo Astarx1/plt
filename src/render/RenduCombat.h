@@ -8,6 +8,9 @@ namespace render {
   class RenduType;
   class RectTexte;
   class CerTexte;
+};
+namespace state {
+  class Etat;
 }
 
 #include "RenduType.h"
@@ -30,7 +33,7 @@ namespace render {
     sf::CircleShape IconeTourSuiv;
     // Operations
   public:
-    void dessin (sf::renderWindow w, etat* e, int id);
+    void dessin (sf::RenderWindow w, Etat* e, int id);
     RenduCombat ();
     ~RenduCombat ();
   };

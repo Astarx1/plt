@@ -10,14 +10,14 @@ namespace render {
   class RectTexte {
     // Attributes
   public:
-    sf::Text Texte;
-    sf::RectangleShape Rect;
+    sf::Text texte;
+    sf::RectangleShape rect;
     sf::Font font;
     // Operations
   public:
-    void ChangeText (String t);
-    RectText ();
-    ~RectText ();
+    void ChangeText (const sf::String& txt);
+    RectTexte ();
+    ~RectTexte ();
   };
 
 };

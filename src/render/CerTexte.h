@@ -10,12 +10,12 @@ namespace render {
   class CerTexte {
     // Attributes
   public:
-    sf::Texte Texte;
-    sf::CircleShape Cercle;
+    sf::Text texte;
+    sf::CircleShape cercle;
     sf::Font font;
     // Operations
   public:
-    void ChangeTexte (String t);
+    void ChangeTexte (const sf::String& txt);
     CerTexte ();
     ~CerTexte ();
   };
