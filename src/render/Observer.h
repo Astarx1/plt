@@ -2,7 +2,7 @@
 #ifndef RENDER__OBSERVER__H
 #define RENDER__OBSERVER__H
 
-#include <../state.h>
+#include "../state.h"
 
 namespace state {
   class Etat;

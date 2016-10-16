@@ -733,7 +733,7 @@ void print_include_stdlib(struct stdlib_includes* si,char* name) {
            si->graphics = 1;
        }
        if (!si->state && strstr(name,"state::")) {
-           print ("#include <../state.h>\n");
+           print ("#include \"../state.h\"\n");
            si->state = 1;
        }
     }
