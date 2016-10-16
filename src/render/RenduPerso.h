@@ -3,9 +3,13 @@
 #define RENDER__RENDUPERSO__H
 
 #include <SFML/Graphics.hpp>
+#include "../state.h"
 
 namespace render {
   class RenduType;
+};
+namespace state {
+  class Etat;
 }
 
 #include "RenduType.h"
@@ -14,6 +18,7 @@ namespace render {
 
   /// class RenduPerso - 
   class RenduPerso {
+    // Associations
     // Attributes
   public:
     RenduType Heros1;
@@ -25,7 +30,7 @@ namespace render {
     RenduType Monstre5;
     // Operations
   public:
-    void dessin (sf::renderWindow w, etat* e, int id);
+    void dessin (sf::RenderWindow& w, state::Etat* e, int id);
     RenduPerso ();
     ~RenduPerso ();
   };

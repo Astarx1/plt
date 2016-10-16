@@ -3,6 +3,7 @@
 #define RENDER__RENDUCOMBAT__H
 
 #include <SFML/Graphics.hpp>
+#include "../state.h"
 
 namespace render {
   class RenduType;
@@ -33,7 +34,7 @@ namespace render {
     sf::CircleShape IconeTourSuiv;
     // Operations
   public:
-    void dessin (sf::RenderWindow w, Etat* e, int id);
+    void dessin (sf::RenderWindow& w, state::Etat* e, int id);
     RenduCombat ();
     ~RenduCombat ();
   };

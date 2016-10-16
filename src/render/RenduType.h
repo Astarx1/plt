@@ -6,25 +6,15 @@
 #include <SFML/Graphics.hpp>
 
 namespace render {
-  class RenduCombat;
-  class RenduPerso;
-}
-
-#include "RenduCombat.h"
-#include "RenduPerso.h"
-
-namespace render {
 
   /// class RenduType - 
   class RenduType {
-    // Associations
     // Attributes
   public:
     std::vector<sf::Sprite> sprites;
     std::vector<sf::Texture> textures;
     // Operations
   public:
-    virtual void dessin (sf::renderWindow w, etat* e, int id) = 0;
     RenduType ();
     ~RenduType ();
   };

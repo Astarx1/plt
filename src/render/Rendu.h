@@ -3,11 +3,15 @@
 #define RENDER__RENDU__H
 
 #include <SFML/Graphics.hpp>
+#include "../state.h"
 
 namespace render {
   class RenduGrille;
   class RenduPerso;
   class RenduCombat;
+};
+namespace state {
+  class Etat;
 }
 
 #include "RenduGrille.h"
@@ -18,15 +22,18 @@ namespace render {
 
   /// class Rendu - 
   class Rendu {
+    // Associations
     // Attributes
   public:
     RenduGrille rg;
     RenduPerso rp;
     RenduCombat rc;
     sf::Music son;
+    sf::RenderWindow& sw;
     // Operations
   public:
-    void run (etat* e, char typeChang, int id);
+    void run (state::Etat* e, char typeChang, int id);
+    Rendu (sf::RenderWindow& sw);
   };
 
 };

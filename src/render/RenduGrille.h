@@ -3,9 +3,13 @@
 #define RENDER__RENDUGRILLE__H
 
 #include <SFML/Graphics.hpp>
+#include "../state.h"
 
 namespace render {
   class RenduType;
+};
+namespace state {
+  class Etat;
 }
 
 #include "RenduType.h"
@@ -19,7 +23,7 @@ namespace render {
     RenduType Grille;
     // Operations
   public:
-    void dessin (sf::renderWindow w, etat* e, int id);
+    void dessin (sf::RenderWindow& w, state::Etat* e, int id);
     RenduGrille ();
     ~RenduGrille ();
   };
