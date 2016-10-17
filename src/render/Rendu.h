@@ -30,10 +30,11 @@ namespace render {
     RenduCombat rc;
     sf::Music son;
     sf::RenderWindow& sw;
+     sf::Clock&;
     // Operations
   public:
     void run (state::Etat* e, char typeChang, int id);
-    Rendu (sf::RenderWindow& sw);
+    Rendu (sf::RenderWindow& sw, sf::Clock& cl);
   };
 
 };

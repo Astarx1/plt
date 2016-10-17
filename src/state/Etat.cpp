@@ -69,3 +69,7 @@ int Etat::getMapActuel () {
 void Etat::setMapActuel (int i) {
 	mapActuel = i;
 }
+
+ListeElements Etat::getPerso (){
+	return personnages;
+}

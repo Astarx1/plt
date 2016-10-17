@@ -48,6 +48,7 @@ namespace state {
     Combat& getRefCombat ();
     int  getMapActuel ();
     void setMapActuel (int i);
+    ListeElements getPerso ();
   };
 
 };

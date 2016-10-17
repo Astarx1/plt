@@ -4,28 +4,29 @@
 
 #include <SFML/Graphics.hpp>
 #include "../state.h"
+#include <string>
 
-namespace render {
-  class RenduType;
-};
 namespace state {
   class Etat;
 }
-
-#include "RenduType.h"
 
 namespace render {
 
   /// class RenduGrille - 
   class RenduGrille {
     // Attributes
-  public:
-    RenduType Grille;
+  private:
+    sf::VertexArray m_vertices;
+    sf::Texture m_tileset;
+  protected:
+    const int level[];
     // Operations
   public:
-    void dessin (sf::RenderWindow& w, state::Etat* e, int id);
+    void dessin (sf::RenderTarget&  target, state::Etat* e);
     RenduGrille ();
     ~RenduGrille ();
+  private:
+    bool charger (const std::string& tileset, sf::Vector2u  tileSize, const int*  tiles, unsigned int  width, unsigned int  height);
   };
 
 };
