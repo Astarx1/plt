@@ -20,7 +20,7 @@ namespace render {
     sf::VertexArray m_vertices;
     sf::Texture m_tileset;
   protected:
-    int level[128];
+    int level[320];
     // Operations
   public:
     void dessin (sf::RenderTarget&  target, state::Etat* e);
