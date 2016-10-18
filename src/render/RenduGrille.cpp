@@ -27,7 +27,7 @@ RenduGrille::RenduGrille() {
 	for (int i = 0; i < 128;i++){
 		level[i]=l[i];
 	}
-	charger("src/tileset.png", sf::Vector2u(32,32), l, 16, 8);
+	charger("res/Textures/carte/tileset.png", sf::Vector2u(32,32), l, 16, 8);
 }
 
 RenduGrille::~RenduGrille(){
