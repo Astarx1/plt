@@ -49,6 +49,7 @@ namespace state {
     int  getMapActuel ();
     void setMapActuel (int i);
     ListeElements getPerso ();
+    int getPersoSize ();
   };
 
 };

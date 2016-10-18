@@ -5,10 +5,6 @@
 #include "./state.h"
 #include "./render.h"
 
-void testSFML() {
-    sf::Texture texture;
-}
-
 // Fin test SFML
 
 

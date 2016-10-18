@@ -72,3 +72,7 @@ void Etat::setMapActuel (int i) {
 ListeElements Etat::getPerso (){
 	return personnages;
 }
+
+int Etat::getPersoSize() {
+	return personnages.size();
+}
