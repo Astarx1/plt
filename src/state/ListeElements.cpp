@@ -20,6 +20,10 @@ void ListeElements::setElement (int i, Element * e) {
     this->elements[i] = e;
 }
 
+void ListeElements::ajoutElement (char e) {
+	elements.push_back (factory->newInstance(e));
+}
+
 void ListeElements::ajoutElement (Element * e) {
 	elements.push_back (e);
 }

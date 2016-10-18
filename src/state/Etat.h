@@ -43,12 +43,13 @@ namespace state {
     GrilleElements getGrille ();
     bool getEnCombat ();
     void setEnCombat (bool b);
-    void rajouterPerso ();
+    void rajouterPerso (char e);
     void enleverPerso (int i);
     Combat& getRefCombat ();
     int  getMapActuel ();
     void setMapActuel (int i);
     ListeElements getPerso ();
+    int getPersoSize ();
   };
 
 };

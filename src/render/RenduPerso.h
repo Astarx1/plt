@@ -6,11 +6,11 @@
 #include <SFML/Audio.hpp>
 #include "../state.h"
 
-namespace render {
-  class RenduType;
-};
 namespace state {
   class Etat;
+};
+namespace render {
+  class RenduType;
 }
 
 #include "RenduType.h"
@@ -22,13 +22,8 @@ namespace render {
     // Associations
     // Attributes
   public:
-    RenduType Heros1;
-    RenduType Heros2;
-    RenduType Monstre1;
-    RenduType Monstre2;
-    RenduType Monstre3;
-    RenduType Monstre4;
-    RenduType Monstre5;
+    sf::VertexArray vertices;
+    sf::Texture tileset;
     // Operations
   public:
     void dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Clock& cl);

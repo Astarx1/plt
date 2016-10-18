@@ -26,55 +26,110 @@ int valeurEntiere (float a) {
 }
 
 void RenduPerso::dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Clock& cl){
-	Personnage& p = (e->getRefPersonnage(id));
-	int tmpDeplacement = p.getTimer();
-	bool enDeplacement = p.getEnDeplacement();
-	Direction dir = p.getDirection();
-	sf::Time t = cl.getElapsedTime();
-	TypePersonnage tp = p.getTypePersonnage();
+	int nb_perso = (e->getPerso()).size();
 
-	int spr = 0;
-	if (dir == SUD)
-		spr += NB_SPRITE+1;
-	else if (dir == EST)
-		spr += (NB_SPRITE+1)*2;
-	else if (dir == OUEST)
-		spr += (NB_SPRITE+1)*3;
+	sf::VertexArray vertices;
+	vertices.setPrimitiveType(sf::Quads);
+	vertices.resize(nb_perso);
 
-	if (enDeplacement)
-		spr++;
+	for (int i = 0; i < nb_perso; ++i) {
+		Personnage& p = (e->getRefPersonnage(i));
+		int h_sprite = 0;
+		int l_sprite = 0;
+		int x_sprite = p.getX();
+		int y_sprite = p.getY();
 
-	spr += valeurEntiere((t.asMilliseconds() % (NB_SPRITE * TEMPS_SPRITE)) / TEMPS_SPRITE);
+		sf::Vertex* quad = &vertices[i];
 
-	switch (tp) {
-		case HEROS:
-		w.draw(Heros1.sprites[spr]);
-		break;
+		int tmpDeplacement = p.getTimer();
+		bool enDeplacement = p.getEnDeplacement();
+		Direction dir = p.getDirection();
+		sf::Time t = cl.getElapsedTime();
+		TypePersonnage tp = p.getTypePersonnage();
 
-		case HEROINE:
-		w.draw(Heros2.sprites[spr]);
-		break;
+		int spr_hauteur = 3;
+		int spr_longueur = 0;
 
-		case MONSTRE1:
-		w.draw(Monstre1.sprites[spr]);
-		break;
+		if (dir == SUD)
+			spr_hauteur = 0;
+		else if (dir == EST)
+			spr_hauteur = 1;
+		else if (dir == OUEST)
+			spr_hauteur = 2;
 
-		case MONSTRE2:
-		w.draw(Monstre2.sprites[spr]);
-		break;
+		spr_longueur = valeurEntiere((t.asMilliseconds() % (NB_SPRITE * TEMPS_SPRITE)) / TEMPS_SPRITE);
 
-		case MONSTRE3:
-		w.draw(Monstre3.sprites[spr]);
-		break;
+		switch (tp) {
+			case HEROS:
+				quad[0].texCoords = sf::Vector2f(711,0);
+				quad[1].texCoords = sf::Vector2f(0,0);
+				quad[2].texCoords = sf::Vector2f(0,0);
+				quad[3].texCoords = sf::Vector2f(0,0);
+				h_sprite = 32;
+				l_sprite = 32;
+			break;
 
-		case MONSTRE4:
-		w.draw(Monstre4.sprites[spr]);
-		break;
+			case HEROINE:
+				quad[0].texCoords = sf::Vector2f(711,0);
+				quad[1].texCoords = sf::Vector2f(0,0);
+				quad[2].texCoords = sf::Vector2f(0,0);
+				quad[3].texCoords = sf::Vector2f(0,0);
+				h_sprite = 32;
+				l_sprite = 32;
+			break;
 
-		case BOSS:
-		w.draw(Monstre5.sprites[spr]);
-		break;
+			case MONSTRE1:
+				quad[0].texCoords = sf::Vector2f(711,0);
+				quad[1].texCoords = sf::Vector2f(0,0);
+				quad[2].texCoords = sf::Vector2f(0,0);
+				quad[3].texCoords = sf::Vector2f(0,0);
+				h_sprite = 32;
+				l_sprite = 32;
+			break;
+
+			case MONSTRE2:
+				quad[0].texCoords = sf::Vector2f(711,0);
+				quad[1].texCoords = sf::Vector2f(0,0);
+				quad[2].texCoords = sf::Vector2f(0,0);
+				quad[3].texCoords = sf::Vector2f(0,0);
+				h_sprite = 32;
+				l_sprite = 32;
+			break;
+
+			case MONSTRE3:
+				quad[0].texCoords = sf::Vector2f(711,0);
+				quad[1].texCoords = sf::Vector2f(0,0);
+				quad[2].texCoords = sf::Vector2f(0,0);
+				quad[3].texCoords = sf::Vector2f(0,0);
+				h_sprite = 32;
+				l_sprite = 32;
+			break;
+
+			case MONSTRE4:
+				quad[0].texCoords = sf::Vector2f(711,0);
+				quad[1].texCoords = sf::Vector2f(0,0);
+				quad[2].texCoords = sf::Vector2f(0,0);
+				quad[3].texCoords = sf::Vector2f(0,0);
+				h_sprite = 32;
+				l_sprite = 32;
+			break;
+
+			case BOSS:
+				quad[0].texCoords = sf::Vector2f(711,0);
+				quad[1].texCoords = sf::Vector2f(0,0);
+				quad[2].texCoords = sf::Vector2f(0,0);
+				quad[3].texCoords = sf::Vector2f(0,0);
+				h_sprite = 32;
+				l_sprite = 32;
+			break;
+		}	  
+              	
+		quad[0].position = sf::Vector2f(x_sprite - l_sprite, y_sprite+h_sprite);
+                quad[1].position = sf::Vector2f(x_sprite + l_sprite, y_sprite+h_sprite);
+                quad[2].position = sf::Vector2f(x_sprite - l_sprite, y_sprite-h_sprite);
+                quad[3].position = sf::Vector2f(x_sprite + l_sprite, y_sprite-h_sprite);
 	}
+	w.draw(vertices);
 }
 
 RenduPerso::RenduPerso () {

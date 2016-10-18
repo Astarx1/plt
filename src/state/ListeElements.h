@@ -29,7 +29,8 @@ namespace state {
     Element* getElement (int i);
     void setElement (int  i, Element* e);
     bool const isPerso (int i, int j);
-    void ajoutElement (Element* e);
+    void ajoutElement (char e);
+    void ajoutElement (Element * e);
   };
 
 };
