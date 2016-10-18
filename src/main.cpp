@@ -21,7 +21,7 @@ int main(int argc,char* argv[])
 {
 	
     // create the window
-    sf::RenderWindow window(sf::VideoMode(800, 600), "grille");
+    sf::RenderWindow window(sf::VideoMode(1000, 800), "grille");
     Etat* e= new Etat;
     // define the level with an array of tile indices
    
