@@ -18,7 +18,11 @@ int main(int argc,char* argv[])
 	
     // create the window
     sf::RenderWindow window(sf::VideoMode(1000, 800), "grille");
-    Etat* e= new Etat;
+    Etat* e= new Etat; 
+	e->rajouterPerso('h');
+	Personnage& p = e->getRefPersonnage(0);
+	p.setX(100);
+	p.setY(100);
     // define the level with an array of tile indices
    
 
