@@ -2,6 +2,8 @@
 
 //test Les lignes suivantes ne servent qu'à vérifier que la compilation avec SFML fonctionne
 #include <SFML/Graphics.hpp>
+#include "./state.h"
+#include "./render.h"
 
 void testSFML() {
     sf::Texture texture;
@@ -12,38 +14,37 @@ void testSFML() {
 
 using namespace std;
 using namespace sf;
+using namespace state;
+using namespace render;
 
 int main(int argc,char* argv[]) 
 {
+	
+    // create the window
+    sf::RenderWindow window(sf::VideoMode(800, 600), "grille");
+    Etat* e= new Etat;
+    // define the level with an array of tile indices
+   
 
-    RenderWindow app(VideoMode(1200,800),"Menu Démarrer");
-    
-   /* Texture texture;
-        if (!texture.loadFromFile("fond_ecran.jpg"))
-            return EXIT_FAILURE;
-    Sprite sprite(texture);
-    */
-    while(app.isOpen()){
-    
-        Event event;
-        
-        while(app.waitEvent(event)){
-        
-            if(event.type == Event::Closed)
-                app.close();
+    // create the tilemap from the level definition
+    RenduGrille map;
+
+    // run the main loop
+    while (window.isOpen())
+    {
+        // handle events
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            if(event.type == sf::Event::Closed)
+                window.close();
         }
-        
-        app.clear();
-        
-        //app.draw(sprite);
-        
-        app.display();
-    }
-    
-    cout << "It works !" << endl;
 
-    cout << "cc" << endl;
-    cout << "tout va bien" << endl;
+        // draw the map
+        window.clear();
+        map.dessin(window,e);
+        window.display();
+    }
 
     return 0;
 }

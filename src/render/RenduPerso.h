@@ -3,6 +3,7 @@
 #define RENDER__RENDUPERSO__H
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include "../state.h"
 
 namespace render {
@@ -30,7 +31,7 @@ namespace render {
     RenduType Monstre5;
     // Operations
   public:
-    void dessin (sf::RenderWindow& w, state::Etat* e, int id);
+    void dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Clock& cl);
     RenduPerso ();
     ~RenduPerso ();
   };

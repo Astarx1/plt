@@ -3,6 +3,7 @@
 #define RENDER__RENDUCOMBAT__H
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include "../state.h"
 
 namespace render {

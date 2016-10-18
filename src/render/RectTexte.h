@@ -3,6 +3,7 @@
 #define RENDER__RECTTEXTE__H
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 namespace render {
 

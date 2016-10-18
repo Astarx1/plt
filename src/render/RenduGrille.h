@@ -3,6 +3,7 @@
 #define RENDER__RENDUGRILLE__H
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include "../state.h"
 #include <string>
 
@@ -19,7 +20,7 @@ namespace render {
     sf::VertexArray m_vertices;
     sf::Texture m_tileset;
   protected:
-    const int level[];
+    int level[128];
     // Operations
   public:
     void dessin (sf::RenderTarget&  target, state::Etat* e);

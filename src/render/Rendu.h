@@ -3,6 +3,7 @@
 #define RENDER__RENDU__H
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include "../state.h"
 
 namespace render {
@@ -30,7 +31,7 @@ namespace render {
     RenduCombat rc;
     sf::Music son;
     sf::RenderWindow& sw;
-     sf::Clock&;
+    sf::Clock& cl;
     // Operations
   public:
     void run (state::Etat* e, char typeChang, int id);
