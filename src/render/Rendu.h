@@ -2,9 +2,9 @@
 #ifndef RENDER__RENDU__H
 #define RENDER__RENDU__H
 
+#include "../state.h"
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
-#include "../state.h"
 
 namespace render {
   class RenduGrille;
@@ -29,13 +29,10 @@ namespace render {
     RenduGrille rg;
     RenduPerso rp;
     RenduCombat rc;
-    sf::Music son;
-    sf::RenderWindow& sw;
-    sf::Clock& cl;
     // Operations
   public:
-    void run (state::Etat* e, char typeChang, int id);
-    Rendu (sf::RenderWindow& sw, sf::Clock& cl);
+    void run (state::Etat* e, sf::RenderWindow& sw, sf::Clock& cl);
+    Rendu ();
   };
 
 };
