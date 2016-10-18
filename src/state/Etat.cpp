@@ -47,9 +47,8 @@ void Etat::setEnCombat (bool b) {
 	enCombat = b; 
 }
 
-void Etat::rajouterPerso () {
-	Heros t (1, 1, 100);
-	personnages.ajoutElement (&t);
+void Etat::rajouterPerso (char e) { 
+	personnages.ajoutElement (e);
 }
 
 void Etat::enleverPerso (int i) {
