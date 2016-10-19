@@ -66,10 +66,10 @@ void RenduPerso::dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Clock&
 
 		switch (tp) {
 			case HEROS:
-				quad[0].texCoords = sf::Vector2f(50,50);
-				quad[1].texCoords = sf::Vector2f(100,50);
-				quad[2].texCoords = sf::Vector2f(100,100);
-				quad[3].texCoords = sf::Vector2f(50,100);
+				quad[0].texCoords = sf::Vector2f(80,190);
+				quad[1].texCoords = sf::Vector2f(130,190);
+				quad[2].texCoords = sf::Vector2f(80,140);
+				quad[3].texCoords = sf::Vector2f(130,140);
 				h_sprite = 25;
 				l_sprite = 25;
 				std::cout << "RenduPerso.cpp : On a defini les texCoords" << std::endl;
