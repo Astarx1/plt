@@ -1,6 +1,6 @@
 #include "Etat.h"
 #include "Heros.h"
-
+#include "Monstre.h"
 using namespace state;
 
 Etat::Etat () : grille(1), personnages() {
@@ -23,9 +23,10 @@ Personnage & Etat::getRefPersonnage (int n) {
 	Element & o = *(personnages.getElement(n));
 	o.accepte (visiteur);
 	TypeID a = o.getTypeID();
+
 	if (a == PERSO) 
 		return *(visiteur.getpHeros ());
-	else if (a == MONSTRE)
+	else  
 		return *(visiteur.getpMonstre ());
 }
 

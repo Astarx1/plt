@@ -58,3 +58,8 @@ void GrilleElements::ajoutCaseAcces (int i, int j) {
     // e.setTypeID(2) //en attente ajout de la méthode dans élement
     this->ajoutElement(e);    
 }
+
+
+    int getTile (int i) {
+	return 0;
+}
