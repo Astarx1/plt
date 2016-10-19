@@ -10,28 +10,22 @@ namespace render {
   class RenduGrille;
   class RenduPerso;
 };
-namespace Client {
-  class RenduCombat;
-};
 namespace state {
   class Etat;
-};
-class Observer;
+}
+
 #include "RenduGrille.h"
 #include "RenduPerso.h"
-#include "Client/RenduCombat.h"
-#include "Observer.h"
 
 namespace render {
 
   /// class Rendu - 
-  class Rendu : public Observer {
+  class Rendu {
     // Associations
     // Attributes
   public:
     RenduGrille rg;
     RenduPerso rp;
-    RenduCombat rc;
     // Operations
   public:
     void run (state::Etat* e, sf::RenderWindow& sw, sf::Clock& cl, sf::RenderStates rs);

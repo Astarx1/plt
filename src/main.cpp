@@ -17,12 +17,19 @@ int main(int argc,char* argv[])
 {
 	
     // create the window
+	cout << "[Main] Initialisation de ma fenetre" << endl;   
 	sf::RenderWindow window(sf::VideoMode(1000, 800), "grille");
+
+	cout << "[Main] Creation de l'etat" << endl;
 	Etat* e= new Etat; 
+	cout << "[Main] Rajout des persos" << endl;
 	e->rajouterPerso('h');
+	cout << "[Main] Accès a un perso" << endl;
 	Personnage& p = e->getRefPersonnage(0);
+	cout << "[Main] Parametrisation du perso" << endl;
 	p.setX(100);
 	p.setY(100);
+	cout << "[Main] Changement du type du perso" << endl;
 	p.setTypePersonnage(HEROS);
 	p.setDirection(SUD);
 
@@ -33,7 +40,7 @@ int main(int argc,char* argv[])
 
     // create the tilemap from the level definition
     //RenduGrille map;
-
+	std::cout << "[Main] Initialisation du rendu" << endl;
 	Rendu r;
 
     // run the main loop
@@ -49,6 +56,7 @@ int main(int argc,char* argv[])
 
         // draw the map
         window.clear();
+        std::cout << "[Main] Affichage de la fenetre" << std::endl;
         r.run(e, window, c, rs);
         window.display();
     }

@@ -1,10 +1,12 @@
 #include "Etat.h"
 #include "Heros.h"
 #include "Monstre.h"
+#include <iostream>
+
 using namespace state;
 
 Etat::Etat () : grille(1), personnages() {
-	;
+	std::cout << "Etat.cpp - constructeur : creation de la grille" << std::endl;
 }
 
 Etat::~Etat () {
@@ -20,10 +22,14 @@ TypeID Etat::getStatutGrille (int i, int j) {
 
 Personnage & Etat::getRefPersonnage (int n) {
 	// TODO: insert return statement here
+	
 	Element & o = *(personnages.getElement(n));
+	
+	std::cout << "Etat.cpp - getRefPersonnage : Appel du pattern visiteur" << std::endl;
 	o.accepte (visiteur);
 	TypeID a = o.getTypeID();
-
+	
+	std::cout << "Etat.cpp - getRefPersonnage : Pattern visiteur, renvoi resultat : " << visiteur.getpHeros () << std::endl;
 	if (a == PERSO) 
 		return *(visiteur.getpHeros ());
 	else  
@@ -54,6 +60,7 @@ void Etat::setEnCombat (bool b) {
 
 void Etat::rajouterPerso (char e) { 
 	personnages.ajoutElement (e);
+	std::cout << "Etat.cpp - Rajout de personnage : Personnage rajoute - " << personnages.getElement (personnages.size()-1) << std::endl;
 }
 
 void Etat::enleverPerso (int i) {
