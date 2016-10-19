@@ -15,6 +15,9 @@ namespace state {
 
   /// class Statique - 
   class Statique : public state::Element {
+    // Attributes
+  public:
+    int tile;
     // Operations
   public:
     Statique ();
@@ -22,6 +25,8 @@ namespace state {
     virtual void accepte (IVisiteur& v) = 0;
     virtual TypeID getTypeID () = 0;
     bool isStatic ();
+    int getTile ();
+    int i setTile ();
   };
 
 };

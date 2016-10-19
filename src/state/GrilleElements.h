@@ -29,6 +29,7 @@ namespace state {
     void setLongueur (int i);
     void setLargeur (int i);
     void ajoutCaseAcces (int i, int j);
+    int getTile (int i);
   };
 
 };
