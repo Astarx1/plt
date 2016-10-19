@@ -5,7 +5,7 @@ using namespace state;
 
 ListeElements::ListeElements () {
 	factory = new ElementFactory();
-	std::cout << "ListeElements.cpp : Objet cree !" << std::endl;
+	std::cout << "ListeElements.cpp - constructeur : Factory cree !" << std::endl;
 }
 
 ListeElements::~ListeElements () {
@@ -26,7 +26,7 @@ void ListeElements::setElement (int i, Element * e) {
 
 void ListeElements::ajoutElement (char e) {
 	elements.push_back (factory->newInstance(e));
-	std::cout << "ListeElements.cpp : Element cree !" << std::endl;
+	std::cout << "ListeElements.cpp - ajoutELement : Element cree !" << std::endl;
 }
 
 void ListeElements::ajoutElement (Element * e) {
