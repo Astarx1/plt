@@ -9,20 +9,23 @@
 namespace render {
   class RenduGrille;
   class RenduPerso;
+};
+namespace Client {
   class RenduCombat;
 };
 namespace state {
   class Etat;
-}
-
+};
+class Observer;
 #include "RenduGrille.h"
 #include "RenduPerso.h"
-#include "RenduCombat.h"
+#include "Client/RenduCombat.h"
+#include "Observer.h"
 
 namespace render {
 
   /// class Rendu - 
-  class Rendu {
+  class Rendu : public Observer {
     // Associations
     // Attributes
   public:

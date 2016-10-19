@@ -8,18 +8,12 @@
 
 namespace state {
   class Etat;
-};
-namespace render {
-  class RenduType;
 }
-
-#include "RenduType.h"
 
 namespace render {
 
   /// class RenduPerso - 
   class RenduPerso {
-    // Associations
     // Attributes
   public:
     sf::VertexArray vertices;
