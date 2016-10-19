@@ -9,6 +9,7 @@ namespace state {
   class Combat;
   class Visiteur;
   class Personnage;
+  class Statique;
   class IVisiteur;
 }
 
@@ -50,6 +51,8 @@ namespace state {
     void setMapActuel (int i);
     ListeElements getPerso ();
     int getPersoSize ();
+    int getGrilleSize ();
+    Statique& getTile (int i);
   };
 
 };
