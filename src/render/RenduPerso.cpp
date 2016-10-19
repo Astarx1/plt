@@ -1,4 +1,5 @@
 #include "RenduPerso.h"
+#include <iostream>
 
 /* Temps en milliseconde durant lequel un sprite sera affiche */
 #define TEMPS_SPRITE 500
@@ -25,12 +26,15 @@ int valeurEntiere (float a) {
 	}
 }
 
-void RenduPerso::dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Clock& cl){
+void RenduPerso::dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Clock& cl, sf::RenderStates rs){
 	int nb_perso = (e->getPerso()).size();
+	std::cout << "RenduPerso.cpp : Lancement du renduPerso. Il y a " << nb_perso << " elements a afficher" << std::endl;
 
-	sf::VertexArray vertices;
+	vertices.clear();
 	vertices.setPrimitiveType(sf::Quads);
-	vertices.resize(nb_perso);
+	vertices.resize(nb_perso * 4);
+	
+	std::cout << "RenduPerso.cpp : On a cree, redimensionner et redefinit le VertexArray" << std::endl;
 
 	for (int i = 0; i < nb_perso; ++i) {
 		Personnage& p = (e->getRefPersonnage(i));
@@ -58,15 +62,17 @@ void RenduPerso::dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Clock&
 			spr_hauteur = 2;
 
 		spr_longueur = valeurEntiere((t.asMilliseconds() % (NB_SPRITE * TEMPS_SPRITE)) / TEMPS_SPRITE);
+		std::cout << "RenduPerso.cpp : On a obtenu les infos necessaires au choix de la texture" << std::endl;
 
 		switch (tp) {
 			case HEROS:
-				quad[0].texCoords = sf::Vector2f(711,0);
-				quad[1].texCoords = sf::Vector2f(0,0);
-				quad[2].texCoords = sf::Vector2f(0,0);
-				quad[3].texCoords = sf::Vector2f(0,0);
-				h_sprite = 32;
-				l_sprite = 32;
+				quad[0].texCoords = sf::Vector2f(50,50);
+				quad[1].texCoords = sf::Vector2f(100,50);
+				quad[2].texCoords = sf::Vector2f(100,100);
+				quad[3].texCoords = sf::Vector2f(50,100);
+				h_sprite = 25;
+				l_sprite = 25;
+				std::cout << "RenduPerso.cpp : On a defini les texCoords" << std::endl;
 			break;
 
 			case HEROINE:
@@ -128,11 +134,17 @@ void RenduPerso::dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Clock&
                 quad[1].position = sf::Vector2f(x_sprite + l_sprite, y_sprite+h_sprite);
                 quad[2].position = sf::Vector2f(x_sprite - l_sprite, y_sprite-h_sprite);
                 quad[3].position = sf::Vector2f(x_sprite + l_sprite, y_sprite-h_sprite);
-	}
-	w.draw(vertices);
+		std::cout << "RenduPerso.cpp : On a defini les positions des Vertex" << std::endl;
+	} 
+	rs.texture = &tileset;
+	std::cout << "RenduPerso.cpp : On affiche ..." << std::endl;
+	w.draw(vertices,rs);
+	std::cout << "RenduPerso.cpp : On a affiche !" << std::endl;
 }
 
 RenduPerso::RenduPerso () {
+	tileset.loadFromFile("res/Textures/heros/lpcfemaleplatepreview2.png");
+	vertices.setPrimitiveType(sf::Quads);
 }
 
 RenduPerso::~RenduPerso () {

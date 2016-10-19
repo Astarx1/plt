@@ -17,17 +17,24 @@ int main(int argc,char* argv[])
 {
 	
     // create the window
-    sf::RenderWindow window(sf::VideoMode(1000, 800), "grille");
-    Etat* e= new Etat; 
+	sf::RenderWindow window(sf::VideoMode(1000, 800), "grille");
+	Etat* e= new Etat; 
 	e->rajouterPerso('h');
 	Personnage& p = e->getRefPersonnage(0);
 	p.setX(100);
 	p.setY(100);
-    // define the level with an array of tile indices
-   
+	p.setTypePersonnage(HEROS);
+	p.setDirection(SUD);
+
+	sf::Clock c;
+	sf::RenderStates rs;
+
+
 
     // create the tilemap from the level definition
-    RenduGrille map;
+    //RenduGrille map;
+
+	Rendu r;
 
     // run the main loop
     while (window.isOpen())
@@ -42,7 +49,7 @@ int main(int argc,char* argv[])
 
         // draw the map
         window.clear();
-        map.dessin(window,e);
+        r.run(e, window, c, rs);
         window.display();
     }
 

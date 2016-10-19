@@ -1,5 +1,6 @@
 #include "HerosAlloc.h"
 #include "Heros.h"
+#include <iostream>
 using namespace state;
 
 HerosAlloc::HerosAlloc (int id) {
@@ -7,5 +8,6 @@ HerosAlloc::HerosAlloc (int id) {
 }
 
 Element * HerosAlloc::newInstance () {
+	std::cout << "HerosAlloc.cpp : Objet cree !" << std::endl;
 	return new Heros(0,0,0);
 }

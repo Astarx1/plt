@@ -1,11 +1,15 @@
 #include "ListeElements.h"
+#include <iostream>
 
 using namespace state;
 
 ListeElements::ListeElements () {
+	factory = new ElementFactory();
+	std::cout << "ListeElements.cpp : Objet cree !" << std::endl;
 }
 
 ListeElements::~ListeElements () {
+	;
 }
 
 int ListeElements::size () {
@@ -22,6 +26,7 @@ void ListeElements::setElement (int i, Element * e) {
 
 void ListeElements::ajoutElement (char e) {
 	elements.push_back (factory->newInstance(e));
+	std::cout << "ListeElements.cpp : Element cree !" << std::endl;
 }
 
 void ListeElements::ajoutElement (Element * e) {

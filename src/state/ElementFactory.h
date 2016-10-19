@@ -24,6 +24,7 @@ namespace state {
     // Operations
   public:
     ElementFactory ();
+    ~ElementFactory ();
     Element* newInstance (char id);
     void registerType (char cid, IElementAlloc& a);
   };

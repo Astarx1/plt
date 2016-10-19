@@ -26,7 +26,7 @@ namespace render {
     sf::Texture tileset;
     // Operations
   public:
-    void dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Clock& cl);
+    void dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Clock& cl, sf::RenderStates rs);
     RenduPerso ();
     ~RenduPerso ();
   };

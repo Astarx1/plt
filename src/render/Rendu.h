@@ -31,7 +31,7 @@ namespace render {
     RenduCombat rc;
     // Operations
   public:
-    void run (state::Etat* e, sf::RenderWindow& sw, sf::Clock& cl);
+    void run (state::Etat* e, sf::RenderWindow& sw, sf::Clock& cl, sf::RenderStates rs);
     Rendu ();
   };
 
