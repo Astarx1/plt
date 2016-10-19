@@ -22,7 +22,11 @@ Personnage & Etat::getRefPersonnage (int n) {
 	// TODO: insert return statement here
 	Element & o = *(personnages.getElement(n));
 	o.accepte (visiteur);
-	return *(visiteur.getpHeros ());
+	TypeID a = o.getTypeID();
+	if (a == PERSO) 
+		return *(visiteur.getpHeros ());
+	else if (a == MONSTRE)
+		return *(visiteur.getpMonstre ());
 }
 
 Personnage & Etat::getRefPersonnage (int i, int j) {

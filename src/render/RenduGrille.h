@@ -4,6 +4,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
+#include <vector>
 #include "../state.h"
 #include <string>
 
@@ -20,7 +21,7 @@ namespace render {
     sf::VertexArray m_vertices;
     sf::Texture m_tileset;
   protected:
-    int level[320];
+    std::vector<int> level;
     // Operations
   public:
     void dessin (sf::RenderTarget&  target, state::Etat* e);
