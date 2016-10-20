@@ -26,10 +26,9 @@ int main(int argc,char* argv[])
 	cout << "[Main] Accès a un perso" << endl;
 	Personnage& p = e->getRefPersonnage(0);
 	cout << "[Main] Parametrisation du perso" << endl;
-	p.setX(100);
-	p.setY(100);
-	cout << "[Main] Changement de la direction du perso" << endl; 
-	p.setDirection(SUD);
+	p.setX(200);
+	p.setY(350);
+	p.setDirection(EST);
 
 	sf::Clock c;
 	sf::RenderStates rs;

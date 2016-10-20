@@ -65,6 +65,9 @@ typedef struct sQD {
 		std::string str, sfile;
 
 		while (std::getline (f, str)) {
+			if (str[0] == '#')
+				continue;
+				
 			sfile += trim(str);
 			sfile += '\n';
 		} 

@@ -30,9 +30,9 @@ int valeurEntiere (float a) {
 void RenduPerso::dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Clock& cl, sf::RenderStates rs){
 	int nb_perso = (e->getPerso()).size();
 
-	vertices.clear();
-	vertices.setPrimitiveType(sf::Quads);
+	//vertices.clear();
 	vertices.resize(nb_perso * 4);
+	vertices.setPrimitiveType(sf::Quads);
 
 	std::vector<std::vector<std::vector<std::vector<int> > > > th1; 
 	Parseur pp;
@@ -66,25 +66,25 @@ void RenduPerso::dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Clock&
 
 		switch (tp) {
 			case HEROS:
-				th1 = pp.ParsingTextures ("res/Textures/heros/hmasc.txt");
+				th1 = pp.ParsingTextures ("res/Textures/heros/heros_1.txt");
 				std::cout << "Fichier Parse" << std::endl;
-                                if (th1.size()>0) {
-									std::cout << "Affichage" << std::endl;
-                                    quad[0].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][0][0],th1[spr_hauteur][spr_longueur][0][1]);
-                                    quad[1].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][1][0],th1[spr_hauteur][spr_longueur][1][1]);
-                                    quad[2].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][2][0],th1[spr_hauteur][spr_longueur][2][1]);
-                                    quad[3].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][3][0],th1[spr_hauteur][spr_longueur][3][1]);
-                                    h_sprite = 25;
-                                    l_sprite = 25;
-                                }
-                                else {
-                                    quad[0].texCoords = sf::Vector2f(0,0);
-                                    quad[1].texCoords = sf::Vector2f(0,0);
-                                    quad[2].texCoords =  sf::Vector2f(0,0);
-                                    quad[3].texCoords =  sf::Vector2f(0,0);
-                                    h_sprite = 25;
-                                    l_sprite = 25;                                   
-                                }
+					if (th1.size()>0) {
+						std::cout << "Affichage" << std::endl;
+						quad[0].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][0][0],th1[spr_hauteur][spr_longueur][0][1]);
+						quad[1].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][1][0],th1[spr_hauteur][spr_longueur][1][1]);
+						quad[2].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][2][0],th1[spr_hauteur][spr_longueur][2][1]);
+						quad[3].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][3][0],th1[spr_hauteur][spr_longueur][3][1]);
+						h_sprite = 47;
+						l_sprite = 43;
+					}
+					else {
+						quad[0].texCoords = sf::Vector2f(0,0);
+						quad[1].texCoords = sf::Vector2f(0,0);
+						quad[2].texCoords =  sf::Vector2f(0,0);
+						quad[3].texCoords =  sf::Vector2f(0,0);
+						h_sprite = 25;
+						l_sprite = 25;                                   
+					}
 			break;
 
 			case HEROINE:
@@ -142,17 +142,17 @@ void RenduPerso::dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Clock&
 			break;
 		}	  
               	
-		quad[0].position = sf::Vector2f(x_sprite - l_sprite, y_sprite+h_sprite);
-                quad[1].position = sf::Vector2f(x_sprite + l_sprite, y_sprite+h_sprite);
-                quad[2].position = sf::Vector2f(x_sprite - l_sprite, y_sprite-h_sprite);
-                quad[3].position = sf::Vector2f(x_sprite + l_sprite, y_sprite-h_sprite);
+		quad[3].position = sf::Vector2f(x_sprite - l_sprite/2, y_sprite+h_sprite/2);
+        quad[2].position = sf::Vector2f(x_sprite + l_sprite/2, y_sprite+h_sprite/2);
+		quad[1].position = sf::Vector2f(x_sprite - l_sprite/2, y_sprite-h_sprite/2);
+		quad[0].position = sf::Vector2f(x_sprite + l_sprite/2, y_sprite-h_sprite/2);
 	} 
 	rs.texture = &tileset;
 	w.draw(vertices,rs);
 }
 
 RenduPerso::RenduPerso () {
-	tileset.loadFromFile("res/Textures/heros/lpcfemaleplatepreview2.png");
+	tileset.loadFromFile("res/Textures/persos.png");
 	vertices.setPrimitiveType(sf::Quads);
 }
 
