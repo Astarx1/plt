@@ -1,12 +1,15 @@
-#include "Etat.h"
-#include "Heros.h"
-#include "Monstre.h"
+#include "../state.h"
+#include "../render.h"
+
 #include <iostream>
 
 using namespace state;
+using namespace render;
 
 Etat::Etat () : grille(1), personnages() {
 	std::cout << "Etat.cpp - constructeur : creation de la grille" << std::endl;
+	mapActuel = 1;
+	loadGrille (1);
 }
 
 Etat::~Etat () {
@@ -41,7 +44,11 @@ Personnage & Etat::getRefPersonnage (int i, int j) {
 }
 
 void Etat::loadGrille (int n) {
-	grille.charger("test");
+	switch (n) {
+		case 1:
+			grille.charger("res/Textures/carte/map1.txt");
+			break;
+	}
 }
 
 GrilleElements Etat::getGrille () {
@@ -77,6 +84,7 @@ int Etat::getMapActuel () {
 
 void Etat::setMapActuel (int i) {
 	mapActuel = i;
+	loadGrille(i);
 }
 
 ListeElements Etat::getPerso (){

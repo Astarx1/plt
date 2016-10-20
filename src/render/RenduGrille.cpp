@@ -4,12 +4,20 @@
 using namespace render;
 
 void RenduGrille::dessin (sf::RenderTarget&  target, state::Etat* e){
- 	sf::RenderStates states;
-        // apply the tileset texture
-        states.texture = &m_tileset;
+	if (e->getMapActuel() != level[level.size()]) {
+		switch(e->getMapActuel()) {
+			case 1:
+				
+				break;
+		}
+	}
+	
+	sf::RenderStates states;
+	// apply the tileset texture
+	states.texture = &m_tileset;
 
-        // draw the vertex array
-        target.draw(m_vertices, states);
+	// draw the vertex array
+	target.draw(m_vertices, states);
 }
 
 RenduGrille::RenduGrille() {
@@ -38,6 +46,7 @@ RenduGrille::RenduGrille() {
 	//charger("res/Textures/carte/tileset.png", sf::Vector2u(48,48), level, 20, 16);
 	Parseur p;
 	level = p.ParsingMap("res/Textures/carte/map1.txt");
+	level.push_back(1);
 	charger ("res/Textures/carte/tileset.png", sf::Vector2u(48,48), 20, 16);
 }
 
@@ -50,7 +59,7 @@ bool RenduGrille::charger (const std::string& tileset, sf::Vector2u  tileSize, u
         if (!m_tileset.loadFromFile(tileset))
             return false;
 
-		if (width * height != level.size()) {
+		if (width * height != level.size() - 1) {
 			std::cout << "RenduGrille.cpp : Nombre de tiles incompatible avec la taille de level. Tiles" << width * height << " ("<<width <<"*" << height <<") pour " << level.size() << std::endl;
 			return false;
 		}

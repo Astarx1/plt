@@ -54,11 +54,7 @@ typedef struct sQD {
 				s_tmp = trim (s_tmp);
 				t.push_back (std::stoi (s_tmp));
 			}
-		}
-		std::cout << "Map realisee : " << t.size() << std::endl;
-		std::cout << "Map : ";
-		for (int i = 0; i < t.size(); i++) 
-			std::cout << t[i] << " " << std::endl;
+		} 
 		return t;
 	}
 

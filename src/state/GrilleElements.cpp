@@ -1,25 +1,28 @@
 #include "GrilleElements.h"
+#include "../state.h"
+#include "../render.h"
 
 using namespace state;
+using namespace render;
 
 GrilleElements::GrilleElements (int nv) {
     switch (nv)
     {
-    case 1:
-    {
-        this->largeur=600;
-        this->longueur=900;
-    }
-    case 2:
-    {
-        this->largeur=600;
-        this->longueur=900;
-    }
-    case 3:
-    {
-        this->largeur=600;
-        this->longueur=600;
-    }
+		case 1:
+		{
+			this->largeur=600;
+			this->longueur=900;
+		}
+		case 2:
+		{
+			this->largeur=600;
+			this->longueur=900;
+		}
+		case 3:
+		{
+			this->largeur=600;
+			this->longueur=600;
+		}
     }
 }
 
@@ -41,6 +44,14 @@ void GrilleElements::setCase (Element * e, int i, int j) {
 }
 
 void GrilleElements::charger (const char * nom_fichier) {
+	elements.clear();
+	Parseur p;
+	std::vector<int> l = p.ParsingMap(nom_fichier);
+	
+	for (int i = 0; i < l.size(); ++i) {
+		ajoutElement('v');
+		elements.setTile(l[i]);
+	}
 }
 
 void GrilleElements::setLongueur (int i) {
@@ -60,6 +71,6 @@ void GrilleElements::ajoutCaseAcces (int i, int j) {
 }
 
 
-    int getTile (int i) {
+int getTile (int i) {
 	return 0;
 }
