@@ -53,10 +53,12 @@ typedef struct sQD {
 			if (s_tmp.size () > 0) {
 				s_tmp = trim (s_tmp);
 				t.push_back (std::stoi (s_tmp));
-
-				break;
 			}
 		}
+		std::cout << "Map realisee : " << t.size() << std::endl;
+		std::cout << "Map : ";
+		for (int i = 0; i < t.size(); i++) 
+			std::cout << t[i] << " " << std::endl;
 		return t;
 	}
 
@@ -74,7 +76,6 @@ typedef struct sQD {
 	}
 
 	std::vector<std::string> Parseur::ParsingString (std::string s, char marqueur) { 
-		std::cout << "Analyse de la String : " << s << " selon le marqueur " << marqueur << std::endl;
 		std::string s_tmp;
 
 		std::vector<std::string> t; 
@@ -131,7 +132,6 @@ typedef struct sQD {
 					for (int coor = 0; coor < decoupe_coordonnees.size (); coor++) {
 						(r2[dir][text][pos]).resize ((r2[dir][text][pos]).size () + 1);
 						stmp = trim (decoupe_coordonnees[coor]); 
-						std::cout << "Dir : " << dir << ", Text : " << text << ", Post : " << pos << ", Coord : " << coor << std::endl;
 						r2[dir][text][pos][coor] = std::stoi (stmp);
 					}
 				}

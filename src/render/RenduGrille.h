@@ -33,7 +33,7 @@ namespace render {
     RenduGrille ();
     ~RenduGrille ();
   private:
-    bool charger (const std::string& tileset, sf::Vector2u  tileSize, const int*  tiles, unsigned int  width, unsigned int  height);
+    bool charger (const std::string& tileset, sf::Vector2u  tileSize, unsigned int  width, unsigned int  height);
   };
 
 };

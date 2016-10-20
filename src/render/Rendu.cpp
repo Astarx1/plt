@@ -7,7 +7,6 @@ using namespace state;
 void Rendu::run (Etat* e, sf::RenderWindow& sw, sf::Clock& cl, sf::RenderStates rs) {
 	rg.dessin(sw, e);
 	rp.dessin(sw, e, 0, cl, rs);
-	std::cout << "On a tout afficher" << std::endl;
 }
 
 Rendu::Rendu () {  

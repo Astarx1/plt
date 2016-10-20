@@ -54,7 +54,6 @@ int main(int argc,char* argv[])
 
         // draw the map
         window.clear();
-        std::cout << "[Main] Affichage de la fenetre" << std::endl;
         r.run(e, window, c, rs);
         window.display();
     }

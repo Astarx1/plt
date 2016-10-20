@@ -1,4 +1,4 @@
-#include "RenduGrille.h"
+#include "../render.h"
 #include <iostream>
 
 using namespace render;
@@ -36,17 +36,25 @@ RenduGrille::RenduGrille() {
 	//	level[i]=l[i];
 	//}
 	//charger("res/Textures/carte/tileset.png", sf::Vector2u(48,48), level, 20, 16);
+	Parseur p;
+	level = p.ParsingMap("res/Textures/carte/map1.txt");
+	charger ("res/Textures/carte/tileset.png", sf::Vector2u(48,48), 20, 16);
 }
 
 RenduGrille::~RenduGrille(){
 
 }
 
-bool RenduGrille::charger (const std::string& tileset, sf::Vector2u  tileSize, const int*  tiles, unsigned int  width, unsigned int  height){
+bool RenduGrille::charger (const std::string& tileset, sf::Vector2u  tileSize, unsigned int  width, unsigned int  height){
 	// load the tileset texture
         if (!m_tileset.loadFromFile(tileset))
             return false;
 
+		if (width * height != level.size()) {
+			std::cout << "RenduGrille.cpp : Nombre de tiles incompatible avec la taille de level. Tiles" << width * height << " ("<<width <<"*" << height <<") pour " << level.size() << std::endl;
+			return false;
+		}
+		
         // resize the vertex array to fit the level size
         m_vertices.setPrimitiveType(sf::Quads);
         m_vertices.resize(width * height * 4);
@@ -56,7 +64,7 @@ bool RenduGrille::charger (const std::string& tileset, sf::Vector2u  tileSize, c
             for (unsigned int j = 0; j < height; ++j)
             {
                 // get the current tile number
-                int tileNumber = tiles[i + j * width];
+                int tileNumber = level[i + j * width];
 
                 // find its position in the tileset texture
                 int tu = tileNumber % (m_tileset.getSize().x / tileSize.x);

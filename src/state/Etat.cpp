@@ -25,11 +25,9 @@ Personnage & Etat::getRefPersonnage (int n) {
 	
 	Element & o = *(personnages.getElement(n));
 	
-	std::cout << "Etat.cpp - getRefPersonnage : Appel du pattern visiteur" << std::endl;
 	o.accepte (visiteur);
 	TypeID a = o.getTypeID();
 	
-	std::cout << "Etat.cpp - getRefPersonnage : Pattern visiteur, renvoi resultat : " << a << std::endl;
 	if (a == TypeID(HEROS)) 
 		return *(visiteur.getpHeros ());
 	else  

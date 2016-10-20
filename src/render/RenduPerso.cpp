@@ -29,13 +29,10 @@ int valeurEntiere (float a) {
 
 void RenduPerso::dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Clock& cl, sf::RenderStates rs){
 	int nb_perso = (e->getPerso()).size();
-	std::cout << "RenduPerso.cpp : Lancement du renduPerso. Il y a " << nb_perso << " elements a afficher" << std::endl;
 
 	vertices.clear();
 	vertices.setPrimitiveType(sf::Quads);
 	vertices.resize(nb_perso * 4);
-	
-	std::cout << "RenduPerso.cpp : On a cree, redimensionner et redefinit le VertexArray" << std::endl;
 
 	std::vector<std::vector<std::vector<std::vector<int> > > > th1; 
 	Parseur pp;
@@ -66,7 +63,6 @@ void RenduPerso::dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Clock&
 			spr_hauteur = 2;
 
 		spr_longueur = valeurEntiere((t.asMilliseconds() % (NB_SPRITE * TEMPS_SPRITE)) / TEMPS_SPRITE);
-		std::cout << "RenduPerso.cpp : On a obtenu les infos necessaires au choix de la texture" << std::endl;
 
 		switch (tp) {
 			case HEROS:
@@ -77,7 +73,6 @@ void RenduPerso::dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Clock&
 				quad[3].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][3][0],th1[spr_hauteur][spr_longueur][3][1]);
 				h_sprite = 25;
 				l_sprite = 25;
-				std::cout << "RenduPerso.cpp : On a defini les texCoords" << std::endl;
 			break;
 
 			case HEROINE:
@@ -139,12 +134,9 @@ void RenduPerso::dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Clock&
                 quad[1].position = sf::Vector2f(x_sprite + l_sprite, y_sprite+h_sprite);
                 quad[2].position = sf::Vector2f(x_sprite - l_sprite, y_sprite-h_sprite);
                 quad[3].position = sf::Vector2f(x_sprite + l_sprite, y_sprite-h_sprite);
-		std::cout << "RenduPerso.cpp : On a defini les positions des Vertex" << std::endl;
 	} 
 	rs.texture = &tileset;
-	std::cout << "RenduPerso.cpp : On affiche ..." << std::endl;
 	w.draw(vertices,rs);
-	std::cout << "RenduPerso.cpp : On a affiche !" << std::endl;
 }
 
 RenduPerso::RenduPerso () {
