@@ -15,7 +15,6 @@ using namespace render;
 
 int main(int argc,char* argv[]) 
 {
-	
     // create the window
 	cout << "[Main] Initialisation de ma fenetre" << endl;   
 	sf::RenderWindow window(sf::VideoMode(1000, 800), "grille");

@@ -1,4 +1,5 @@
 #include "RenduPerso.h"
+#include "../render.h"
 #include <iostream>
 
 /* Temps en milliseconde durant lequel un sprite sera affiche */
@@ -36,6 +37,9 @@ void RenduPerso::dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Clock&
 	
 	std::cout << "RenduPerso.cpp : On a cree, redimensionner et redefinit le VertexArray" << std::endl;
 
+	std::vector<std::vector<std::vector<std::vector<int> > > > th1; 
+	Parseur pp;
+	
 	for (int i = 0; i < nb_perso; ++i) {
 		Personnage& p = (e->getRefPersonnage(i));
 		int h_sprite = 0;
@@ -66,10 +70,11 @@ void RenduPerso::dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Clock&
 
 		switch (tp) {
 			case HEROS:
-				quad[0].texCoords = sf::Vector2f(80,190);
-				quad[1].texCoords = sf::Vector2f(130,190);
-				quad[2].texCoords = sf::Vector2f(80,140);
-				quad[3].texCoords = sf::Vector2f(130,140);
+				th1 = pp.ParsingTextures ("res/Textures/heros/hmasc.txt");
+				quad[0].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][0][0],th1[spr_hauteur][spr_longueur][0][1]);
+				quad[1].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][1][0],th1[spr_hauteur][spr_longueur][1][1]);
+				quad[2].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][2][0],th1[spr_hauteur][spr_longueur][2][1]);
+				quad[3].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][3][0],th1[spr_hauteur][spr_longueur][3][1]);
 				h_sprite = 25;
 				l_sprite = 25;
 				std::cout << "RenduPerso.cpp : On a defini les texCoords" << std::endl;

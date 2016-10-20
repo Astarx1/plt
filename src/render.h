@@ -2,6 +2,7 @@
 #ifndef __RENDER__H
 #define __RENDER__H
 
+#include "render/Parseur.h"
 #include "render/RenduGrille.h"
 #include "render/RenduPerso.h"
 #include "render/Rendu.h"

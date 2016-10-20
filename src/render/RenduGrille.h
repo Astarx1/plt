@@ -10,7 +10,12 @@
 
 namespace state {
   class Etat;
+};
+namespace render {
+  class Parseur;
 }
+
+#include "Parseur.h"
 
 namespace render {
 
