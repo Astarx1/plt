@@ -223,7 +223,7 @@ Les déplacements sur une carte s’effectuent de case en case d’une grille, e
    Etat & Cette classe permet de définir un état de jeu.
 
 Attribut(s): personnages, grille, combat, enCombat, visiteur, mapActuel\newline
-Méthode(s): Etat(), ~Etat(), getStatutGrille(), getPersonnage(), getRefPersonnage(), loadGrille(), getGrille(), getEnCombat(), setEnComabt(), rajouterPerso(), enleverPerso(), getRefCombat(), getMapActuel(), setMapActuel()
+Méthode(s): Etat(), ~Etat(), getStatutGrille(), getPersonnage(), getRefPersonnage(), loadGrille(), getGrille(), getEnCombat(), setEnComabt(), rajouterPerso(), enleverPerso(), getRefCombat(), getMapActuel(), setMapActuel(), getPerso(), getPersoSize(), getGrilleSize(),getTile()
  \\
 \hline
 
@@ -335,7 +335,7 @@ Méthode(s): Element(), ~Element(), \textbf{getTypeID()}, \textbf{accepte()}, ge
 \hline
    Statique & Cette classe abstraite permet de définir un élément de type “Statique”. Elle est la classe mère des classes « Acces » et « vide » qui sont les deux éléments statiques du jeu.
 \newline
-Méthode(s): Statique(), \textbf{isAcces()}, \textbf{accepte()}, \textbf{getTypeID()}, isStatic()
+Méthode(s): Statique(), \textbf{isAcces()}, \textbf{accepte()}, \textbf{getTypeID()}, isStatic(), getTile()
  \\
 \hline
 
@@ -351,7 +351,7 @@ Méthode(s): Mobile(), \textbf{isJoueur()}, \textbf{accepte()}, \textbf{getTypeI
 
 Attribut(s): typePersonnage, force, niveau, ptAction, ptMouvement, vie, attaqueDistance, attaqueCAC, etatPerso
 \newline
-Méthode(s): Personnage(), ~Personnage(), \textbf{isJoueur()},\textbf{ accepte()}, \textbf{getTypeID()}, getTypePersonnage(), getForce(), getNiveau(), getPA(), getPM(), getVie(), getAttaqueDistance(), getAttaqueCAC(), setTypePersonnage(), setForce(), setNiveau(), setPA(),setPM(), setVie(), setAttaqueDistance(), setAttaqueCAC(), setEtatPerso()
+Méthode(s): Personnage(), ~Personnage(), \textbf{isJoueur()},\textbf{ accepte()}, \textbf{getTypeID()}, getTypePersonnage(), getForce(), getNiveau(), getPA(), getPM(), getVie(), getAttaqueDistance(), getAttaqueCAC(), getEtatPerso(), setTypePersonnage(), setForce(), setNiveau(), setPA(),setPM(), setVie(), setAttaqueDistance(), setAttaqueCAC(), setEtatPerso()
  \\
 \hline
 
@@ -412,6 +412,92 @@ Légende des couleurs:
   \centering
   \includegraphics[scale=0.05]{img/state.png}
   \caption{\emph{Diagramme de classe du package etat du projet}}
+\end{figure}
+
+\section{Rendu}
+
+\subsection{Stratégie de rendu d'un état}
+
+Une stratégie relativement simple est choisie pour réaliser le rendu d’un état du jeu. Cette stratégie consiste à segmenter le rendu en deux plans: un plan pour la carte (contenant tous les éléments statiques) et un second plan pour les éléments mobiles (personnages).
+
+	Une structure basée selon un Pattern Observer est utilisé afin de faire le lien entre le package State et le package Render. En effet, l’objectif de cette structure est d’observer l’état du jeu à rendre et d’apporter les changements survenus. Pour ce faire, l'implantation de six classes sont nécessaires:
+
+Classes Observable et Observer:  ces classes appartiennent au Pattern Observer et ont pour but d'observer les changements survenus sur l'état du jeu et de les notifier au rendu. Ces classes font le lien entre le package Etat et le package Rendu.
+
+Classe Rendu: cette classe centralise les différents plan du rendu. Elle permet de mettre à jour le rendu d'un état de jeu. Elle est associée à différentes classes qui sont: RenduGrille, RenduPerso.
+
+Classe Parseur: cette classe permet d’accéder aux différentes textures utilisées pour le rendu du jeu en passant par une lecture de fichiers .txt. Le chargement de ces textures se fait à l’aide de tableaux d’entiers qui sont ensuite exploités dans les classes du package Render.
+
+\subsection{Conception logiciel}
+
+Le taleau ci dessous permet de résumer l’ensemble des classes utiles et présentes pour définir un rendu d'un état de jeu ainsi que leur rôle respectif.
+
+\begin{tabularx}{\textwidth}{ |l|X| }
+\hline
+   \textbf{Nom} & \textbf{Role}
+ \\
+\hline
+
+   Observable & Cette classe permet d'observer l'état du jeu.
+
+Attribut(s): observers
+\newline
+Méthode(s): notifyObservers(), registerObserver()
+ \\
+\hline
+
+   Observer & Cette classe permet de mettre à jour le rendu en fonction des changements survenus dans l'état du jeu.
+   
+Méthode(s): run()
+ \\
+\hline
+
+   Rendu & Cette classe permet de gérer l'ensemble des plan du rendu à mettre à jour.
+
+Attribut(s): rg, rp
+\newline
+Méthode(s): run(), Rendu()
+ \\
+\hline
+
+   RenduGrille & Cette classe permet de gérer le rendu de la carte du jeu (background).
+
+Attribut(s): level, vertices, tileset
+\newline
+Méthode(s): dessin(), charger(), RenduGrille(), ~RenduGrille()
+ \\
+\hline
+
+   RenduPerso & Cette classe permet de gérer le rendu des personnages.
+
+Attribut(s): vertices, tileset
+\newline
+Méthode(s): dessin(), RenduPerso(), ~RenduPerso()
+ \\
+\hline
+
+   Parseur & Cette classe permet d’accéder à la lecture d’un fichier .txt qui spécifie les textures pour les personnages et les cartes du jeu.
+\newline
+Méthode(s): parsingMap(), parsingTextures(), trim(), ftos(), parsingString()
+ \\
+\hline
+
+\end{tabularx}\\ \\*
+
+Diagramme de classe :
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.13]{img/render.png}
+  \caption{\emph{Package render}}
+\end{figure}
+
+\subsection{Exemple de rendu}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.4]{img/rendu.png}
+  \caption{\emph{Exemple de rendu}}
 \end{figure}
 
 
