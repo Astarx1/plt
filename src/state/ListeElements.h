@@ -5,10 +5,13 @@
 #include <vector>
 
 namespace state {
+  class Visiteur;
   class Element;
   class ElementFactory;
+  class Statique;
 }
 
+#include "Visiteur.h"
 #include "ElementFactory.h"
 #include "Element.h"
 
@@ -18,6 +21,8 @@ namespace state {
   class ListeElements {
     // Associations
     // Attributes
+  public:
+    Visiteur visiteur;
   protected:
     std::vector<Element*>  elements;
     ElementFactory* factory;
@@ -31,6 +36,7 @@ namespace state {
     bool const isPerso (int i, int j);
     void ajoutElement (char e);
     void ajoutElement (Element * e);
+    Statique* getTile (int i);
   };
 
 };

@@ -21,7 +21,7 @@ namespace state {
     Acces* pAcces;
     Monstre* pMonstre;
   protected:
-    int lastype;
+    int lastType;
     // Operations
   public:
     virtual void visiter (Heros* pHeros) = 0;

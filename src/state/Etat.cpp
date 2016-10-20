@@ -94,3 +94,17 @@ ListeElements Etat::getPerso (){
 int Etat::getPersoSize() {
 	return personnages.size();
 }
+
+Statique & Etat::getTile (int n) {
+	// TODO: insert return statement here
+	
+	Element & o = *(grille.getElement(n));
+	
+	o.accepte (visiteur);
+	TypeID a = o.getTypeID();
+	
+	if (a == TypeID(VIDE)) 
+		return *(visiteur.getpVide ());
+	else  
+		return *(visiteur.getpAcces ());
+}

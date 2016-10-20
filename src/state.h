@@ -2,6 +2,8 @@
 #ifndef __STATE__H
 #define __STATE__H
 
+#include "state/IVisiteur.h"
+#include "state/Visiteur.h"
 #include "state/IElementAlloc.h"
 #include "state/ElementFactory.h"
 #include "state/TypeID.h"
@@ -10,8 +12,6 @@
 #include "state/ListeElements.h"
 #include "state/GrilleElements.h"
 #include "state/Combat.h"
-#include "state/IVisiteur.h"
-#include "state/Visiteur.h"
 #include "state/Etat.h"
 #include "state/Statique.h"
 #include "state/Vide.h"

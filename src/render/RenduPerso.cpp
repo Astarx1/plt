@@ -67,12 +67,24 @@ void RenduPerso::dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Clock&
 		switch (tp) {
 			case HEROS:
 				th1 = pp.ParsingTextures ("res/Textures/heros/hmasc.txt");
-				quad[0].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][0][0],th1[spr_hauteur][spr_longueur][0][1]);
-				quad[1].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][1][0],th1[spr_hauteur][spr_longueur][1][1]);
-				quad[2].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][2][0],th1[spr_hauteur][spr_longueur][2][1]);
-				quad[3].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][3][0],th1[spr_hauteur][spr_longueur][3][1]);
-				h_sprite = 25;
-				l_sprite = 25;
+				std::cout << "Fichier Parse" << std::endl;
+                                if (th1.size()>0) {
+									std::cout << "Affichage" << std::endl;
+                                    quad[0].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][0][0],th1[spr_hauteur][spr_longueur][0][1]);
+                                    quad[1].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][1][0],th1[spr_hauteur][spr_longueur][1][1]);
+                                    quad[2].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][2][0],th1[spr_hauteur][spr_longueur][2][1]);
+                                    quad[3].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][3][0],th1[spr_hauteur][spr_longueur][3][1]);
+                                    h_sprite = 25;
+                                    l_sprite = 25;
+                                }
+                                else {
+                                    quad[0].texCoords = sf::Vector2f(0,0);
+                                    quad[1].texCoords = sf::Vector2f(0,0);
+                                    quad[2].texCoords =  sf::Vector2f(0,0);
+                                    quad[3].texCoords =  sf::Vector2f(0,0);
+                                    h_sprite = 25;
+                                    l_sprite = 25;                                   
+                                }
 			break;
 
 			case HEROINE:

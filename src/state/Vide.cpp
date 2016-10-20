@@ -14,7 +14,7 @@ bool Vide::isAcces () {
 }
 
 TypeID Vide::getTypeID () {
-	return TypeID ();
+	return TypeID(VIDE);
 }
 
 void Vide::accepte (IVisiteur & v) {

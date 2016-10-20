@@ -3,22 +3,22 @@
 using namespace state;
 
 void Visiteur::visiter (Heros * pHeros) {
-	lastype = 1;
+	lastType = 1;
 	this->pHeros = pHeros;
 }
 
 void Visiteur::visiter (Vide * pVide) {
-	lastype = 2;
+	lastType = 2;
 	this->pVide = pVide;
 }
 
 void Visiteur::visiter (Acces * pAcces) {
-	lastype = 3;
+	lastType = 3;
 	this->pAcces = pAcces;
 }
 
 void Visiteur::visiter (Monstre * pMonstre) {
-	lastype = 4;
+	lastType = 4;
 	this->pMonstre = pMonstre;
 }
 

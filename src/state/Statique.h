@@ -26,7 +26,7 @@ namespace state {
     virtual TypeID getTypeID () = 0;
     bool isStatic ();
     int getTile ();
-    int setTile ();
+    void setTile (int i);
   };
 
 };

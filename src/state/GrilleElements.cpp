@@ -1,4 +1,5 @@
 #include "GrilleElements.h"
+#include "Statique.h"
 #include "../state.h"
 #include "../render.h"
 
@@ -43,14 +44,15 @@ void GrilleElements::setCase (Element * e, int i, int j) {
     e->setY(j);
 }
 
-void GrilleElements::charger (const char * nom_fichier) {
+void GrilleElements::charger (char * nom_fichier) {
 	elements.clear();
 	Parseur p;
 	std::vector<int> l = p.ParsingMap(nom_fichier);
 	
 	for (int i = 0; i < l.size(); ++i) {
 		ajoutElement('v');
-		elements.setTile(l[i]);
+		Statique * a = getTile(elements.size()-1);
+		a->setTile(l[i]);
 	}
 }
 

@@ -37,3 +37,17 @@ void ListeElements::ajoutElement (Element * e) {
 bool const ListeElements::isPerso (int i, int j) {
 	return false;
 }
+
+Statique * ListeElements::getTile (int n) {
+	// TODO: insert return statement here
+	
+	Element * o = getElement(n);
+	
+	o->accepte (visiteur);
+	TypeID a = o->getTypeID();
+	
+	if (a == TypeID(VIDE)) 
+		return (Statique *)(visiteur.getpVide ());
+	else  
+		return (Statique *)(visiteur.getpAcces ());
+}
