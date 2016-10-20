@@ -29,8 +29,8 @@ Personnage & Etat::getRefPersonnage (int n) {
 	o.accepte (visiteur);
 	TypeID a = o.getTypeID();
 	
-	std::cout << "Etat.cpp - getRefPersonnage : Pattern visiteur, renvoi resultat : " << visiteur.getpHeros () << std::endl;
-	if (a == PERSO) 
+	std::cout << "Etat.cpp - getRefPersonnage : Pattern visiteur, renvoi resultat : " << a << std::endl;
+	if (a == TypeID(HEROS)) 
 		return *(visiteur.getpHeros ());
 	else  
 		return *(visiteur.getpMonstre ());
@@ -60,7 +60,7 @@ void Etat::setEnCombat (bool b) {
 
 void Etat::rajouterPerso (char e) { 
 	personnages.ajoutElement (e);
-	std::cout << "Etat.cpp - Rajout de personnage : Personnage rajoute - " << personnages.getElement (personnages.size()-1) << std::endl;
+	std::cout << "Etat.cpp - Rajout de personnage : Personnage rajoute - Nb elements : " << personnages.size() << std::endl;
 }
 
 void Etat::enleverPerso (int i) {

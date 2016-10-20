@@ -3,7 +3,7 @@
 
 using namespace state;
 
-Heros::Heros (int i, int j, int exp) : Personnage (i, HEROS) {
+Heros::Heros (int i, int j, int exp) : Personnage (1, HEROS) {
     this->x=i;
     this->y=j;
     this->experience=exp;
@@ -14,7 +14,7 @@ bool Heros::isJoueur () {
 }
 
 TypeID Heros::getTypeID () {
-	return TypeID ();
+	return TypeID(HEROS);
 }
 
 int const Heros::getExp () {

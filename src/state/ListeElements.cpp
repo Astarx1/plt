@@ -25,8 +25,9 @@ void ListeElements::setElement (int i, Element * e) {
 }
 
 void ListeElements::ajoutElement (char e) {
-	elements.push_back (factory->newInstance(e));
-	std::cout << "ListeElements.cpp - ajoutELement : Element cree !" << std::endl;
+	Element * ne = factory->newInstance(e);
+	elements.push_back (ne);
+	std::cout << "ListeElements.cpp - ajoutELement : Element cree ! Type : " << ne->getTypeID() << std::endl;
 }
 
 void ListeElements::ajoutElement (Element * e) {

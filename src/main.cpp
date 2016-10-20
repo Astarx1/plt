@@ -29,8 +29,7 @@ int main(int argc,char* argv[])
 	cout << "[Main] Parametrisation du perso" << endl;
 	p.setX(100);
 	p.setY(100);
-	cout << "[Main] Changement du type du perso" << endl;
-	p.setTypePersonnage(HEROS);
+	cout << "[Main] Changement de la direction du perso" << endl; 
 	p.setDirection(SUD);
 
 	sf::Clock c;
