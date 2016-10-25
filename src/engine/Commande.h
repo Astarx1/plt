@@ -32,7 +32,7 @@ namespace engine {
     sf::Clock cl;
     // Operations
   public:
-    Commande (state::Etat* e, sf::Clock cl, std::string cmd);
+    Commande (state::Etat* e, sf::Clock cl, std::string cmd, int id);
     ~Commande ();
     int const getSize ();
   };

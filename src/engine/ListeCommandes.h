@@ -3,7 +3,6 @@
 #define ENGINE__LISTECOMMANDES__H
 
 #include <vector>
-#include <string>
 
 namespace engine {
   class Commande;
@@ -20,7 +19,7 @@ namespace engine {
     std::vector<Commande> commandes;
     // Operations
   public:
-    void Ajouter (std::string cmd);
+    void Ajouter (Commande cmd);
     void ToutExecuter ();
   };
 

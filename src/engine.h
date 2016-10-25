@@ -6,6 +6,7 @@
 #include "engine/ListeCommandes.h"
 #include "engine/Action.h"
 #include "engine/Commande.h"
+#include "engine/Deplacer.h"
 #include "engine/Attaquer.h"
 #include "engine/ChangerMap.h"
 #include "engine/EntrerCombat.h"
