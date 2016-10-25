@@ -62,7 +62,8 @@ void RenduPerso::dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Clock&
 		else if (dir == OUEST)
 			spr_hauteur = 2;
 
-		spr_longueur = valeurEntiere((t.asMilliseconds() % (NB_SPRITE * TEMPS_SPRITE)) / TEMPS_SPRITE);
+		if (p.getEnDeplacement()==false)
+			spr_longueur = valeurEntiere((t.asMilliseconds() % (NB_SPRITE * TEMPS_SPRITE)) / TEMPS_SPRITE);
 
 		switch (tp) {
 			case HEROS:
