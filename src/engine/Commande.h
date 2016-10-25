@@ -6,14 +6,19 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include "../state.h"
+#include <string>
 
 namespace state {
   class Etat;
 };
 namespace engine {
+  class Regles;
+  class ListeCommandes;
   class Action;
 }
 
+#include "Regles.h"
+#include "ListeCommandes.h"
 #include "Action.h"
 
 namespace engine {
@@ -27,7 +32,7 @@ namespace engine {
     sf::Clock cl;
     // Operations
   public:
-    Commande (sf::Event event, state::Etat* e, sf::Clock cl);
+    Commande (state::Etat* e, sf::Clock cl, std::string cmd);
     ~Commande ();
     int const getSize ();
   };

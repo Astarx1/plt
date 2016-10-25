@@ -18,6 +18,7 @@ namespace engine {
 
   /// class Action - 
   class Action {
+    // Associations
     // Attributes
   protected:
     Regles regles;

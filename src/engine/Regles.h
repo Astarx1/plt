@@ -9,20 +9,14 @@
 
 namespace state {
   class Etat;
-};
-namespace engine {
-  class Action;
-  class Commande;
 }
 
-#include "Action.h"
-#include "Commande.h"
 #include "state/Etat.h"
 
 namespace engine {
 
   /// class Regles - 
-  class Regles : public engine::Action, public engine::Commande {
+  class Regles {
     // Operations
   public:
     bool peutDeplacer (state::Etat* e, int id);
@@ -38,7 +32,7 @@ namespace engine {
     int augmenterPA (state::Etat* e, int id);
     int augmenterPV (state::Etat* e, int id);
     int augmenterForce (state::Etat* e, int id);
-    std::vector<Personnage&> defMonstreCarte (state::Etat* e);
+    std::vector<state::Personnage&> defMonstreCarte (state::Etat* e);
     int defTailleCarte (state::Etat* e);
     int defCarteSuiv (state::Etat* e);
   };
