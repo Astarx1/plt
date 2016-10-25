@@ -23,6 +23,8 @@ namespace state {
     Direction direction;
     int timer;
     bool  enDeplacement;
+    int xObj;
+    int yObj;
     // Operations
   public:
     Mobile ();
@@ -36,6 +38,10 @@ namespace state {
     void setEnDeplacement (bool b);
     int getTimer ();
     void setTimer (int timer);
+    int const getXobj ();
+    void setXobj (int x);
+    int const getYobj ();
+    void setYobj (int y);
   };
 
 };
