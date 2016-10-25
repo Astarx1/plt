@@ -35,3 +35,19 @@ int Mobile::getTimer () {
 void Mobile::setTimer (int timer) {
     this->timer = timer;
 }
+
+int const Mobile::getXobj () {
+	return xObj;
+}
+
+void Mobile::setXobj (int x) {
+	xObj = x;
+}
+
+int const Mobile::getYobj () {
+	return yObj;
+}
+
+void Mobile::setYobj (int y) {
+	yObj = y;
+}
