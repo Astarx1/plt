@@ -30,7 +30,7 @@ int valeurEntiere (float a) {
 void RenduPerso::dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Clock& cl, sf::RenderStates rs){
 	int nb_perso = (e->getPerso()).size();
 
-	//vertices.clear();
+	vertices.clear();
 	vertices.resize(nb_perso * 4);
 	vertices.setPrimitiveType(sf::Quads);
 
@@ -38,7 +38,8 @@ void RenduPerso::dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Clock&
 	Parseur pp;
 	
 	for (int i = 0; i < nb_perso; ++i) {
-		Personnage& p = (e->getRefPersonnage(i));
+            std::cout << nb_perso << std::endl;
+                Personnage& p = (e->getRefPersonnage(i));
 		int h_sprite = 0;
 		int l_sprite = 0;
 		int x_sprite = p.getX();
@@ -68,13 +69,12 @@ void RenduPerso::dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Clock&
 		switch (tp) {
 			case HEROS:
 				th1 = pp.ParsingTextures ("res/Textures/heros/heros_1.txt");
-				std::cout << "Fichier Parse" << std::endl;
 					if (th1.size()>0) {
 						std::cout << "Affichage" << std::endl;
-						quad[0].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][0][0],th1[spr_hauteur][spr_longueur][0][1]);
-						quad[1].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][1][0],th1[spr_hauteur][spr_longueur][1][1]);
-						quad[2].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][2][0],th1[spr_hauteur][spr_longueur][2][1]);
-						quad[3].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][3][0],th1[spr_hauteur][spr_longueur][3][1]);
+						quad[3].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][0][0],th1[spr_hauteur][spr_longueur][0][1]);
+						quad[2].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][1][0],th1[spr_hauteur][spr_longueur][1][1]);
+						quad[0].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][2][0],th1[spr_hauteur][spr_longueur][2][1]);
+						quad[1].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][3][0],th1[spr_hauteur][spr_longueur][3][1]);
 						h_sprite = 47;
 						l_sprite = 43;
 					}
@@ -143,10 +143,10 @@ void RenduPerso::dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Clock&
 			break;
 		}	  
               	
-		quad[3].position = sf::Vector2f(x_sprite - l_sprite/2, y_sprite+h_sprite/2);
-        quad[2].position = sf::Vector2f(x_sprite + l_sprite/2, y_sprite+h_sprite/2);
-		quad[1].position = sf::Vector2f(x_sprite - l_sprite/2, y_sprite-h_sprite/2);
-		quad[0].position = sf::Vector2f(x_sprite + l_sprite/2, y_sprite-h_sprite/2);
+		quad[0].position = sf::Vector2f(x_sprite - l_sprite/2, y_sprite+h_sprite/2);
+		quad[1].position = sf::Vector2f(x_sprite + l_sprite/2, y_sprite+h_sprite/2);
+		quad[3].position = sf::Vector2f(x_sprite - l_sprite/2, y_sprite-h_sprite/2);
+		quad[2].position = sf::Vector2f(x_sprite + l_sprite/2, y_sprite-h_sprite/2);             
 	} 
 	rs.texture = &tileset;
 	w.draw(vertices,rs);

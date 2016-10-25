@@ -28,7 +28,7 @@ int main(int argc,char* argv[])
 	cout << "[Main] Parametrisation du perso" << endl;
 	p.setX(200);
 	p.setY(350);
-	p.setDirection(EST);
+	p.setDirection(OUEST);
 
 	sf::Clock c;
 	sf::RenderStates rs;
