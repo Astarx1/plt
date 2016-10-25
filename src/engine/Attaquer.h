@@ -20,7 +20,7 @@ namespace engine {
   class Attaquer : public engine::Action {
     // Operations
   public:
-    virtual run (state::Etat* e, std::vector<int> params) = 0;
+    void run (state::Etat* e, std::vector<int> params);
   };
 
 };
