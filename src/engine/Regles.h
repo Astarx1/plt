@@ -19,7 +19,7 @@ namespace engine {
   class Regles {
     // Operations
   public:
-    bool peutDeplacer (state::Etat* e, int id);
+    bool peutDeplacer (state::Etat* e, int id, int newX, int newY);
     bool peutEntrerCombat (state::Etat* e, int id);
     bool peutChangerMap (state::Etat* e, int id);
     bool peutQuitterCombat (state::Etat* e, int id);
