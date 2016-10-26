@@ -92,7 +92,9 @@ bool Regles::peutAttaquer(state::Etat* e, int id){
     }
 }
 
-bool Regles::doitPasserTour(state::Etat* e, int id, sf::Clock clk){
-    return true;
+bool Regles::doitPasserTour(state::Etat* e, int id, sf::Time t){
+    Combat& combat = e->getRefCombat();
+    //Time timeDeb = combat.getTimerDebutTour();
+    return false;
 }
 };
