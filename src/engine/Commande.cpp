@@ -9,19 +9,19 @@ Commande::Commande (state::Etat* e, sf::Time t, std::string cmd, int id, std::ve
     
     if (cmd =="d"){
         if (r.peutDeplacer(e,id,params[0],params[1])){
-            //Deplacer d;  //changer en action changerobjectif
+            ChangerObjectif d;  //changer en action changerobjectif
             std::vector<int> v;
             v.push_back(id);
-            //d.run(e,v,t);
+            d.run(e,v,t);
         }
     }
         
     if (cmd =="a"){ 
         if (r.peutAttaquer(e,id)){
-            //Attaquer a;
+            Attaquer a;
             std::vector<int> v;
             v.push_back(id);
-            //a.run(e,v,t);
+            a.run(e,v,t);
         }
     }
         

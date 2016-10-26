@@ -21,6 +21,9 @@ configure:
 	@mkdir -p build 
 	@cd build && cmake ..
 
+fast:
+	build
+
 build:
 	@make -s -j4 -C build
 
