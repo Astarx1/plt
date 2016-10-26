@@ -1,5 +1,5 @@
 #include "../engine.h"
-
+#include <ctime>
 
 using namespace state;
 using namespace sf;
@@ -240,5 +240,22 @@ int Regles::augmenterForce(state::Etat* e, int id){
     }
 }
 
-
+std::vector<state::Personnage*> Regles::defMonstreCarte(state::Etat* e){
+    srand(time(NULL));
+    int alea_monstre = rand();
+    std::vector<state::Personnage*> list;
+    int map_actuel = e->getMapActuel();
+    
+    switch(map_actuel){
+        case 1: 
+            return list;
+            
+        case 2: 
+            return list;
+            
+        case 3:
+            return list;
+    }
+    
+}
 };
