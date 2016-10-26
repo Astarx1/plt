@@ -122,13 +122,123 @@ bool Regles::peutAccederInfoPerso(state::Etat* e){
 
 bool Regles::peutAugmenterNiv(state::Etat* e, int id){
     int nv = e->getRefPersonnage(id).getNiveau();
-    int exp = 0; // À COMPLÉTER
+    int exp = e->getRefHeros(id).getExp();
     
     if(exp >= nv*100){
         return true;
     }
     
-    return false;      
-    
+    return false;
+  
 }
+
+int Regles::augmenterPM(state::Etat* e, int id){
+    int nv = e->getRefPersonnage(id).getNiveau();
+    
+    switch(nv){
+        case 1:
+            return 3;
+        case 2:
+            return 4;
+        case 3:
+            return 5;
+        case 4:
+            return 6;
+        case 5:
+            return 7;
+        case 6:
+            return 8;
+        case 7:
+            return 9;
+        case 8:
+            return 10;
+        case 9:
+            return 11;
+        case 10:
+            return 12;
+    }
+}
+
+int Regles::augmenterPA(state::Etat* e, int id){
+    int nv = e->getRefPersonnage(id).getNiveau();
+    
+    switch(nv){
+        case 1:
+            return 6;
+        case 2:
+            return 7;
+        case 3:
+            return 8;
+        case 4:
+            return 9;
+        case 5:
+            return 10;
+        case 6:
+            return 11;
+        case 7:
+            return 12;
+        case 8:
+            return 13;
+        case 9:
+            return 14;
+        case 10:
+            return 15;
+    }
+}
+
+int Regles::augmenterPV(state::Etat* e, int id){
+    int nv = e->getRefPersonnage(id).getNiveau();
+    
+    switch(nv){
+        case 1:
+            return 150;
+        case 2:
+            return 200;
+        case 3:
+            return 250;
+        case 4:
+            return 300;
+        case 5:
+            return 350;
+        case 6:
+            return 400;
+        case 7:
+            return 450;
+        case 8:
+            return 500;
+        case 9:
+            return 550;
+        case 10:
+            return 600;
+    }
+}
+
+int Regles::augmenterForce(state::Etat* e, int id){
+    int nv = e->getRefPersonnage(id).getNiveau();
+    
+    switch(nv){
+        case 1:
+            return 3;
+        case 2:
+            return 4;
+        case 3:
+            return 5;
+        case 4:
+            return 6;
+        case 5:
+            return 7;
+        case 6:
+            return 8;
+        case 7:
+            return 9;
+        case 8:
+            return 10;
+        case 9:
+            return 11;
+        case 10:
+            return 12;
+    }
+}
+
+
 };

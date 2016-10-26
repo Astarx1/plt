@@ -69,7 +69,7 @@ void Etat::rajouterPerso (char e) {
 }
 
 void Etat::enleverPerso (int i) {
-	// Impossible tant que l'on n'a pas implémenté la suppression d'élément
+	// Impossible tant que l'on n'a pas implï¿½mentï¿½ la suppression d'ï¿½lï¿½ment
 	// Dans ListeElements
 }
 
@@ -107,4 +107,16 @@ Statique & Etat::getTile (int n) {
 		return *(visiteur.getpVide ());
 	else  
 		return *(visiteur.getpAcces ());
+}
+
+Heros& Etat::getRefHeros(int id){
+    
+    Element & o = *(personnages.getElement(id));
+	
+    o.accepte (visiteur);
+    TypeID a = o.getTypeID();
+	
+    if (a == TypeID(HEROS)) 
+        return *(visiteur.getpHeros ());
+	 
 }

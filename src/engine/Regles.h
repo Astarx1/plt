@@ -33,7 +33,6 @@ namespace engine {
     int augmenterPV (state::Etat* e, int id);
     int augmenterForce (state::Etat* e, int id);
     std::vector<state::Personnage*> defMonstreCarte (state::Etat* e);
-    int defTailleCarte (state::Etat* e);
     int defCarteSuiv (state::Etat* e);
   };
 
