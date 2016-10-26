@@ -4,7 +4,7 @@
 using namespace engine;
 using namespace state;
 
-void Attaquer::run(Etat* e, std::vector<int> params){
+void Attaquer::run(Etat* e, std::vector<int> params,sf::Time t){
   	if (true) {	// Inserer ici la condition verifiant que l'on peut attaquer
         // Inserer ici la fonction pour les dégats
 		int degat = 0;

@@ -2,8 +2,8 @@
 #ifndef __ENGINE__H
 #define __ENGINE__H
 
-#include "engine/Regles.h"
 #include "engine/ListeCommandes.h"
+#include "engine/Regles.h"
 #include "engine/Action.h"
 #include "engine/Commande.h"
 #include "engine/Deplacer.h"
@@ -13,4 +13,5 @@
 #include "engine/PasserTour.h"
 #include "engine/Attaquer.h"
 #include "engine/Moteur.h"
+#include "engine/ChangerObjectif.h"
 #endif

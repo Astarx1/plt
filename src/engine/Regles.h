@@ -24,7 +24,7 @@ namespace engine {
     bool peutChangerMap (state::Etat* e, int id);
     bool peutQuitterCombat (state::Etat* e);
     bool peutAttaquer (state::Etat* e, int id);
-    bool doitPasserTour (state::Etat* e, int id, sf::Clock clk);
+    bool doitPasserTour (state::Etat* e, int id, sf::Time t);
     bool peutAccederMenu (state::Etat* e);
     bool peutAccederInfoPerso (state::Etat* e);
     bool peutAugmenterNiv (state::Etat* e, int id);
@@ -32,7 +32,7 @@ namespace engine {
     int augmenterPA (state::Etat* e, int id);
     int augmenterPV (state::Etat* e, int id);
     int augmenterForce (state::Etat* e, int id);
-    std::vector<state::Personnage&> defMonstreCarte (state::Etat* e);
+    std::vector<state::Personnage*> defMonstreCarte (state::Etat* e);
     int defTailleCarte (state::Etat* e);
     int defCarteSuiv (state::Etat* e);
   };

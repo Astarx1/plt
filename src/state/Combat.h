@@ -26,8 +26,8 @@ namespace state {
     Combat ();
     ~Combat ();
     void createListe (ListeElements listePersonnages);
-    void tourSuivant (int clk);
-    int getTimerDebutTour ();
+    void tourSuivant (sf::Time t);
+    sf::Time getTimerDebutTour ();
   };
 
 };

@@ -6,7 +6,7 @@ using namespace state;
 
 /* Pas de params */
 
-void QuitterCombat::run(Etat* e, std::vector<int> params){
+void QuitterCombat::run(Etat* e, std::vector<int> params,sf::Time t){
  	int ma = e->getMapActuel(); 
  	std::vector<int> param;
   	param.push_back(ma);

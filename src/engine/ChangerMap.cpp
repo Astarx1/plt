@@ -10,7 +10,7 @@ using namespace engine;
 Toudoux : Clear les perso d'Etat, clear la grille
 Regle renvoyant les monstres sous formes de std::vector<Personnages&>
 */
-void ChangerMap::run (Etat* e, std::vector<int> params) {
+void ChangerMap::run (Etat* e, std::vector<int> params,sf::Time t) {
   	// On commence par sauvegarder les personnages joueurs
 	std::vector<Personnage *> persos;
   	for (int i = (e->getPerso()).size() - 1; i >= 0; --i) {

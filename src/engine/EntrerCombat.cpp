@@ -14,7 +14,7 @@ Params :
 using namespace engine;
 using namespace state;
 
-void EntrerCombat::run(Etat* e, std::vector<int> params) {
+void EntrerCombat::run(Etat* e, std::vector<int> params,sf::Time t) {
   	// On commence par sauvegarder les personnages joueurs
 	std::vector<Personnage*> p;
   	for (int i = (e->getPerso()).size() - 1; i >= 0; --i) {

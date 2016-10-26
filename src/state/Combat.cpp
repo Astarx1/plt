@@ -12,9 +12,10 @@ void Combat::createListe (ListeElements listePersonnages) {
 	;
 }
 
-void Combat::tourSuivant (int clk) {
+void Combat::tourSuivant (sf::Time t) {
 }
 
-int Combat::getTimerDebutTour () {
-	return 0;
+sf::Time Combat::getTimerDebutTour () {
+   
+	return timerDebutTour;
 }

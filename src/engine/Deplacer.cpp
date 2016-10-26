@@ -15,7 +15,7 @@ int signe (int a) { return a >= 0 ? 1 : -1; }
 Besoin : clock ! > Changer le constructeur
 */
 
-void Deplacer::run(Etat* e, std::vector<int> params) {
+void Deplacer::run(Etat* e, std::vector<int> params,sf::Time t) {
     Personnage & p = e->getRefPersonnage(params[0]);
   	if (p.getEnDeplacement()) {
       	// Appel à la regle pour obtenir la vitesse du personnage !
