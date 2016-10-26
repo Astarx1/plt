@@ -2,8 +2,8 @@
 #ifndef __ENGINE__H
 #define __ENGINE__H
 
-#include "engine/ListeCommandes.h"
 #include "engine/Regles.h"
+#include "engine/ListeCommandes.h"
 #include "engine/Action.h"
 #include "engine/Commande.h"
 #include "engine/Deplacer.h"

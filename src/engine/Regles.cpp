@@ -1,6 +1,7 @@
 #include "../engine.h"
 #include <ctime>
 
+
 using namespace state;
 using namespace sf;
 
@@ -239,23 +240,48 @@ int Regles::augmenterForce(state::Etat* e, int id){
             return 12;
     }
 }
-
+/*
 std::vector<state::Personnage*> Regles::defMonstreCarte(state::Etat* e){
     srand(time(NULL));
-    int alea_monstre = rand();
     std::vector<state::Personnage*> list;
     int map_actuel = e->getMapActuel();
-    
+    int alea_monstre = rand()%5 + 1;
+        
     switch(map_actuel){
         case 1: 
+            for(size_t i=0; i<alea_monstre; i++){
+                int alea_nv = rand()%4 + 1;
+                if(rand()%2 == 0){
+                    Personnage p = new Heros(1,1);
+                    list.push_back(&p);
+                }
+                else{
+                    Personnage p(alea_nv,TypePersonnage(MONSTRE2));
+                    list.push_back(&p);
+                }
+            }
             return list;
             
-        case 2: 
+        case 2:
+            for(size_t i=0; i<alea_monstre; i++){
+                int alea_nv = rand()%6 + 4;
+                if(rand()%2 == 0){
+                    Personnage p(alea_nv,TypePersonnage(MONSTRE3));
+                    list.push_back(&p);
+                }
+                else{
+                    Personnage p(alea_nv,TypePersonnage(MONSTRE4));
+                    list.push_back(&p);
+                }
+            }
             return list;
             
         case 3:
+            Personnage p(10,TypePersonnage(BOSS));
+            list.push_back(&p);
             return list;
     }
     
 }
+*/
 };

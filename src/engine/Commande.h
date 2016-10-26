@@ -12,10 +12,12 @@ namespace state {
   class Etat;
 };
 namespace engine {
+  class Regles;
   class ListeCommandes;
   class Action;
 }
 
+#include "Regles.h"
 #include "ListeCommandes.h"
 #include "Action.h"
 
