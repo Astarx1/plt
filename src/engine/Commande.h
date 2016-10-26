@@ -7,6 +7,7 @@
 #include <SFML/Audio.hpp>
 #include "../state.h"
 #include <string>
+#include <vector>
 
 namespace state {
   class Etat;
@@ -32,7 +33,7 @@ namespace engine {
     sf::Clock cl;
     // Operations
   public:
-    Commande (state::Etat* e, sf::Clock cl, std::string cmd, int id);
+    Commande (state::Etat* e, sf::Clock cl, std::string cmd, int id, std::vector<int> params);
     ~Commande ();
     int const getSize ();
   };
