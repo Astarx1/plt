@@ -3,7 +3,7 @@
 
 using namespace state;
 
-Heros::Heros (int i, int j, int exp) : Personnage (1, HEROS) {
+Heros::Heros (int i, int j, int exp) : Personnage (1, TypePersonnage(HEROS)) {
     this->x=i;
     this->y=j;
     this->experience=exp;

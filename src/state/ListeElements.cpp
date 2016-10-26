@@ -1,5 +1,6 @@
 #include "ListeElements.h"
 #include <iostream>
+#include <bits/stl_vector.h>
 
 using namespace state;
 
@@ -34,8 +35,16 @@ void ListeElements::ajoutElement (Element * e) {
 	elements.push_back (e);
 }
 
-bool const ListeElements::isPerso (int i, int j) {
-	return false;
+bool const ListeElements::isPerso (int i, int j){
+    for(size_t k=0; k < elements.size(); k++){
+        if(this->getElement(k)->getX() == i && this->getElement(k)->getY() == j){
+            if(this->getElement(k)->getTypeID() == PERSO || this->getElement(k)->getTypeID() == MONSTRE){
+                return true;
+            }
+        }
+    }
+    
+    return false;
 }
 
 Statique * ListeElements::getTile (int n) {

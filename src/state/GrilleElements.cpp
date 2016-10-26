@@ -36,6 +36,13 @@ int GrilleElements::getLargeur () {
 }
 
 bool const GrilleElements::isAcces (int i, int j) {
+    for(size_t k=0; k < elements.size(); k++){
+        if(this->getElement(k)->getX() == i && this->getElement(k)->getY() == j){
+            if(this->getElement(k)->getTypeID() == ACCES){
+                return true;
+            }
+        }
+    }
     return false;
 }
 

@@ -47,7 +47,7 @@ bool Regles::peutEntrerCombat (state::Etat* e, int id){
     }
 }
 
-/*Cette focntion permet de vérifier si le joueur se trouve sur une case ACCES
+/*Cette fonction permet de vérifier si le joueur se trouve sur une case ACCES
  *afin de pourvoir changer de carte
  */
 bool Regles::peutChangerMap (state::Etat* e, int id){    
