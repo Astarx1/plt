@@ -1,7 +1,8 @@
-#include "Regles.h"
+#include "../engine.h"
 
 
 using namespace state;
+using namespace sf;
 
 
 namespace engine {
@@ -94,7 +95,40 @@ bool Regles::peutAttaquer(state::Etat* e, int id){
 
 bool Regles::doitPasserTour(state::Etat* e, int id, sf::Time t){
     Combat& combat = e->getRefCombat();
-    //Time timeDeb = combat.getTimerDebutTour();
+    Time timeDeb = combat.getTimerDebutTour();
+    if((t.asSeconds()- timeDeb.asSeconds()) >= 60){
+        return true;
+    }
     return false;
+}
+
+bool Regles::peutAccederMenu(state::Etat* e){
+    if(e->getEnCombat()){
+        return false;
+    }
+    else{
+        return false;
+    }
+}
+
+bool Regles::peutAccederInfoPerso(state::Etat* e){
+    if(e->getEnCombat()){
+        return false;
+    }
+    else{
+        return false;
+    }
+}
+
+bool Regles::peutAugmenterNiv(state::Etat* e, int id){
+    int nv = e->getRefPersonnage(id).getNiveau();
+    int exp = 0; // À COMPLÉTER
+    
+    if(exp >= nv*100){
+        return true;
+    }
+    
+    return false;      
+    
 }
 };

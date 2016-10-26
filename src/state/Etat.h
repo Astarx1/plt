@@ -10,6 +10,7 @@ namespace state {
   class Visiteur;
   class Personnage;
   class Statique;
+  class Heros;
   class IVisiteur;
 }
 
@@ -53,6 +54,7 @@ namespace state {
     int getPersoSize ();
     int getGrilleSize ();
     Statique& getTile (int i);
+    Heros& getRefHeros (int id);
   };
 
 };
