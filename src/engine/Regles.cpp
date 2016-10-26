@@ -240,7 +240,11 @@ int Regles::augmenterForce(state::Etat* e, int id){
             return 12;
     }
 }
-/*
+
+/* Cette fonction permet de définir les monstres associés à la carte
+ * 
+ * À prévoir la génération des positions aléatoire pour l'instanciation des monstres.
+ */
 std::vector<state::Personnage*> Regles::defMonstreCarte(state::Etat* e){
     srand(time(NULL));
     std::vector<state::Personnage*> list;
@@ -252,11 +256,11 @@ std::vector<state::Personnage*> Regles::defMonstreCarte(state::Etat* e){
             for(size_t i=0; i<alea_monstre; i++){
                 int alea_nv = rand()%4 + 1;
                 if(rand()%2 == 0){
-                    Personnage p = new Heros(1,1);
+                    Monstre p(1,1,alea_nv,MONSTRE1);
                     list.push_back(&p);
                 }
                 else{
-                    Personnage p(alea_nv,TypePersonnage(MONSTRE2));
+                    Monstre p(1,1,alea_nv,MONSTRE2);
                     list.push_back(&p);
                 }
             }
@@ -266,22 +270,22 @@ std::vector<state::Personnage*> Regles::defMonstreCarte(state::Etat* e){
             for(size_t i=0; i<alea_monstre; i++){
                 int alea_nv = rand()%6 + 4;
                 if(rand()%2 == 0){
-                    Personnage p(alea_nv,TypePersonnage(MONSTRE3));
+                    Monstre p(1,1,alea_nv,MONSTRE3);
                     list.push_back(&p);
                 }
                 else{
-                    Personnage p(alea_nv,TypePersonnage(MONSTRE4));
+                    Monstre p(1,1,alea_nv,MONSTRE4);
                     list.push_back(&p);
                 }
             }
             return list;
             
         case 3:
-            Personnage p(10,TypePersonnage(BOSS));
+            Monstre p(1,1,10,BOSS);
             list.push_back(&p);
             return list;
     }
     
 }
-*/
+
 };
