@@ -29,7 +29,7 @@ int main(int argc,char* argv[])
 	p.setX(200);
 	p.setY(350);
 	p.setDirection(OUEST);
-
+        p.setEnDeplacement(true);
 	sf::Clock c;
 	sf::RenderStates rs;
 
@@ -53,7 +53,7 @@ int main(int argc,char* argv[])
 
         // draw the map
         window.clear();
-        r.run(e, window, c, rs);
+        r.run(e, window, c.getElapsedTime(), rs);
         window.display();
     }
 

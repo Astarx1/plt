@@ -28,7 +28,7 @@ namespace render {
     RenduPerso rp;
     // Operations
   public:
-    void run (state::Etat* e, sf::RenderWindow& sw, sf::Clock& cl, sf::RenderStates rs);
+    void run (state::Etat* e, sf::RenderWindow& sw, sf::Time cl, sf::RenderStates rs);
     Rendu ();
   };
 

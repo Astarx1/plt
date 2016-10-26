@@ -2,6 +2,8 @@
 #ifndef STATE__COMBAT__H
 #define STATE__COMBAT__H
 
+#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <vector>
 
 namespace state {
@@ -16,7 +18,7 @@ namespace state {
   class Combat {
     // Attributes
   protected:
-    int timerDebutTour;
+    sf::Time timerDebutTour;
     std::vector<int> listeTour;
     int tourActuel;
     // Operations

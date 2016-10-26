@@ -18,10 +18,7 @@ void Mobile::setDirection (Direction d) {
 }
 
 bool Mobile::getEnDeplacement () {
-    if(this->enDeplacement == true)
-	return true;
-    else 
-        return false;
+    return enDeplacement;
 }
 
 void Mobile::setEnDeplacement (bool b) {

@@ -92,5 +92,7 @@ bool Regles::peutAttaquer(state::Etat* e, int id){
     }
 }
 
-
+bool Regles::doitPasserTour(state::Etat* e, int id, sf::Clock clk){
+    return true;
+}
 };

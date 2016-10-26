@@ -27,7 +27,7 @@ int valeurEntiere (float a) {
 	}
 }
 
-void RenduPerso::dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Clock& cl, sf::RenderStates rs){
+void RenduPerso::dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Time cl, sf::RenderStates rs){
 	int nb_perso = (e->getPerso()).size();
 
 	vertices.clear();
@@ -50,7 +50,6 @@ void RenduPerso::dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Clock&
 		int tmpDeplacement = p.getTimer();
 		bool enDeplacement = p.getEnDeplacement();
 		Direction dir = p.getDirection();
-		sf::Time t = cl.getElapsedTime();
 		TypePersonnage tp = p.getTypePersonnage();
 
 		int spr_hauteur = 3;
@@ -63,9 +62,9 @@ void RenduPerso::dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Clock&
 		else if (dir == OUEST)
 			spr_hauteur = 2;
 
-		if (p.getEnDeplacement()==false)
-			spr_longueur = valeurEntiere((t.asMilliseconds() % (NB_SPRITE * TEMPS_SPRITE)) / TEMPS_SPRITE);
-
+		if (p.getEnDeplacement()) 
+			spr_longueur = valeurEntiere((cl.asMilliseconds() % (NB_SPRITE * TEMPS_SPRITE)) / TEMPS_SPRITE);
+                std::cout << spr_longueur <<std::endl;        
 		switch (tp) {
 			case HEROS:
 				th1 = pp.ParsingTextures ("res/Textures/heros/heros_1.txt");
