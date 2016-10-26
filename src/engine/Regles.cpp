@@ -3,6 +3,7 @@
 
 using namespace state;
 
+
 namespace engine {
 
 /* Cette fonction permet de vérifier si le joueur peut se déplacer à la nouvelle
@@ -57,6 +58,38 @@ bool Regles::peutChangerMap (state::Etat* e, int id){
     }
    
     return false;
+}
+
+/* Cette fonction permet de vérifier s'il est possible de quitter le mode combat.
+ */
+bool Regles::peutQuitterCombat(state::Etat* e){
+    bool retH = false;
+    bool retM = false;
+    ListeElements persos = e->getPerso();
+    
+    for(size_t i=0; persos.size(); i++){
+        if(e->getRefPersonnage(i).getTypeID() == HEROS && e->getRefPersonnage(i).getVie() >0){
+            retH = true;
+        }
+        if(e->getRefPersonnage(i).getTypeID() == MONSTRE && e->getRefPersonnage(i).getVie() >0){
+            retM = true;
+        }
+    }
+    return !(retH && retM);
+        
+}
+
+bool Regles::peutAttaquer(state::Etat* e, int id){
+    Personnage& perso = e->getRefPersonnage(id);
+    
+    if(e->getEnCombat()){
+        if(perso.getPA() > 0){
+            return true;
+        }
+    }
+    else{
+        return false;
+    }
 }
 
 
