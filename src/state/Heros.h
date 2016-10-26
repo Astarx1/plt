@@ -8,7 +8,6 @@ namespace state {
   class Personnage;
 }
 
-#include "TypePersonnage.h"
 #include "TypeID.h"
 #include "Personnage.h"
 
@@ -22,7 +21,6 @@ namespace state {
     // Operations
   public:
     Heros (int i, int j, int exp);
-    Heros (int nv, TypePersonnage type);
     bool isJoueur ();
     TypeID getTypeID ();
     int const getExp ();

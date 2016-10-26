@@ -8,6 +8,11 @@ Monstre::Monstre (int i, int j, int nv) : Personnage (i, HEROS) {
     this->niveau=nv;
 }
 
+Monstre::Monstre(int i, int j, int nv, TypePersonnage type):Personnage(nv,type){
+   this->x=i;
+   this->y=j; 
+}
+
 bool Monstre::isJoueur () {
 	return false;
 }

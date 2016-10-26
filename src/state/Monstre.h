@@ -19,7 +19,7 @@ namespace state {
     // Operations
   public:
     Monstre (int i, int j, int nv);
-    Monstre (int nv, TypePersonnage type);
+    Monstre (int i, int j, int nv, TypePersonnage type);
     bool isJoueur ();
     TypeID getTypeID ();
     void accepte (IVisiteur& v);
