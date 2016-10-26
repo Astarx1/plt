@@ -2,6 +2,8 @@
 #ifndef STATE__ETAT__H
 #define STATE__ETAT__H
 
+#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 namespace state {
   class ListeElements;
@@ -55,6 +57,7 @@ namespace state {
     int getGrilleSize ();
     Statique& getTile (int i);
     Heros& getRefHeros (int id);
+    sf::Vector2f getGrilleCoord (int x, int y);
   };
 
 };

@@ -3,6 +3,9 @@
 
 #include <iostream>
 
+#define DHAUTEUR 16
+#define DLARGEUR 16
+
 using namespace state;
 using namespace render;
 
@@ -119,4 +122,23 @@ Heros& Etat::getRefHeros(int id){
     if (a == TypeID(HEROS)) 
         return *(visiteur.getpHeros ());
 	 
+}
+
+sf::Vector2f Etat::getGrilleCoord(int x, int y){
+    int sx = grille.getTile(0)->getX();
+    int sy = grille.getTile(0)->getY();
+  	
+  	int rx = -1;
+  	int ry = -1;
+  	if (x >= sx && x <= sx+DLARGEUR*2*grille.getLargeur()) {
+      	for (rx = 0; sx+rx*DLARGEUR*2 < x ;rx++) {
+        }
+    }
+  	
+  	if (y >= sy && y <= sy+DHAUTEUR*2*grille.getLongueur()) {
+      	for (ry = 0; sy+ry*DLARGEUR*2 < y ;ry++) {
+        }
+    }
+  
+  	return sf::Vector2f(rx, ry);
 }
