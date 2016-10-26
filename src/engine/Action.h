@@ -4,6 +4,8 @@
 
 #include "../state.h"
 #include <vector>
+#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 namespace engine {
   class Regles;
@@ -24,7 +26,7 @@ namespace engine {
     Regles regles;
     // Operations
   public:
-    virtual void run (state::Etat* e, std::vector<int> params) = 0;
+    virtual void run (state::Etat* e, std::vector<int> params, sf::Time t) = 0;
   };
 
 };

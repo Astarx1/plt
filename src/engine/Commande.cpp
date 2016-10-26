@@ -9,19 +9,19 @@ Commande::Commande (state::Etat* e, sf::Time t, std::string cmd, int id, std::ve
     
     if (cmd =="d"){
         if (r.peutDeplacer(e,id,params[0],params[1])){
-            Deplacer d;  //changer en action changerobjectif
+            //Deplacer d;  //changer en action changerobjectif
             std::vector<int> v;
             v.push_back(id);
-            d.run(e,v,t);
+            //d.run(e,v,t);
         }
     }
         
     if (cmd =="a"){ 
         if (r.peutAttaquer(e,id)){
-            Attaquer a;
+            //Attaquer a;
             std::vector<int> v;
             v.push_back(id);
-            a.run(e,v,t);
+            //a.run(e,v,t);
         }
     }
         
@@ -29,7 +29,7 @@ Commande::Commande (state::Etat* e, sf::Time t, std::string cmd, int id, std::ve
         if (r.peutChangerMap(e,id)){
             ChangerMap cm;
             std::vector<int> v;
-            v.push_back(r.defCarteSuiv());
+            //v.push_back(r.defCarteSuiv(e));
             cm.run(e,v,t);
         }
     }
@@ -55,9 +55,9 @@ Commande::Commande (state::Etat* e, sf::Time t, std::string cmd, int id, std::ve
     
     if (cmd =="pt"){ 
         if (r.doitPasserTour(e,id,t)){
-            PasserTour pt;
+            PasserTour passtour;
             std::vector<int> v;
-            pt.run(e,v,t);
+            passtour.run(e,v,t);
         }
     }
             

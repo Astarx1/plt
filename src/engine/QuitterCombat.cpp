@@ -11,8 +11,8 @@ void QuitterCombat::run(Etat* e, std::vector<int> params,sf::Time t){
  	std::vector<int> param;
   	param.push_back(ma);
   
-    ChangerMap t;
-  	t.run (e, param); 
+        ChangerMap cm;
+  	cm.run (e, param,t); 
   
   	e->setEnCombat(false);
 }
