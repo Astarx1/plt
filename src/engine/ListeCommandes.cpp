@@ -12,6 +12,7 @@ void ListeCommandes::ToutExecuter (){
         for (i=0;i<commandes.size();i++){
             (commandes[i]).run();
         }
+        commandes.clear();
     }
 }
 

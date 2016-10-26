@@ -1,5 +1,6 @@
 #include "../engine.h"
 #include <vector>
+#include <iostream>
 
 using namespace std;
 
@@ -8,10 +9,15 @@ void Commande::run (){
     Regles r;
     
     if (type =="d"){
+        std::cout<< "il peut se d "<< r.peutDeplacer(etat,id,params[0],params[1]);
         if (r.peutDeplacer(etat,id,params[0],params[1])){
-            ChangerObjectif d;  //changer en action changerobjectif
+            std::cout<< "deb";
+            ChangerObjectif cb;  //changer en action changerobjectif
+            Deplacer d;
             std::vector<int> v;
             v.push_back(id);
+            cb.run(etat,v,temps);
+            //v.clear();
             d.run(etat,v,temps);
         }
     }

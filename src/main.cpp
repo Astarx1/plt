@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include "./state.h"
 #include "./render.h"
+#include "./engine.h"
 
 // Fin test SFML
 
@@ -12,6 +13,7 @@ using namespace std;
 using namespace sf;
 using namespace state;
 using namespace render;
+using namespace engine;
 
 int main(int argc,char* argv[]) 
 {
@@ -32,6 +34,7 @@ int main(int argc,char* argv[])
         p.setEnDeplacement(true);
 	sf::Clock c;
 	sf::RenderStates rs;
+        ListeCommandes liste;
 
 
 
@@ -49,6 +52,26 @@ int main(int argc,char* argv[])
         {
             if(event.type == sf::Event::Closed)
                 window.close();
+            if (event.type == sf::Event::MouseButtonPressed)
+            {
+                if (event.mouseButton.button == sf::Mouse::Left)
+                {
+                    std::vector<int> v;
+                    int x=event.mouseButton.x;
+                    int y=event.mouseButton.y;
+                    sf::Vector2f pos = e->getGrilleCoord(x,y);
+                    v.push_back(pos.x);
+                    v.push_back(pos.y);
+                    int id= p.getElemID();
+                    Commande cmd(e,"d",c.getElapsedTime(),v,id);
+                    liste.Ajouter(cmd);
+                    std::cout<< "pos Souris " << x << " et " << y << std::endl;
+                    std::cout<< "pos Grille " << pos.x << " et " << pos.y << std::endl;
+                    //liste.ToutExecuter();
+                    
+                    //cmd.run();
+                }
+            }
         }
 
         // draw the map
