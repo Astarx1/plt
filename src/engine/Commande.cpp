@@ -4,62 +4,81 @@
 using namespace std;
 
 namespace engine{
-Commande::Commande (state::Etat* e, sf::Time t, std::string cmd, int id, std::vector<int> params){
+void Commande::run (){
     Regles r;
     
-    if (cmd =="d"){
-        if (r.peutDeplacer(e,id,params[0],params[1])){
+    if (type =="d"){
+        if (r.peutDeplacer(etat,id,params[0],params[1])){
             ChangerObjectif d;  //changer en action changerobjectif
             std::vector<int> v;
             v.push_back(id);
-            d.run(e,v,t);
+            d.run(etat,v,temps);
         }
     }
         
-    if (cmd =="a"){ 
-        if (r.peutAttaquer(e,id)){
+    if (type =="a"){ 
+        if (r.peutAttaquer(etat,id)){
             Attaquer a;
             std::vector<int> v;
             v.push_back(id);
-            a.run(e,v,t);
+            a.run(etat,v,temps);
         }
     }
         
-    if (cmd =="cm"){  
-        if (r.peutChangerMap(e,id)){
+    if (type =="cm"){  
+        if (r.peutChangerMap(etat,id)){
             ChangerMap cm;
             std::vector<int> v;
-            //v.push_back(r.defCarteSuiv(e));
-            cm.run(e,v,t);
+            //v.push_back(r.defCarteSuiv(etat));
+            cm.run(etat,v,temps);
         }
     }
     
-    if (cmd =="qc"){ 
-        if (r.peutQuitterCombat(e)){
+    if (type =="qc"){ 
+        if (r.peutQuitterCombat(etat)){
             QuitterCombat qc;
             std::vector<int> v;
-            qc.run(e,v,t);
+            qc.run(etat,v,temps);
         }
     }
     
-    if (cmd =="ec"){ 
-        if (r.peutEntrerCombat(e,id)){
+    if (type =="ec"){ 
+        if (r.peutEntrerCombat(etat,id)){
             EntrerCombat ec;
             std::vector<int> v;
             v.push_back(id);
             v.push_back(params[0]);
             v.push_back(params[1]);
-            ec.run(e,v,t);
+            ec.run(etat,v,temps);
         }
     }
     
-    if (cmd =="pt"){ 
-        if (r.doitPasserTour(e,id,t)){
+    if (type =="pt"){ 
+        if (r.doitPasserTour(etat,id,temps)){
             PasserTour passtour;
             std::vector<int> v;
-            passtour.run(e,v,t);
+            passtour.run(etat,v,temps);
         }
     }
             
-        }
+}
+
+Commande::Commande (state::Etat* e,std::string type, sf::Time t, std::vector<int> params,int id){
+    etat=e;
+    temps=t;
+    this->type=type;
+    this->params=params;
+    this->id=id;
+}
+Commande::~Commande(){
+    
+}
+
+std::string const Commande::getType (){
+    return type;
+}
+
+void Commande::setType (std::string cmd){
+    type=cmd;
+}
 }

@@ -3,9 +3,9 @@
 #define ENGINE__COMMANDE__H
 
 #include "../state.h"
+#include <string>
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
-#include <string>
 #include <vector>
 
 namespace state {
@@ -24,10 +24,20 @@ namespace engine {
   /// class Commande - 
   class Commande {
     // Associations
+    // Attributes
+  public:
+    state::Etat* etat;
+    std::string type;
+    sf::Time temps;
+    std::vector<int> params;
+    int id;
     // Operations
   public:
-    Commande (state::Etat* e, sf::Time t, std::string cmd, int id, std::vector<int> params);
+    Commande (state::Etat* e, std::string type, sf::Time t, std::vector<int> params, int id);
     ~Commande ();
+    void run ();
+    std::string const getType ();
+    void setType (std::string cmd);
   };
 
 };
