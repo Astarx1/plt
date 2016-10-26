@@ -24,7 +24,7 @@ namespace engine {
     bool peutChangerMap (state::Etat* e, int id);
     bool peutQuitterCombat (state::Etat* e);
     bool peutAttaquer (state::Etat* e, int id);
-    bool peutPasserTour (state::Etat* e, int id, sf::Clock clk);
+    bool doitPasserTour (state::Etat* e, int id, sf::Clock clk);
     bool peutAccederMenu (state::Etat* e);
     bool peutAccederInfoPerso (state::Etat* e);
     bool peutAugmenterNiv (state::Etat* e, int id);
