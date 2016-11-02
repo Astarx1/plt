@@ -47,7 +47,7 @@ void RenduPerso::dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Time c
 
 		sf::Vertex* quad = &vertices[i];
 
-		int tmpDeplacement = p.getTimer();
+		int tmpDeplacement = p.getTimer().asMilliseconds();
 		bool enDeplacement = p.getEnDeplacement();
 		Direction dir = p.getDirection();
 		TypePersonnage tp = p.getTypePersonnage();

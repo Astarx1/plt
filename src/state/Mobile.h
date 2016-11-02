@@ -2,6 +2,8 @@
 #ifndef STATE__MOBILE__H
 #define STATE__MOBILE__H
 
+#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 namespace state {
   class IVisiteur;
@@ -21,7 +23,7 @@ namespace state {
   protected:
     bool joueur;
     Direction direction;
-    int timer;
+    sf::Time timer;
     bool  enDeplacement;
     int xObj;
     int yObj;
@@ -36,8 +38,8 @@ namespace state {
     void setDirection (Direction d);
     bool getEnDeplacement ();
     void setEnDeplacement (bool b);
-    int getTimer ();
-    void setTimer (int timer);
+    sf::Time getTimer ();
+    void setTimer (sf::Time timer);
     int const getXobj ();
     void setXobj (int x);
     int const getYobj ();

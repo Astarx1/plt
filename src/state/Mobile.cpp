@@ -25,11 +25,11 @@ void Mobile::setEnDeplacement (bool b) {
     this->enDeplacement = b;
 }
 
-int Mobile::getTimer () {
+sf::Time Mobile::getTimer () {
 	return this->timer;
 }
 
-void Mobile::setTimer (int timer) {
+void Mobile::setTimer (sf::Time timer) {
     this->timer = timer;
 }
 
