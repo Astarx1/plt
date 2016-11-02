@@ -63,7 +63,7 @@ int main(int argc,char* argv[])
                     v.push_back(pos.x);
                     v.push_back(pos.y);
                     int id= p.getElemID();
-                    Commande cmd(e,"d",c.getElapsedTime(),v,id);
+                    Commande cmd(e,"d",c.getElapsedTime(),v,0);
                     liste.Ajouter(cmd);
                     std::cout<< "pos Souris " << x << " et " << y << std::endl;
                     std::cout<< "pos Grille " << pos.x << " et " << pos.y << std::endl;

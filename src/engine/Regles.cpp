@@ -27,7 +27,7 @@ bool Regles::peutDeplacer(state::Etat* e, int id, int newX, int newY){
     }
     else{
         // Si le personnage n'est pas en combat
-        if(newY < 100 ){
+        if(newY < 1000 && newX < 1000 ){
             // Seuil à ajuster!
             return false;
         }

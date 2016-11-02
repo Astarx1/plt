@@ -16,18 +16,18 @@ Besoin : clock ! > Changer le constructeur
 */
 
 void Deplacer::run(Etat* e, std::vector<int> params,sf::Time t) {
-    Personnage & p = e->getRefPersonnage(params[0]);
-  	if (p.getEnDeplacement()) {
-      	// Appel à la regle pour obtenir la vitesse du personnage !
-      	int speed = 1;
-      
-      	if (abs(p.getX()-p.getXobj()) > ECART) { 
-		// Quand j'aurais une clock correcte
-        	// p.setX(p.getX() + signe(p.getXobj()-p.getX()) * speed * (cl.getElapsed().getAsMillisecond()-p.getTimer().getAsMillisecond())
-        }
-     	else if (abs(p.getY()-p.getYobj()) > ECART) {
-		// Quand j'aurais une clock correcte
-        	// p.setY(p.getY() + signe(p.getYobj()-p.getY()) * speed * (cl.getElapsed().getAsMillisecond()-p.getTimer().getAsMillisecond())
-      	}
-    }
+	Personnage & p = e->getRefPersonnage(params[0]);
+	if (p.getEnDeplacement()) {
+	      	// Appel à la regle pour obtenir la vitesse du personnage !
+	      	int speed = 1;
+	      
+	      	if (abs(p.getX()-p.getXobj()) > ECART) { 
+			// Quand j'aurais une clock correcte
+			p.setX(p.getX() + signe(p.getXobj()-p.getX()) * speed * (cl.getElapsed().asMillisecond()-p.getTimer().asMillisecond())
+		}
+	     	else if (abs(p.getY()-p.getYobj()) > ECART) {
+			// Quand j'aurais une clock correcte
+			p.setY(p.getY() + signe(p.getYobj()-p.getY()) * speed * (cl.getElapsed().asMillisecond()-p.getTimer().asMillisecond())
+	      	}
+	}
 }
