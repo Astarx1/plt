@@ -143,3 +143,7 @@ sf::Vector2f Etat::getGrilleCoord(int x, int y){
   
   	return sf::Vector2f(rx, ry);
 }
+
+sf::Vector2f Etat::getCoordTile(int x, int y){
+  	return sf::Vector2f(x*DLARGEUR, y*DHAUTEUR);
+}

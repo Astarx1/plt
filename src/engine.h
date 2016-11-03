@@ -12,6 +12,5 @@
 #include "engine/QuitterCombat.h"
 #include "engine/PasserTour.h"
 #include "engine/Attaquer.h"
-#include "engine/Moteur.h"
 #include "engine/ChangerObjectif.h"
 #endif

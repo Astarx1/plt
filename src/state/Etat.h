@@ -58,6 +58,7 @@ namespace state {
     Statique& getTile (int i);
     Heros& getRefHeros (int id);
     sf::Vector2f getGrilleCoord (int x, int y);
+    sf::Vector2f getCoordTile (int x, int y);
   };
 
 };

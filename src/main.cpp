@@ -60,6 +60,7 @@ int main(int argc,char* argv[])
                     int x=event.mouseButton.x;
                     int y=event.mouseButton.y;
                     sf::Vector2f pos = e->getGrilleCoord(x,y);
+		    v.push_back(0);
                     v.push_back(pos.x);
                     v.push_back(pos.y);
                     int id= p.getElemID();
