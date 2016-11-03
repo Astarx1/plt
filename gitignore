@@ -1,9 +1,0 @@
-*~
-build
-bin
-nbproject
-CMakeFiles
-CMakeCache.txt
-cmake_install.cmake
-src/*.autosave
-debug
