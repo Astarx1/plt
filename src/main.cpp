@@ -62,7 +62,6 @@ int main(int argc,char* argv[])
                     sf::Vector2f pos = e->getGrilleCoord(x,y); 
                     v.push_back(pos.x);
                     v.push_back(pos.y);
-                    int id= p.getElemID();
                     Commande cmd(e,"d",c.getElapsedTime(),v,0);
                     liste.Ajouter(cmd);
                     std::cout<< "pos Souris " << x << " et " << y << std::endl;
