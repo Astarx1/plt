@@ -38,7 +38,6 @@ void RenduPerso::dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Time c
 	Parseur pp;
 	
 	for (int i = 0; i < nb_perso; ++i) {
-            std::cout << nb_perso << std::endl;
                 Personnage& p = (e->getRefPersonnage(i));
 		int h_sprite = 0;
 		int l_sprite = 0;
@@ -63,13 +62,11 @@ void RenduPerso::dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Time c
 			spr_hauteur = 2;
 
 		if (p.getEnDeplacement()) 
-			spr_longueur = valeurEntiere((cl.asMilliseconds() % (NB_SPRITE * TEMPS_SPRITE)) / TEMPS_SPRITE);
-                std::cout << spr_longueur <<std::endl;        
+			spr_longueur = valeurEntiere((cl.asMilliseconds() % (NB_SPRITE * TEMPS_SPRITE)) / TEMPS_SPRITE);     
 		switch (tp) {
 			case HEROS:
 				th1 = pp.ParsingTextures ("res/Textures/heros/heros_1.txt");
 					if (th1.size()>0) {
-						std::cout << "Affichage" << std::endl;
 						quad[3].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][0][0],th1[spr_hauteur][spr_longueur][0][1]);
 						quad[2].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][1][0],th1[spr_hauteur][spr_longueur][1][1]);
 						quad[0].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][2][0],th1[spr_hauteur][spr_longueur][2][1]);

@@ -1,6 +1,8 @@
 #include "../engine.h"
 #include "../state.h"
 
+#include <iostream>
+
 using namespace engine;
 using namespace state;
 
@@ -18,6 +20,7 @@ Besoin : clock ! > Changer le constructeur
 void Deplacer::run(Etat* e, std::vector<int> params,sf::Time t) {
 	Personnage & p = e->getRefPersonnage(params[0]);
 	if (p.getEnDeplacement()) {
+		std::cout << "Maj Position" << std::endl;
 	      	// Appel à la regle pour obtenir la vitesse du personnage !
 	      	int speed = 1;
 	      
@@ -29,5 +32,8 @@ void Deplacer::run(Etat* e, std::vector<int> params,sf::Time t) {
 			// Quand j'aurais une clock correcte
 			p.setY(p.getY() + signe(p.getYobj()-p.getY()) * speed * (t.asMilliseconds()-p.getTimer().asMilliseconds()));
 	      	}
+		else {
+			p.setEnDeplacement(false);
+		}
 	}
 }

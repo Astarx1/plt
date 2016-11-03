@@ -13,6 +13,7 @@ Etat::Etat () : grille(1), personnages() {
 	std::cout << "Etat.cpp - constructeur : creation de la grille" << std::endl;
 	mapActuel = 1;
 	loadGrille (1);
+	enCombat = false;
 }
 
 Etat::~Etat () {

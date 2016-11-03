@@ -31,7 +31,7 @@ int main(int argc,char* argv[])
 	p.setX(200);
 	p.setY(350);
 	p.setDirection(OUEST);
-        p.setEnDeplacement(true);
+        p.setEnDeplacement(false);
 	sf::Clock c;
 	sf::RenderStates rs;
         ListeCommandes liste;
@@ -67,7 +67,6 @@ int main(int argc,char* argv[])
                     liste.Ajouter(cmd);
                     std::cout<< "pos Souris " << x << " et " << y << std::endl;
                     std::cout<< "pos Grille " << pos.x << " et " << pos.y << std::endl;
-                    //liste.ToutExecuter();
                     
                     //cmd.run();
                 }
@@ -79,6 +78,7 @@ int main(int argc,char* argv[])
         std::vector<int> v;
         Commande cmdUpdate(e,"u",c.getElapsedTime(),v,0);
         liste.Ajouter(cmdUpdate);
+	liste.ToutExecuter();
         r.run(e, window, c.getElapsedTime(), rs);
         window.display();
     }
