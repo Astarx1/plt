@@ -22,7 +22,7 @@ void Commande::run (){
         }
     }
         
-    if (type =="a"){ 
+    else if (type =="a"){ 
         if (r.peutAttaquer(etat,id)){
             Attaquer a;
             std::vector<int> v;
@@ -31,7 +31,7 @@ void Commande::run (){
         }
     }
         
-    if (type =="cm"){  
+    else if (type =="cm"){  
         if (r.peutChangerMap(etat,id)){
             ChangerMap cm;
             std::vector<int> v;
@@ -40,7 +40,7 @@ void Commande::run (){
         }
     }
     
-    if (type =="qc"){ 
+    else if (type =="qc"){ 
         if (r.peutQuitterCombat(etat)){
             QuitterCombat qc;
             std::vector<int> v;
@@ -48,7 +48,7 @@ void Commande::run (){
         }
     }
     
-    if (type =="ec"){ 
+    else if (type =="ec"){ 
         if (r.peutEntrerCombat(etat,id)){
             EntrerCombat ec;
             std::vector<int> v;
@@ -59,14 +59,20 @@ void Commande::run (){
         }
     }
     
-    if (type =="pt"){ 
+    else if (type =="pt"){ 
         if (r.doitPasserTour(etat,id,temps)){
             PasserTour passtour;
             std::vector<int> v;
             passtour.run(etat,v,temps);
         }
     }
-            
+    
+    else if (type =="u"){
+            Deplacer d;
+            std::vector<int> v;
+	    v.push_back(id);
+            d.run(etat,v,temps); 
+    }        
 }
 
 Commande::Commande (state::Etat* e,std::string type, sf::Time t, std::vector<int> params,int id){

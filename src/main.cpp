@@ -76,6 +76,9 @@ int main(int argc,char* argv[])
 
         // draw the map
         window.clear();
+        std::vector<int> v;
+        Commande cmdUpdate(e,"u",c.getElapsedTime(),v,0);
+        liste.Ajouter(cmdUpdate);
         r.run(e, window, c.getElapsedTime(), rs);
         window.display();
     }
