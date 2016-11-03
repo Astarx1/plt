@@ -501,4 +501,126 @@ Diagramme de classe :
 \end{figure}
 
 
+\newpage
+\section{Règles de changement d'états et moteur de jeu}
+\subsection{Horloge principale}
+
+Les changements d'états s'effectuent suivant une horloge principale. Ainsi, le jeu passe directement d'un état à un autre sans passer par un état intermédiaire. Cette horloge principale est lancée dès le début du jeu dans la fonction main. À chaque création de commandes une lecture du temps (sf::Time) est effectuée sur l'horloge principale. De plus, les déplacemements des personnages sont calibrés suivant l'horloge principale.
+
+\subsection{Changements d'états extérieurs}
+
+Les changements extérieurs provoqués par des commandes extérieures comme par exemple l'utilisation de la souris. En effet, à chaque intervention extérieures (souris, clavier) une commande associée à l'action désirée est créée. Cette commande est ensuite ajoutée à une liste de commandes qui sera exécutée par la suite par le moteur de jeu selon les règles du jeu.
+
+\subsection{Changements d'états autonomes}
+
+Les changements d'états autonomes sont réalisés à chaque mise à jour d'un état. Ces changements d'états autonomes sont principalement présents en mode Combat, en effet voici les actions effectuées de manière autonome:
+\begin{enumerate}
+ \item À chaque début de tour de jeu, tous les paramètres du joueur est mise à jour (Vie, PM, PA).
+ \item À chaque déplacement du joueur, les points de mouvement sont modifiés en conséquence.
+ \item À chaque utilisation d'attaque du joueur, les points d'action sont modifiés en conséquence.
+ \item À chaque dégat subit par une attaque, les points de vie du joueur sont modifiés en conséquence.
+ \item Une fois que le temps imparti pour un tour est écoulé, le tour du joueur s'arrête. Aucune autre action est possible au-delà de ce temps imparti et ce jusqu'au prochain tour.
+\end{enumerate}
+
+\subsection{Conception logiciel}
+
+Le diagramme des classes pour le package Engine est présenté ci-après.
+La statégie de conception adoptée pour cette partie est basée sur un patron de conception de type \textbf{Command}. Cette stratégie a pour ojectif de gérer les commandes extérieures sur l'état du jeu.\\
+
+
+\textbf{Classe ListeCommandes}. Cette classe gére l'exécution des commandes présentes dans la liste de commandes.
+
+\textbf{Classe Commande}. Cette classe crée une commande selon l'action désirée et les règles du jeu.
+
+\textbf{Classe Action}. Cette classe abstraite crée une action suivant l'action demandée (Déplacer, Attaquer, ChangerMap, ...etc).
+
+\textbf{Classe Regles}. Cette classe régit l'ensemble des règles du jeu.
+
+Le tableau ci-dessous résume l'ensemble des classes utiles et présentes pour définir les changements d'états du jeu ainsi que leur rôle respectif.
+
+\begin{tabularx}{\textwidth}{ |l|X| }
+\hline
+   \textbf{Nom} & \textbf{Role}
+ \\
+\hline
+
+   ListeCommandes & Cette classe permet de créer une liste de commandes. Cette liste sera modifiée à chaque création de nouvelle commande.
+
+Attribut(s): commandes
+\newline
+Méthode(s): ajouter(), toutExecuter()
+ \\
+\hline
+
+   Commande & Cette classe permet de créer une nouvelle commande selon l'action souhaité et les règles du jeu.
+Attribut(s): etat, type, temps, params, id
+\newline
+Méthode(s): Commande(), ~Commande(), run(), getType(), setType()
+ \\
+\hline
+
+    Action & Cette classe abstraite permet de créer une action.
+    
+Attribut(s): regles
+\newline
+Méthode(s): run()
+  \\
+\hline
+
+    Deplacer & Cette classe permet de créer une action de type Deplacer
+
+Méthode(s): run()
+  \\
+\hline
+
+ Attaquer & Cette classe permet de créer une action de type Attaquer
+ 
+Méthode(s): run()
+  \\
+\hline
+
+ ChangerObjectif & Cette classe permet de créer une action de type ChangerObjectif
+ 
+Méthode(s): run()
+  \\
+\hline
+
+ ChangerMap & Cette classe permet de créer une action de type ChangerMap
+ 
+Méthode(s): run()
+  \\
+\hline
+
+ QuitterCombat & Cette classe permet de créer une action de type QuitterCombat
+ 
+Méthode(s): run()
+  \\
+\hline
+
+ EntrerCombat & Cette classe permet de créer une action de type EntrerCombat
+ 
+Méthode(s): run()
+  \\
+\hline
+
+ PasserTour & Cette classe permet de créer une action de type PasserTour
+ 
+Méthode(s): run()
+  \\
+\hline
+
+    Regles & Cette classe permet de définir l'ensemble des règles du jeu.
+    
+Méthode(s): peutDeplacer(), peutEntrerCombat(), peutChangerMap(), peutQuitterCombat(), peutAttaquer(), doitPasserTour(), peutAccederMenu(), peutAccederInfoPerso(), peutAugmenterNiv(), augmenterPM(), augmenterPA(), augmenterPV(), augmenterForce(), defMonstreCarte(), defCarteSuiv()
+  \\
+\hline
+
+\end{tabularx}\\ \\*
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.35]{img/engine.png}
+  \caption{\emph{Package engine}}
+\end{figure}
+
 \end{document}
