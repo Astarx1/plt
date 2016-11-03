@@ -28,7 +28,7 @@ void ChangerMap::run (Etat* e, std::vector<int> params,sf::Time t) {
 	for (auto d : pmonstre) 
 		persos.push_back (d);
   
-	for (int i = 0; i < persos.size(); ++i) {
+	for (unsigned int i = 0; i < persos.size(); ++i) {
 		// Inserer ici la commande pour ajouter un perso à Etat avec un passage par référence
 	}
   	

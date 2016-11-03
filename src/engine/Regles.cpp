@@ -86,15 +86,18 @@ bool Regles::peutQuitterCombat(state::Etat* e){
 
 bool Regles::peutAttaquer(state::Etat* e, int id){
     Personnage& perso = e->getRefPersonnage(id);
+    bool ret = false;
     
     if(e->getEnCombat()){
         if(perso.getPA() > 0){
-            return true;
+            ret = true;
         }
     }
     else{
-        return false;
+        ret = false;
     }
+    
+    return ret;
 }
 
 bool Regles::doitPasserTour(state::Etat* e, int id, sf::Time t){

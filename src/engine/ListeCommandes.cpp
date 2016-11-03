@@ -8,7 +8,7 @@ void ListeCommandes::Ajouter (Commande cmd){
 
 void ListeCommandes::ToutExecuter (){
     if (commandes.size() > 0){
-        int i;
+        unsigned int i;
         for (i=0;i<commandes.size();i++){
             (commandes[i]).run();
         }

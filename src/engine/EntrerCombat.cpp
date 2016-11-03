@@ -29,7 +29,7 @@ void EntrerCombat::run(Etat* e, std::vector<int> params,sf::Time t) {
 	for (auto d : pmonstre) 
 		p.push_back (d);
   
-    for (int i = 0; i < p.size(); ++i) {
+    for (unsigned int i = 0; i < p.size(); ++i) {
 		// Inserer ici la commande pour ajouter un perso à Etat avec un passage par référence
     }
   
