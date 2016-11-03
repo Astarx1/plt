@@ -27,7 +27,7 @@ bool Regles::peutDeplacer(state::Etat* e, int id, int newX, int newY){
     }
     else{
         // Si le personnage n'est pas en combat
-        if(newY < 1000 && newX < 1000 ){
+        if(newY > 1000 && newX > 1000 ){
             // Seuil à ajuster!
             return false;
         }
@@ -243,7 +243,7 @@ int Regles::augmenterForce(state::Etat* e, int id){
 
 /* Cette fonction permet de définir les monstres associés à la carte
  * 
- * À prévoir la génération des positions aléatoire pour l'instanciation des monstres.
+ * À prévoir la génération des positions aléatoires pour l'instanciation des monstres.
  */
 std::vector<state::Personnage*> Regles::defMonstreCarte(state::Etat* e){
     srand(time(NULL));
@@ -286,6 +286,45 @@ std::vector<state::Personnage*> Regles::defMonstreCarte(state::Etat* e){
             return list;
     }
     
+}
+
+int Regles::defCarteSuiv (state::Etat* e, int id){
+    int map_actuel = e->getMapActuel();
+    bool combat = e->getEnCombat();
+    int mapSuiv = 0;
+    int x = e->getRefHeros(id).getX();
+    int y = e->getRefHeros(id).getY();
+    
+    switch(map_actuel){
+        case 1: 
+            if(combat)
+                mapSuiv = 2;
+            else if(e->getGrille().isAcces(x,y))
+                mapSuiv = 3;
+            return mapSuiv;
+        case 2:
+            if(!combat)
+                mapSuiv = 1;
+            return mapSuiv;
+        case 3:
+            if(combat)
+                mapSuiv = 4;
+            else if(e->getGrille().isAcces(x,y) && x < 5)
+                mapSuiv = 1;
+            else mapSuiv = 5;
+            return mapSuiv;
+        case 4:
+            if(!combat)
+                mapSuiv = 3;
+            return mapSuiv;
+        case 5:
+            if(combat)
+                mapSuiv = 6;
+            else if(e->getGrille().isAcces(x,y))
+                mapSuiv = 3;
+            return mapSuiv;
+            
+    }
 }
 
 };
