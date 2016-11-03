@@ -10,15 +10,14 @@ void Commande::run (){
     
     if (type =="d"){
         std::cout<< "il peut se deplacer (" <<params[0] << "," << params[1] << ") : "<< r.peutDeplacer(etat,id,params[0],params[1]);
-        if (r.peutDeplacer(etat,id,params[0],params[1])){
-            std::cout<< "deb";
-            ChangerObjectif cb;  //changer en action changerobjectif
-            Deplacer d;
+        if (r.peutDeplacer(etat,id,params[0],params[1])){ 
+            ChangerObjectif cb; 
             std::vector<int> v;
             v.push_back(id);
+	    v.push_back(params[0]);
+	    v.push_back(params[1]);
             cb.run(etat,v,temps);
-            //v.clear();
-            d.run(etat,v,temps);
+            //v.clear(); 
         }
     }
         

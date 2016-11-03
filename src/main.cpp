@@ -59,8 +59,7 @@ int main(int argc,char* argv[])
                     std::vector<int> v;
                     int x=event.mouseButton.x;
                     int y=event.mouseButton.y;
-                    sf::Vector2f pos = e->getGrilleCoord(x,y);
-		    v.push_back(0);
+                    sf::Vector2f pos = e->getGrilleCoord(x,y); 
                     v.push_back(pos.x);
                     v.push_back(pos.y);
                     int id= p.getElemID();
