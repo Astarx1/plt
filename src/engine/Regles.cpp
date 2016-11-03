@@ -44,6 +44,9 @@ bool Regles::peutEntrerCombat (state::Etat* e, int id){
         if(e->getEnCombat() == false){
             return true;
         }
+	else {
+		return false; 
+	}
     }
     else{
         return false;
@@ -70,10 +73,10 @@ bool Regles::peutQuitterCombat(state::Etat* e){
     ListeElements persos = e->getPerso();
     
     for(size_t i=0; persos.size(); i++){
-        if(e->getRefPersonnage(i).getTypeID() == HEROS && e->getRefPersonnage(i).getVie() >0){
+        if(e->getRefPersonnage(i).getTypeID() == TypeID(HEROS) && e->getRefPersonnage(i).getVie() >0){
             retH = true;
         }
-        if(e->getRefPersonnage(i).getTypeID() == MONSTRE && e->getRefPersonnage(i).getVie() >0){
+        if(e->getRefPersonnage(i).getTypeID() == TypeID(MONSTRE) && e->getRefPersonnage(i).getVie() >0){
             retM = true;
         }
     }
@@ -158,6 +161,7 @@ int Regles::augmenterPM(state::Etat* e, int id){
         case 10:
             return 12;
     }
+	return 0;
 }
 
 int Regles::augmenterPA(state::Etat* e, int id){
@@ -185,6 +189,7 @@ int Regles::augmenterPA(state::Etat* e, int id){
         case 10:
             return 15;
     }
+	return 0;
 }
 
 int Regles::augmenterPV(state::Etat* e, int id){
@@ -212,6 +217,7 @@ int Regles::augmenterPV(state::Etat* e, int id){
         case 10:
             return 600;
     }
+	return 0;
 }
 
 int Regles::augmenterForce(state::Etat* e, int id){
@@ -239,6 +245,7 @@ int Regles::augmenterForce(state::Etat* e, int id){
         case 10:
             return 12;
     }
+	return 0;
 }
 
 /* Cette fonction permet de définir les monstres associés à la carte
@@ -253,7 +260,7 @@ std::vector<state::Personnage*> Regles::defMonstreCarte(state::Etat* e){
         
     switch(map_actuel){
         case 1: 
-            for(size_t i=0; i<alea_monstre; i++){
+            for(int i=0; i<alea_monstre; i++){
                 int alea_nv = rand()%4 + 1;
                 if(rand()%2 == 0){
                     Monstre p(1,1,alea_nv,MONSTRE1);
@@ -267,7 +274,7 @@ std::vector<state::Personnage*> Regles::defMonstreCarte(state::Etat* e){
             return list;
             
         case 2:
-            for(size_t i=0; i<alea_monstre; i++){
+            for(int i=0; i<alea_monstre; i++){
                 int alea_nv = rand()%6 + 4;
                 if(rand()%2 == 0){
                     Monstre p(1,1,alea_nv,MONSTRE3);

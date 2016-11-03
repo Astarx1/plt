@@ -21,14 +21,24 @@ void Deplacer::run(Etat* e, std::vector<int> params,sf::Time t) {
 	Personnage & p = e->getRefPersonnage(params[0]);
 	if (p.getEnDeplacement()) { 
 	      	// Appel à la regle pour obtenir la vitesse du personnage !
-	      	int speed = 0.1;
+	      	int speed = 0.2;
 	      
 	      	if (abs(p.getX()-p.getXobj()) > ECART) {   
-			p.setX(p.getX() + signe(p.getXobj()-p.getX()) * speed * abs (t.asMilliseconds()-p.getTimer().asMilliseconds())+signe(p.getXobj()-p.getX()));
+			int s = signe(p.getXobj()-p.getX());
+			if (s == 1)
+				p.setDirection(Direction(OUEST));
+			else
+				p.setDirection(Direction(EST));
+
+			p.setX(p.getX() + s * speed * abs (t.asMilliseconds()-p.getTimer().asMilliseconds())+signe(p.getXobj()-p.getX()));
 		}
 	     	else if (abs(p.getY()-p.getYobj()) > ECART) {
-			// Quand j'aurais une clock correcte
-			p.setY(p.getY() + signe(p.getYobj()-p.getY()) * speed * abs (t.asMilliseconds()-p.getTimer().asMilliseconds())+signe(p.getYobj()-p.getY()));
+			int s = signe(p.getYobj()-p.getY());
+			if (s == 1)
+				p.setDirection(Direction(SUD));
+			else
+				p.setDirection(Direction(NORD));
+			p.setY(p.getY() + s * speed * abs (t.asMilliseconds()-p.getTimer().asMilliseconds())+signe(p.getYobj()-p.getY()));
 	      	}
 		else {
 			p.setEnDeplacement(false);
