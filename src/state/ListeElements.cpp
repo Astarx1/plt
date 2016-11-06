@@ -60,3 +60,7 @@ Statique * ListeElements::getTile (int n) {
 	else  
 		return (Statique *)(visiteur.getpAcces ());
 }
+
+void ListeElements::clear() {
+	elements.clear();
+}

@@ -3,7 +3,7 @@
 #include <iostream>
 
 /* Temps en milliseconde durant lequel un sprite sera affiche */
-#define TEMPS_SPRITE 500
+#define TEMPS_SPRITE 400
 /* Nombre de sprite dans une periode complete. Ne prend pas en compte le sprite a l'arret */
 #define NB_SPRITE 2
 

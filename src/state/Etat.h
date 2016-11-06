@@ -59,6 +59,9 @@ namespace state {
     Heros& getRefHeros (int id);
     sf::Vector2f getGrilleCoord (int x, int y);
     sf::Vector2f getCoordTile (int x, int y);
+    void clearPersos ();
+    void clearGrille ();
+    void addPerso (Personnage * p);
   };
 
 };

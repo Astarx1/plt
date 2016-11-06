@@ -37,6 +37,7 @@ namespace state {
     void ajoutElement (char e);
     void ajoutElement (Element * e);
     Statique* getTile (int i);
+    void clear ();
   };
 
 };

@@ -35,8 +35,10 @@ int main(int argc,char* argv[])
 	sf::Clock c;
 	sf::RenderStates rs;
         ListeCommandes liste;
+        std::vector<int> v;
 
-
+	// On devrait rajouter dans les commandes une vérification de l'existence des parametres.
+	//	liste.Ajouter(Commande (e,"d",c.getElapsedTime(),v,0));
 
     // create the tilemap from the level definition
     //RenduGrille map;
@@ -56,7 +58,6 @@ int main(int argc,char* argv[])
             {
                 if (event.mouseButton.button == sf::Mouse::Left)
                 {
-                    std::vector<int> v;
                     int x=event.mouseButton.x;
                     int y=event.mouseButton.y;
                     sf::Vector2f pos = e->getGrilleCoord(x,y); 
@@ -64,6 +65,7 @@ int main(int argc,char* argv[])
                     v.push_back(pos.y);
                     Commande cmd(e,"d",c.getElapsedTime(),v,0);
                     liste.Ajouter(cmd);
+			v.clear();
                     std::cout<< "pos Souris " << x << " et " << y << std::endl;
                     std::cout<< "pos Grille " << pos.x << " et " << pos.y << std::endl;
                     
@@ -74,10 +76,10 @@ int main(int argc,char* argv[])
 
         // draw the map
         window.clear();
-        std::vector<int> v;
         Commande cmdUpdate(e,"u",c.getElapsedTime(),v,0);
         liste.Ajouter(cmdUpdate);
 	liste.ToutExecuter();
+	v.clear();
         r.run(e, window, c.getElapsedTime(), rs);
         window.display();
     }

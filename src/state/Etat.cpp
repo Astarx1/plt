@@ -145,5 +145,18 @@ sf::Vector2f Etat::getGrilleCoord(int x, int y){
 }
 
 sf::Vector2f Etat::getCoordTile(int x, int y){
-  	return sf::Vector2f(x*DLARGEUR*2, y*DHAUTEUR*2);
+  	return sf::Vector2f(x*DLARGEUR*2, (y+1)*DHAUTEUR*2);
 }
+
+void Etat::clearPersos() {
+	personnages.clear();
+}
+
+void Etat::clearGrille () {
+	grille.clear();
+}
+
+void Etat::addPerso (Personnage * p) {
+	personnages.ajoutElement(p);
+}
+
