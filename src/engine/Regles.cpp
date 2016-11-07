@@ -258,21 +258,26 @@ int Regles::augmenterForce(state::Etat* e, int id){
 std::vector<state::Personnage*> Regles::defMonstreCarte(state::Etat* e){
     srand(time(NULL));
     std::vector<state::Personnage*> list;
+	GrilleElements g = e->getGrille();
     int map_actuel = e->getMapActuel();
-    int alea_monstre = rand()%5 + 1;
-        
+    int nb_monstre = 4;
+        int alea_monstre = 1;
+
     switch(map_actuel){
         case 1: 
-            for(int i=0; i<alea_monstre; i++){
-                int alea_nv = rand()%4 + 1;
-                if(rand()%2 == 0){
-                    Monstre p(1,1,alea_nv,MONSTRE1);
-                    list.push_back(&p);
-                }
-                else{
-                    Monstre p(1,1,alea_nv,MONSTRE2);
-                    list.push_back(&p);
-                }
+            for(int i=2; i<g.getLargeur()-2; i++){
+		for (int i=2; i<g.getLongueur()-2; i++){
+			int y=rand()%20;
+		        if(y == 0 && nb_monstre > 0){
+				nb_monstre--;
+		            Monstre p(1,1,1,MONSTRE1);
+		            list.push_back(&p);
+		        }
+		        else if (y == 1 && nb_monstre > 0){
+		            Monstre p(1,1,1,MONSTRE2);
+		            list.push_back(&p);
+		        }
+		}
             }
             return list;
             

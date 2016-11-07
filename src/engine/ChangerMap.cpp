@@ -20,10 +20,10 @@ void ChangerMap::run (Etat* e, std::vector<int> params,sf::Time t) {
 		}
   	}
   
-  	// Inserer ici la commande pour clear les personnages d'Etat
+  	e->clearPersos();
   
   	std::vector <Personnage *> pmonstre;
-	// Inserer ic la commande pour obtenir la liste de monstre
+	pmonstre = defMonstreCarte(e);
 	
 	for (auto d : pmonstre) 
 		persos.push_back (d);

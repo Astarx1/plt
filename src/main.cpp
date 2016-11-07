@@ -36,9 +36,9 @@ int main(int argc,char* argv[])
 	sf::RenderStates rs;
         ListeCommandes liste;
         std::vector<int> v;
-
+	v.push_back(1);
 	// On devrait rajouter dans les commandes une vérification de l'existence des parametres.
-	//	liste.Ajouter(Commande (e,"d",c.getElapsedTime(),v,0));
+	liste.Ajouter(Commande (e,"cm",c.getElapsedTime(),v,0));
 
     // create the tilemap from the level definition
     //RenduGrille map;
