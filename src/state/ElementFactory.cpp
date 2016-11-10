@@ -34,9 +34,10 @@ ElementFactory::~ElementFactory () {
 
 Element * ElementFactory::newInstance (char cid) {
 	if(cid == 'h' || cid == 'm' || cid == 'v' || cid == 'a') {
-		std::cout << "ElementFactory.cpp : Demande de création d'objet : " << cid << std::endl;
+		if (cid != 'v')
+			std::cout << "ElementFactory.cpp : Demande de création d'objet : " << cid << std::endl;
 		Element * t = (liste[cid])->newInstance();
-		std::cout << "ElementFactory.cpp : Objet cree !" << std::endl;
+		if (cid != 'v') std::cout << "ElementFactory.cpp : Objet cree !" << std::endl;
 		(id)++;
 		t->setElemID(id);
 		return t;

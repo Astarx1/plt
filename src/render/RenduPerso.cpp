@@ -44,8 +44,8 @@ void RenduPerso::dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Time c
 		int x_sprite = p.getX();
 		int y_sprite = p.getY();
 
-		sf::Vertex* quad = &vertices[i];
-
+		sf::Vertex* quad = &vertices[i*4];
+		std::cout << "RenduPerso::dessin vertices : " << i << std::endl;
 		int tmpDeplacement = p.getTimer().asMilliseconds();
 		bool enDeplacement = p.getEnDeplacement();
 		Direction dir = p.getDirection();
@@ -62,9 +62,93 @@ void RenduPerso::dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Time c
 			spr_hauteur = 2;
 
 		if (p.getEnDeplacement()) 
-			spr_longueur = valeurEntiere((cl.asMilliseconds() % (NB_SPRITE * TEMPS_SPRITE)) / TEMPS_SPRITE);     
+			spr_longueur = valeurEntiere((cl.asMilliseconds() % (NB_SPRITE * TEMPS_SPRITE)) / TEMPS_SPRITE); 
+    
 		switch (tp) {
 			case HEROS:
+				th1 = pp.ParsingTextures ("res/Textures/heros/heros_1.txt");
+					if (th1.size()>0) {
+						std::cout << "RenduPerso::dessin : Affichage heros : " << x_sprite << " - " << y_sprite << std::endl;
+						quad[3].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][0][0],th1[spr_hauteur][spr_longueur][0][1]);
+						quad[2].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][1][0],th1[spr_hauteur][spr_longueur][1][1]);
+						quad[0].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][2][0],th1[spr_hauteur][spr_longueur][2][1]);
+						quad[1].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][3][0],th1[spr_hauteur][spr_longueur][3][1]);
+						h_sprite = 47;
+						l_sprite = 43;
+					}
+					else {
+						quad[0].texCoords = sf::Vector2f(0,0);
+						quad[1].texCoords = sf::Vector2f(0,0);
+						quad[2].texCoords =  sf::Vector2f(0,0);
+						quad[3].texCoords =  sf::Vector2f(0,0);
+						h_sprite = 25;
+						l_sprite = 25;                                   
+					}
+			break;
+
+			case HEROINE:
+				th1 = pp.ParsingTextures ("res/Textures/heros/heros_2.txt");
+					if (th1.size()>0) {
+						quad[3].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][0][0],th1[spr_hauteur][spr_longueur][0][1]);
+						quad[2].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][1][0],th1[spr_hauteur][spr_longueur][1][1]);
+						quad[0].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][2][0],th1[spr_hauteur][spr_longueur][2][1]);
+						quad[1].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][3][0],th1[spr_hauteur][spr_longueur][3][1]);
+						h_sprite = 47;
+						l_sprite = 43;
+					}
+					else {
+						quad[0].texCoords = sf::Vector2f(0,0);
+						quad[1].texCoords = sf::Vector2f(0,0);
+						quad[2].texCoords =  sf::Vector2f(0,0);
+						quad[3].texCoords =  sf::Vector2f(0,0);
+						h_sprite = 25;
+						l_sprite = 25;                                   
+					}
+			break;
+
+			case MONSTRE1:
+				th1 = pp.ParsingTextures ("res/Textures/heros/heros_1.txt");
+					if (th1.size()>0) {
+						std::cout << "RenduPerso::dessin Affichage monstre 1  : " << x_sprite << " - " << y_sprite << std::endl;
+						quad[3].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][0][0],th1[spr_hauteur][spr_longueur][0][1]);
+						quad[2].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][1][0],th1[spr_hauteur][spr_longueur][1][1]);
+						quad[0].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][2][0],th1[spr_hauteur][spr_longueur][2][1]);
+						quad[1].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][3][0],th1[spr_hauteur][spr_longueur][3][1]);
+						h_sprite = 47;
+						l_sprite = 43;
+					}
+					else {
+						quad[0].texCoords = sf::Vector2f(0,0);
+						quad[1].texCoords = sf::Vector2f(0,0);
+						quad[2].texCoords =  sf::Vector2f(0,0);
+						quad[3].texCoords =  sf::Vector2f(0,0);
+						h_sprite = 25;
+						l_sprite = 25;                                   
+					}
+			break;
+
+			case MONSTRE2:
+				th1 = pp.ParsingTextures ("res/Textures/heros/heros_1.txt");
+					if (th1.size()>0) {
+						std::cout << "RenduPerso::dessin Affichage monstre 2  : " << x_sprite << " - " << y_sprite << std::endl;
+						quad[3].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][0][0],th1[spr_hauteur][spr_longueur][0][1]);
+						quad[2].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][1][0],th1[spr_hauteur][spr_longueur][1][1]);
+						quad[0].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][2][0],th1[spr_hauteur][spr_longueur][2][1]);
+						quad[1].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][3][0],th1[spr_hauteur][spr_longueur][3][1]);
+						h_sprite = 47;
+						l_sprite = 43;
+					}
+					else {
+						quad[0].texCoords = sf::Vector2f(0,0);
+						quad[1].texCoords = sf::Vector2f(0,0);
+						quad[2].texCoords =  sf::Vector2f(0,0);
+						quad[3].texCoords =  sf::Vector2f(0,0);
+						h_sprite = 25;
+						l_sprite = 25;                                   
+					}
+			break;
+
+			case MONSTRE3:
 				th1 = pp.ParsingTextures ("res/Textures/heros/heros_1.txt");
 					if (th1.size()>0) {
 						quad[3].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][0][0],th1[spr_hauteur][spr_longueur][0][1]);
@@ -84,58 +168,44 @@ void RenduPerso::dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Time c
 					}
 			break;
 
-			case HEROINE:
-				quad[0].texCoords = sf::Vector2f(711,0);
-				quad[1].texCoords = sf::Vector2f(0,0);
-				quad[2].texCoords = sf::Vector2f(0,0);
-				quad[3].texCoords = sf::Vector2f(0,0);
-				h_sprite = 32;
-				l_sprite = 32;
-			break;
-
-			case MONSTRE1:
-				quad[0].texCoords = sf::Vector2f(711,0);
-				quad[1].texCoords = sf::Vector2f(0,0);
-				quad[2].texCoords = sf::Vector2f(0,0);
-				quad[3].texCoords = sf::Vector2f(0,0);
-				h_sprite = 32;
-				l_sprite = 32;
-			break;
-
-			case MONSTRE2:
-				quad[0].texCoords = sf::Vector2f(711,0);
-				quad[1].texCoords = sf::Vector2f(0,0);
-				quad[2].texCoords = sf::Vector2f(0,0);
-				quad[3].texCoords = sf::Vector2f(0,0);
-				h_sprite = 32;
-				l_sprite = 32;
-			break;
-
-			case MONSTRE3:
-				quad[0].texCoords = sf::Vector2f(711,0);
-				quad[1].texCoords = sf::Vector2f(0,0);
-				quad[2].texCoords = sf::Vector2f(0,0);
-				quad[3].texCoords = sf::Vector2f(0,0);
-				h_sprite = 32;
-				l_sprite = 32;
-			break;
-
 			case MONSTRE4:
-				quad[0].texCoords = sf::Vector2f(711,0);
-				quad[1].texCoords = sf::Vector2f(0,0);
-				quad[2].texCoords = sf::Vector2f(0,0);
-				quad[3].texCoords = sf::Vector2f(0,0);
-				h_sprite = 32;
-				l_sprite = 32;
+				th1 = pp.ParsingTextures ("res/Textures/heros/heros_1.txt");
+					if (th1.size()>0) {
+						quad[3].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][0][0],th1[spr_hauteur][spr_longueur][0][1]);
+						quad[2].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][1][0],th1[spr_hauteur][spr_longueur][1][1]);
+						quad[0].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][2][0],th1[spr_hauteur][spr_longueur][2][1]);
+						quad[1].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][3][0],th1[spr_hauteur][spr_longueur][3][1]);
+						h_sprite = 47;
+						l_sprite = 43;
+					}
+					else {
+						quad[0].texCoords = sf::Vector2f(0,0);
+						quad[1].texCoords = sf::Vector2f(0,0);
+						quad[2].texCoords =  sf::Vector2f(0,0);
+						quad[3].texCoords =  sf::Vector2f(0,0);
+						h_sprite = 25;
+						l_sprite = 25;                                   
+					}
 			break;
 
 			case BOSS:
-				quad[0].texCoords = sf::Vector2f(711,0);
-				quad[1].texCoords = sf::Vector2f(0,0);
-				quad[2].texCoords = sf::Vector2f(0,0);
-				quad[3].texCoords = sf::Vector2f(0,0);
-				h_sprite = 32;
-				l_sprite = 32;
+				th1 = pp.ParsingTextures ("res/Textures/heros/heros_1.txt");
+					if (th1.size()>0) {
+						quad[3].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][0][0],th1[spr_hauteur][spr_longueur][0][1]);
+						quad[2].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][1][0],th1[spr_hauteur][spr_longueur][1][1]);
+						quad[0].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][2][0],th1[spr_hauteur][spr_longueur][2][1]);
+						quad[1].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][3][0],th1[spr_hauteur][spr_longueur][3][1]);
+						h_sprite = 47;
+						l_sprite = 43;
+					}
+					else {
+						quad[0].texCoords = sf::Vector2f(0,0);
+						quad[1].texCoords = sf::Vector2f(0,0);
+						quad[2].texCoords =  sf::Vector2f(0,0);
+						quad[3].texCoords =  sf::Vector2f(0,0);
+						h_sprite = 25;
+						l_sprite = 25;                                   
+					}
 			break;
 		}	  
               	

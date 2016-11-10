@@ -28,6 +28,7 @@ int main(int argc,char* argv[])
 	cout << "[Main] Accès a un perso" << endl;
 	Personnage& p = e->getRefPersonnage(0);
 	cout << "[Main] Parametrisation du perso" << endl;
+	p.setTypePersonnage(TypePersonnage(HEROS));
 	p.setX(200);
 	p.setY(350);
 	p.setDirection(OUEST);

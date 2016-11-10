@@ -31,7 +31,8 @@ void Commande::run (){
     }
         
     else if (type =="cm"){  
-        if (r.peutChangerMap(etat,id)){
+       // if (r.peutChangerMap(etat,id)){
+	if (true){
             ChangerMap cm;
             std::vector<int> v;
 		if (params.size() > 0) {
