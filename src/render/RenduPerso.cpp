@@ -45,7 +45,6 @@ void RenduPerso::dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Time c
 		int y_sprite = p.getY();
 
 		sf::Vertex* quad = &vertices[i*4];
-		std::cout << "RenduPerso::dessin vertices : " << i << std::endl;
 		int tmpDeplacement = p.getTimer().asMilliseconds();
 		bool enDeplacement = p.getEnDeplacement();
 		Direction dir = p.getDirection();
@@ -68,7 +67,6 @@ void RenduPerso::dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Time c
 			case HEROS:
 				th1 = pp.ParsingTextures ("res/Textures/heros/heros_1.txt");
 					if (th1.size()>0) {
-						std::cout << "RenduPerso::dessin : Affichage heros : " << x_sprite << " - " << y_sprite << std::endl;
 						quad[3].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][0][0],th1[spr_hauteur][spr_longueur][0][1]);
 						quad[2].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][1][0],th1[spr_hauteur][spr_longueur][1][1]);
 						quad[0].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][2][0],th1[spr_hauteur][spr_longueur][2][1]);
@@ -109,7 +107,6 @@ void RenduPerso::dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Time c
 			case MONSTRE1:
 				th1 = pp.ParsingTextures ("res/Textures/heros/heros_1.txt");
 					if (th1.size()>0) {
-						std::cout << "RenduPerso::dessin Affichage monstre 1  : " << x_sprite << " - " << y_sprite << std::endl;
 						quad[3].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][0][0],th1[spr_hauteur][spr_longueur][0][1]);
 						quad[2].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][1][0],th1[spr_hauteur][spr_longueur][1][1]);
 						quad[0].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][2][0],th1[spr_hauteur][spr_longueur][2][1]);
@@ -130,7 +127,6 @@ void RenduPerso::dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Time c
 			case MONSTRE2:
 				th1 = pp.ParsingTextures ("res/Textures/heros/heros_1.txt");
 					if (th1.size()>0) {
-						std::cout << "RenduPerso::dessin Affichage monstre 2  : " << x_sprite << " - " << y_sprite << std::endl;
 						quad[3].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][0][0],th1[spr_hauteur][spr_longueur][0][1]);
 						quad[2].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][1][0],th1[spr_hauteur][spr_longueur][1][1]);
 						quad[0].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][2][0],th1[spr_hauteur][spr_longueur][2][1]);

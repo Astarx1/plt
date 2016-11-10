@@ -5,6 +5,8 @@
 #include "./state.h"
 #include "./render.h"
 #include "./engine.h"
+#include "./ia.h"
+#include <vector>
 
 // Fin test SFML
 
@@ -14,6 +16,7 @@ using namespace sf;
 using namespace state;
 using namespace render;
 using namespace engine;
+using namespace ia;
 
 int main(int argc,char* argv[]) 
 {
@@ -46,8 +49,16 @@ int main(int argc,char* argv[])
     //RenduGrille map;
 	std::cout << "[Main] Initialisation du rendu" << endl;
 	Rendu r;
+	IAminimale ias(e);
+	std::vector <int> IdPersosMonstres;
+	for (int i = 1; i < e->getPersoSize(); ++i) {
+			IdPersosMonstres.push_back(i);
+		
+	}
 
     // run the main loop
+	std::cout << "[Main] Debut de la boucle" << std::endl;
+	std::cout << "/!\\ Si jamais, il n'y a qu'un seul personnage sur la carte, relancer le jeu"  << std::endl;
     while (window.isOpen())
     {
         // handle events
@@ -76,11 +87,21 @@ int main(int argc,char* argv[])
             }
         }
 
+	// IA 
+	for (int i = 0; i < IdPersosMonstres.size(); ++i) {
+		liste.Ajouter(ias.exec_cmd(IdPersosMonstres[i], c.getElapsedTime())); 	
+	}
+
+	// Update Persos
+	for (int i = 0; i < e->getPersoSize(); ++i) {
+        	Commande cmdUpdate(e,"u",c.getElapsedTime(),v,i);
+        	liste.Ajouter(cmdUpdate);
+	}
+
+	liste.ToutExecuter();
+
         // draw the map
         window.clear();
-        Commande cmdUpdate(e,"u",c.getElapsedTime(),v,0);
-        liste.Ajouter(cmdUpdate);
-	liste.ToutExecuter();
 	v.clear();
         r.run(e, window, c.getElapsedTime(), rs);
         window.display();

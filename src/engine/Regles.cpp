@@ -269,7 +269,7 @@ std::vector<state::Personnage*> Regles::defMonstreCarte(state::Etat* e){
 		for (int i=2; i<g.getLongueur()-2; i++){
 			int y=rand()%20;
 		        if(y == 0 && nb_monstre > 0){
-				nb_monstre--;
+				 nb_monstre--;
 		            Monstre p(1,1,1,MONSTRE1);
 		            list.push_back(&p);
 		        }

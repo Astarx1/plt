@@ -66,13 +66,10 @@ std::vector<state::Personnage*> defMonstreCarte(state::Etat* e){
 }
 
 void ChangerMap::run (Etat* e, std::vector<int> params,sf::Time t) {
-	std::cout << "ChangerMap::run : On change de map ... Persos : " << e->getPersoSize() << std::endl;
-
   	// On commence par sauvegarder les personnages joueurs
 	std::vector<Personnage*> persos;
   	for (int i = 0; i < e->getPersoSize(); ++i) {
 	    	Personnage& ptmp = e->getRefPersonnage(i);
-		std::cout << "ChangerMap::run : On copie un personnage" << std::endl;
 	      	if (ptmp.getTypePersonnage() == TypePersonnage(HEROS) || ptmp.getTypePersonnage() == TypePersonnage(HEROINE)) {
 			persos.push_back(new Heros(1, 1, 1));
 			sf::Vector2f pos = e->getCoordTile(10, 10+i);
@@ -99,7 +96,6 @@ void ChangerMap::run (Etat* e, std::vector<int> params,sf::Time t) {
 		p.setXobj(d->getXobj());
 		p.setY(d->getY());
 		p.setYobj(d->getYobj());
-		std::cout << "ChangerMap::run : creation personnage : " << p.getX() << " - " << p.getXobj() << " - " << p.getY() << " - " << p.getYobj() << std::endl;
 		delete d;
 	}
 
