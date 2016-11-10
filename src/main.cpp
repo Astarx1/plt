@@ -38,8 +38,9 @@ int main(int argc,char* argv[])
         std::vector<int> v;
 	v.push_back(1);
 	// On devrait rajouter dans les commandes une vérification de l'existence des parametres.
+	std::cout << "[Main] Initialisation de la Map" << std::endl;
 	liste.Ajouter(Commande (e,"cm",c.getElapsedTime(),v,0));
-
+	liste.ToutExecuter();
     // create the tilemap from the level definition
     //RenduGrille map;
 	std::cout << "[Main] Initialisation du rendu" << endl;

@@ -3,8 +3,8 @@
 
 #include <iostream>
 
-#define DHAUTEUR 16
-#define DLARGEUR 16
+#define DHAUTEUR 24
+#define DLARGEUR 24
 
 using namespace state;
 using namespace render;

@@ -23,7 +23,7 @@ void ChangerMap::run (Etat* e, std::vector<int> params,sf::Time t) {
   	e->clearPersos();
   
   	std::vector <Personnage *> pmonstre;
-	pmonstre = defMonstreCarte(e);
+	pmonstre = regles.defMonstreCarte(e);
 	
 	for (auto d : pmonstre) 
 		persos.push_back (d);

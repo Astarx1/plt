@@ -34,7 +34,12 @@ void Commande::run (){
         if (r.peutChangerMap(etat,id)){
             ChangerMap cm;
             std::vector<int> v;
-            //v.push_back(r.defCarteSuiv(etat));
+		if (params.size() > 0) {
+			v.push_back(params[0]);	
+		}
+		else {
+			v.push_back(r.defCarteSuiv(etat, id));
+		} 
             cm.run(etat,v,temps);
         }
     }
