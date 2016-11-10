@@ -139,10 +139,10 @@ void RenduPerso::dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Time c
 			break;
 		}	  
               	
-		quad[0].position = sf::Vector2f(x_sprite - l_sprite/2, y_sprite+h_sprite/2);
-		quad[1].position = sf::Vector2f(x_sprite + l_sprite/2, y_sprite+h_sprite/2);
-		quad[3].position = sf::Vector2f(x_sprite - l_sprite/2, y_sprite-h_sprite/2);
-		quad[2].position = sf::Vector2f(x_sprite + l_sprite/2, y_sprite-h_sprite/2);             
+		quad[0].position = sf::Vector2f(x_sprite - l_sprite, y_sprite+h_sprite/2);
+		quad[1].position = sf::Vector2f(x_sprite , y_sprite+h_sprite/2);
+		quad[3].position = sf::Vector2f(x_sprite - l_sprite, y_sprite-h_sprite/2);
+		quad[2].position = sf::Vector2f(x_sprite, y_sprite-h_sprite/2);             
 	} 
 	rs.texture = &tileset;
 	w.draw(vertices,rs);
