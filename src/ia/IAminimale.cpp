@@ -25,8 +25,9 @@ Commande IAminimale::exec_cmd(int id, sf::Time time){
         params[1]= rand()%12 +1;
     }
     else{
-        params[0]= perso.getXobj();
-        params[1]= perso.getYobj();
+	sf::Vector2f obj = etat->getGrilleCoord(perso.getXobj(), perso.getYobj());
+        params[0]= obj.x;
+        params[1]= obj.y;
         
     }
     Commande c(etat, "d" ,time,params,id);
