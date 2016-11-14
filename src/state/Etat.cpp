@@ -21,6 +21,12 @@ Etat::~Etat () {
 }
 
 TypeID Etat::getStatutGrille (int i, int j) {
+	for (int k = 0; k < personnages.size(); ++k) {
+		if ((personnages.at(k)).getXobj() == i && (personnages.at(k)).getYobj() == y) {
+			return personnages.getTypeID();
+		}
+	}
+
 	if (grille.isAcces(i, j))
 		return ACCES;
 	else
