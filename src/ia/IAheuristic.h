@@ -3,6 +3,7 @@
 #define IA__IAHEURISTIC__H
 
 #include "../state.h"
+#include <vector>
 
 namespace state {
   class Personnage;
@@ -14,7 +15,7 @@ namespace ia {
   class IAheuristic {
     // Operations
   public:
-    state::Personnage& cible ();
+    state::Personnage& cible (std::vector<state::Personnage&> ennemis);
   };
 
 };
