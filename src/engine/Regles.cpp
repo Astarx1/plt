@@ -2,7 +2,8 @@
 #include <ctime>
 #include <iostream>
 
-#define TRACE_REGLE 0
+#define TRACE_REGLE 1
+#define TRACE_REGLE_CHANGER_MAP 1
 
 using namespace state;
 using namespace sf;
@@ -62,19 +63,19 @@ bool Regles::peutChangerMap (state::Etat* e, int id){
     Personnage& perso = e->getRefPersonnage(id);
     sf::Vector2f vect=e->getGrilleCoord(perso.getX(),perso.getY());
     
-    #if TRACE_REGLE==1
+    #if TRACE_REGLE==1 && TRACE_REGLE_CHANGER_MAP==1
         std::cout<<"X:"<<vect.x <<" Y:"<<vect.y<<std::endl;
     #endif
     
     if(((e->getGrille()).isAcces(vect.x,vect.y))){
 
-        #if TRACE_REGLE==1
+        #if TRACE_REGLE==1 && TRACE_REGLE_CHANGER_MAP==1
             std::cout<<"Regles::peutChangerMap return true"<<std::endl;
         #endif
         return true;
     }
     
-    #if TRACE_REGLE==1
+    #if TRACE_REGLE==1 && TRACE_REGLE_CHANGER_MAP==1
         std::cout<<"Regles::peutChangerMap return false"<<std::endl;
     #endif
     return false;
