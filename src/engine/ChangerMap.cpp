@@ -82,9 +82,9 @@ void ChangerMap::run (Etat* e, std::vector<int> params,sf::Time t) {
   	}
   
   	e->clearPersos();
-
+        std::cout<<"changer map"<<std::endl;
   	e->setMapActuel(params[0]);
- 
+        
 	for (auto d : persos) {
 		e->rajouterPerso ('h');
 		Personnage &p = e->getRefPersonnage(e->getPersoSize()-1);
@@ -99,5 +99,6 @@ void ChangerMap::run (Etat* e, std::vector<int> params,sf::Time t) {
 		delete d;
 	}
 
-	defMonstreCarte(e);	
+	defMonstreCarte(e);
+        
 }

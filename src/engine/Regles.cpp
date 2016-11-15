@@ -1,5 +1,6 @@
 #include "../engine.h"
 #include <ctime>
+#include <iostream>
 
 
 using namespace state;
@@ -58,10 +59,14 @@ bool Regles::peutEntrerCombat (state::Etat* e, int id){
  */
 bool Regles::peutChangerMap (state::Etat* e, int id){    
     Personnage& perso = e->getRefPersonnage(id);
-    if((e->getGrille().isAcces(perso.getX(),perso.getY()))){
+    sf::Vector2f vect=e->getGrilleCoord(perso.getX(),perso.getY());
+    std::cout<<"X:"<<vect.x <<" Y:"<<vect.y<<std::endl;
+    if(((e->getGrille()).isAcces(vect.x,vect.y))){
+        std::cout<<"Regles::peutChangerMap return true"<<std::endl;
+        
         return true;
     }
-   
+   std::cout<<"Regles::peutChangerMap return false"<<std::endl;
     return false;
 }
 

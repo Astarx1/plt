@@ -59,11 +59,14 @@ void Etat::loadGrille (int n) {
 		case 1:
 			grille.charger("res/Textures/carte/map1.txt");
 			break;
+                case 2:
+                        grille.charger("res/Textures/carte/map2.txt");
+			break;
 	}
 }
 
 GrilleElements Etat::getGrille () {
-	return GrilleElements (1);
+	return grille;
 }
 
 bool Etat::getEnCombat () {

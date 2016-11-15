@@ -78,11 +78,11 @@ int main(int argc,char* argv[])
                     v.push_back(pos.y);
                     Commande cmd(e,"d",c.getElapsedTime(),v,0);
                     liste.Ajouter(cmd);
-			v.clear();
+                    v.clear();
                     std::cout<< "pos Souris " << x << " et " << y << std::endl;
                     std::cout<< "pos Grille " << pos.x << " et " << pos.y << std::endl;
                     
-                    //cmd.run();
+                    //cmd1.run();
                 }
             }
         }
@@ -97,7 +97,17 @@ int main(int argc,char* argv[])
         	Commande cmdUpdate(e,"u",c.getElapsedTime(),v,i);
         	liste.Ajouter(cmdUpdate);
 	}
-
+        v.clear();
+        int mapact;
+        if (e->getMapActuel()==1)
+        mapact=2;
+        else
+        mapact=1;
+        v.push_back(mapact);
+        std::cout<<"[main] changer de map:"<<v[0]<<std::endl;
+        Commande cmd1(e,"cm",c.getElapsedTime(),v,0);
+        liste.Ajouter(cmd1);
+	v.clear();
 	liste.ToutExecuter();
 
         // draw the map

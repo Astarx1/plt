@@ -1,7 +1,7 @@
 #include "../engine.h"
-
+#include <iostream>
 using namespace engine;
-
+using namespace std;
 void ListeCommandes::Ajouter (Commande cmd){
     commandes.push_back(cmd);
 }
