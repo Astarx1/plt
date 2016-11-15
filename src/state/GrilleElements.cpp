@@ -39,7 +39,6 @@ int GrilleElements::getLargeur () {
 bool const GrilleElements::isAcces (int i, int j) {
     //std::cout<<"GrilleElements::isAcces "<<this->elements.size()<<std::endl;
     for(int k=0; k < elements.size(); k++){
-        std::cout<<"GrilleElements::isAcces "<<i<<" "<<j<<std::endl;
         if(this->getElement(k)->getX() == i && this->getElement(k)->getY() == j){
             if(this->getElement(k)->getTypeID() == ACCES){
                 return true;
@@ -62,7 +61,6 @@ void GrilleElements::charger (char * nom_fichier) {
 	for (int i = 0; i < l.size(); ++i) {
             if (i==12) {
                 ajoutElement('a');
-                std::cout << "GrilleElements::charger nouvel acces (" << elements.size() << ") X :" << (elements.at(elements.size()-1)->getX()) << std::endl;
             }
             else{
 		ajoutElement('v');

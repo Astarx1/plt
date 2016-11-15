@@ -2,6 +2,7 @@
 #include <ctime>
 #include <iostream>
 
+#define TRACE_REGLE 0
 
 using namespace state;
 using namespace sf;
@@ -60,13 +61,22 @@ bool Regles::peutEntrerCombat (state::Etat* e, int id){
 bool Regles::peutChangerMap (state::Etat* e, int id){    
     Personnage& perso = e->getRefPersonnage(id);
     sf::Vector2f vect=e->getGrilleCoord(perso.getX(),perso.getY());
-    std::cout<<"X:"<<vect.x <<" Y:"<<vect.y<<std::endl;
+    
+    #if TRACE_REGLE==1
+        std::cout<<"X:"<<vect.x <<" Y:"<<vect.y<<std::endl;
+    #endif
+    
     if(((e->getGrille()).isAcces(vect.x,vect.y))){
-        std::cout<<"Regles::peutChangerMap return true"<<std::endl;
-        
+
+        #if TRACE_REGLE==1
+            std::cout<<"Regles::peutChangerMap return true"<<std::endl;
+        #endif
         return true;
     }
-   std::cout<<"Regles::peutChangerMap return false"<<std::endl;
+    
+    #if TRACE_REGLE==1
+        std::cout<<"Regles::peutChangerMap return false"<<std::endl;
+    #endif
     return false;
 }
 
