@@ -4,4 +4,6 @@
 
 #include "ia/IA.h"
 #include "ia/IAminimale.h"
+#include "ia/IAheuristic.h"
+#include "ia/IAcombat.h"
 #endif
