@@ -4,6 +4,8 @@
 #include "../render.h"
 #include <iostream>
 
+#define TRACE_GRILLEELT 1
+
 using namespace state;
 using namespace render;
 
@@ -40,6 +42,9 @@ bool const GrilleElements::isAcces (int i, int j) {
     //std::cout<<"GrilleElements::isAcces "<<this->elements.size()<<std::endl;
     for(int k=0; k < elements.size(); k++){
         if(this->getElement(k)->getX() == i && this->getElement(k)->getY() == j){
+			#if TRACE_GRILLEELT == 1
+				std::cout << "GrilleElements::isAcces : On teste si " << i << ", " << j << " est un acces" <<std::endl;
+			#endif
             if(this->getElement(k)->getTypeID() == ACCES){
                 return true;
             }
@@ -59,12 +64,18 @@ void GrilleElements::charger (char * nom_fichier) {
 	std::vector<int> l = p.ParsingMap(nom_fichier);
 	
 	for (int i = 0; i < l.size(); ++i) {
-            if (i==12) {
-                ajoutElement('a');
-            }
-            else{
-		ajoutElement('v');
-            }
+		if (i==12) {
+			ajoutElement('a');
+			Element * pc = elements.at(elements.size()-1);
+
+			#if TRACE_GRILLEELT == 1
+				std::cout << "GrilleElements::charger : On rajoute une case acces : X(" << (elements.at(elements.size()-1))->getX() << ") Y(" << (elements.at(elements.size()-1))->getY() << ")" <<std::endl;
+			#endif
+		}
+		else{
+			ajoutElement('v');
+		}
+		
 		Statique * a = getTile(elements.size()-1);
 		a->setTile(l[i]);
 	}

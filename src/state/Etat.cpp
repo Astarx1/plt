@@ -156,6 +156,14 @@ sf::Vector2f Etat::getCoordTile(int x, int y){
   	return sf::Vector2f(x*DLARGEUR*2, y*DHAUTEUR*2);
 }
 
+sf::Vector2f Etat::getGrilleTile (int id) {
+	return sf::Vector2f(0,0);
+}
+
+int Etat::getIdTile (int i, int j) {
+	return 0;
+}
+
 void Etat::clearPersos() {
 	personnages.clear();
 }
