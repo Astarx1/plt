@@ -9,7 +9,6 @@ void Commande::run (){
     Regles r;
     
     if (type =="d"){
-        std::cout<< "il peut se deplacer (" <<params[0] << "," << params[1] << ") : "<< r.peutDeplacer(etat,id,params[0],params[1]);
         if (r.peutDeplacer(etat,id,params[0],params[1])){ 
             ChangerObjectif cb; 
             std::vector<int> v;

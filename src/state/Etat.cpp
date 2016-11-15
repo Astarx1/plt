@@ -22,8 +22,9 @@ Etat::~Etat () {
 
 TypeID Etat::getStatutGrille (int i, int j) {
 	for (int k = 0; k < personnages.size(); ++k) {
-		if ((personnages.at(k)).getXobj() == i && (personnages.at(k)).getYobj() == y) {
-			return personnages.getTypeID();
+		sf::Vector2f pos = getGrilleCoord((personnages.getElement(k))->getX(), (personnages.getElement(k))->getY());
+		if (pos.x == i && pos.y == j) {
+			return (personnages.getElement(k))->getTypeID();
 		}
 	}
 
