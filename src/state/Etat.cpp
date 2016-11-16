@@ -6,6 +6,9 @@
 #define DHAUTEUR 24
 #define DLARGEUR 24
 
+#define TRACE_ETAT 1
+#define TRACE_GETSTATUTGRILLE 1
+
 using namespace state;
 using namespace render;
 
@@ -22,7 +25,9 @@ Etat::~Etat () {
 TypeID Etat::getStatutGrille (int i, int j) {
 	for (int k = 0; k < personnages.size(); ++k) {
 		sf::Vector2f pos = getGrilleCoord((personnages.getElement(k))->getX(), (personnages.getElement(k))->getY());
+		std::cout << "Etat::getStatutGrille : test du personnage X(" << pos.x << ") Y(" << pos.y << ")" << std::endl;
 		if (pos.x == i && pos.y == j) {
+			std::cout << "Etat::getStatutGrille : Match des coordonnees" << std::endl;
 			return (personnages.getElement(k))->getTypeID();
 		}
 	}
@@ -58,13 +63,13 @@ void Etat::loadGrille (int n) {
 		case 1:
 			grille.charger("res/Textures/carte/map1.txt");
 			break;
-                case 2:
-                        grille.charger("res/Textures/carte/map2.txt");
+		case 2:
+			grille.charger("res/Textures/carte/map2.txt");
 			break;
 	}
 }
 
-GrilleElements Etat::getGrille () {
+GrilleElements& Etat::getGrille () {
 	return grille;
 }
 

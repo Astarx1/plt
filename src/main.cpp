@@ -125,6 +125,21 @@ int main(int argc,char* argv[])
         window.clear();
 		v.clear();
 		r.run(e, window, c.getElapsedTime(), rs);
+
+  		GrilleElements& ge = e->getGrille();
+  		/*
+  		for (int i = 0; i < ge.getLargeur(); i++) {
+  			for (int j = 0 ; j < ge.getLongueur(); ++j) {
+  				TypeID t = e->getStatutGrille(i,j);
+  				if (t == TypeID(ACCES))
+  					std::cout << "[" << i << ", " << j << "] : Acces" << std::endl;
+  				if (t == TypeID(MONSTRE))
+  					std::cout << "[" << i << ", " << j << "] : Monstre" << std::endl;
+  				if (t == TypeID(HEROS))
+  					std::cout << "[" << i << ", " << j << "] : Heros" << std::endl;
+  			}
+  		}
+		while (1);*/
         window.display();
     }
 

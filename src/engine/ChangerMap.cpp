@@ -2,6 +2,7 @@
 #include "../state.h"
 #include <vector>
 #include <iostream>
+#include <assert.h>
 
 #define TRACE_CM 1
 
@@ -17,7 +18,7 @@ Regle renvoyant les monstres sous formes de std::vector<Personnages&>
 std::vector<state::Personnage*> defMonstreCarte(state::Etat* e){
     srand(time(NULL));
 	std::vector<state::Personnage*> list;
-	GrilleElements g = e->getGrille();
+	//GrilleElements g = e->getGrille();
 	int map_actuel = e->getMapActuel();
 	int nb_monstre_max = 4;
 	int alea_monstre = 1;
@@ -107,6 +108,8 @@ std::vector<state::Personnage*> defMonstreCarte(state::Etat* e){
 }
 
 void ChangerMap::run (Etat* e, std::vector<int> params,sf::Time t) {
+	assert(params[0] == 1 || params[0] == 2);
+
   	// On commence par sauvegarder les personnages joueurs
 	std::vector<Personnage*> persos;
   	for (int i = 0; i < e->getPersoSize(); ++i) {
@@ -126,8 +129,23 @@ void ChangerMap::run (Etat* e, std::vector<int> params,sf::Time t) {
   	#if TRACE_CM==1
   		std::cout<<"changer map"<<std::endl;
   	#endif
+  	GrilleElements& ge = e->getGrille();
+  	switch(params[0]) {
+  		case 1:
+  			ge.setLongueur(16);
+  			ge.setLargeur(20);
+  			break;
+  		case 2:
+  			std::cout << "[Warning ChangerMap::run] Map 2 non definie" << std::endl;
+  			ge.setLongueur(20);
+  			ge.setLargeur(16);
+  			break;
+  		default:
+  			std::cout << "[Erreur] Map Unknown" << std::endl;
+
+  	}
   	e->setMapActuel(params[0]);
-        
+
 	for (auto d : persos) {
 		e->rajouterPerso ('h');
 		Personnage &p = e->getRefPersonnage(e->getPersoSize()-1);

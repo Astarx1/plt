@@ -44,7 +44,7 @@ namespace state {
     Personnage& getRefPersonnage (int n);
     Personnage& getRefPersonnage (int i, int j);
     void loadGrille (int n);
-    GrilleElements getGrille ();
+    GrilleElements& getGrille ();
     bool getEnCombat ();
     void setEnCombat (bool b);
     void rajouterPerso (char e);

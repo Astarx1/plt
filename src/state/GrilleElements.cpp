@@ -45,7 +45,10 @@ bool const GrilleElements::isAcces (int i, int j) {
 			#if TRACE_GRILLEELT == 1
 				std::cout << "GrilleElements::isAcces : On teste si " << i << ", " << j << " est un acces" <<std::endl;
 			#endif
-            if(this->getElement(k)->getTypeID() == ACCES){
+            if(this->getElement(k)->getTypeID() == TypeID(ACCES)) {
+				#if TRACE_GRILLEELT == 1
+					std::cout << "GrilleElements::isAcces : " << i << ", " << j << " est un acces" <<std::endl;
+				#endif
                 return true;
             }
         }
@@ -58,19 +61,20 @@ void GrilleElements::setCase (Element * e, int i, int j) {
     e->setY(j);
 }
 
+int sup (float a) {
+	int i = 0;
+	while (i <= a) ++i;
+	return i;
+}
+
 void GrilleElements::charger (char * nom_fichier) {
 	elements.clear();
 	Parseur p;
 	std::vector<int> l = p.ParsingMap(nom_fichier);
 	
 	for (int i = 0; i < l.size(); ++i) {
-		if (i==12) {
+		if (l[i]==12) {
 			ajoutElement('a');
-			Element * pc = elements.at(elements.size()-1);
-
-			#if TRACE_GRILLEELT == 1
-				std::cout << "GrilleElements::charger : On rajoute une case acces : X(" << (elements.at(elements.size()-1))->getX() << ") Y(" << (elements.at(elements.size()-1))->getY() << ")" <<std::endl;
-			#endif
 		}
 		else{
 			ajoutElement('v');
@@ -78,6 +82,13 @@ void GrilleElements::charger (char * nom_fichier) {
 		
 		Statique * a = getTile(elements.size()-1);
 		a->setTile(l[i]);
+		a->setX(i%largeur);
+		a->setY(sup(i/longueur));
+
+		#if TRACE_GRILLEELT == 1
+			if (a->getTile() == 12)
+				std::cout << "GrilleElements::charger : On rajoute une case acces : X(" << (elements.at(elements.size()-1))->getX() << ") Y(" << (elements.at(elements.size()-1))->getY() << ")" <<std::endl;
+		#endif
 	}
 }
 
