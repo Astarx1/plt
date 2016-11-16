@@ -4,7 +4,7 @@
 #include <iostream>
 #include <assert.h>
 
-#define TRACE_CM 0
+#define TRACE_CM 1
 
 using namespace state;
 using namespace engine;
@@ -108,7 +108,7 @@ std::vector<state::Personnage*> defMonstreCarte(state::Etat* e){
 }
 
 void ChangerMap::run (Etat* e, std::vector<int> params,sf::Time t) {
-	assert(params[0] == 1 || params[0] == 2);
+	assert(params[0] == 1 || params[0] == 2 || params[0] == 4);
 
   	// On commence par sauvegarder les personnages joueurs
 	std::vector<Personnage*> persos;
@@ -147,9 +147,9 @@ void ChangerMap::run (Etat* e, std::vector<int> params,sf::Time t) {
   			ge.setLongueur(20);
   			ge.setLargeur(16);
   			break;
-  		default:
-  			std::cout << "[Erreur] Map Unknown" << std::endl;
-
+  		case 4:
+  			ge.setLongueur(14);
+  			ge.setLargeur(20);
   	}
   	e->setMapActuel(params[0]);
 

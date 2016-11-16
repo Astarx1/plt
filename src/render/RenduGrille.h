@@ -32,6 +32,7 @@ namespace render {
     void dessin (sf::RenderTarget&  target, state::Etat* e);
     RenduGrille ();
     ~RenduGrille ();
+    void changeTileset (char * fichier);
   private:
     bool charger (const std::string& tileset, sf::Vector2u  tileSize, unsigned int  width, unsigned int  height);
   };

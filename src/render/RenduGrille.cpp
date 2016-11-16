@@ -45,7 +45,7 @@ RenduGrille::RenduGrille() {
 	//}
 	//charger("res/Textures/carte/tileset.png", sf::Vector2u(48,48), level, 20, 16);
 	Parseur p;
-	level = p.ParsingMap("res/Textures/carte/map1.txt");
+	level = p.ParsingMap("res/Textures/carte/mapCombat.txt");
 	level.push_back(1);
 	charger ("res/Textures/carte/tileset.png", sf::Vector2u(48,48), 20, 16);
 }
@@ -56,6 +56,7 @@ RenduGrille::~RenduGrille(){
 
 bool RenduGrille::charger (const std::string& tileset, sf::Vector2u  tileSize, unsigned int  width, unsigned int  height){
 	// load the tileset texture
+        
         if (!m_tileset.loadFromFile(tileset))
             return false;
 

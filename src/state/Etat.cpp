@@ -94,6 +94,9 @@ void Etat::loadGrille (int n) {
 		case 2:
 			grille.charger("res/Textures/carte/map2.txt");
 			break;
+		case 4:
+			grille.charger("res/Textures/carte/mapCombat.txt");
+			break;
 	}
 }
 
