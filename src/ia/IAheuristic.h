@@ -16,7 +16,7 @@ namespace ia {
   class IAheuristic {
     // Operations
   public:
-    state::Personnage* cible (std::vector<state::Personnage* > ennemis, int id, state::Etat* etat);
+    state::Personnage* cible (int id, state::Etat* etat);
     std::vector< int > posCible (state::Etat* etat, int id, state::Personnage* ennemi);
     bool attaqueCible (state::Etat* etat, int id, state::Personnage* ennemi);
   };

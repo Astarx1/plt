@@ -1,25 +1,38 @@
+#include <vector>
 #include "../ia.h"
 #include "../engine.h"
 #include "../state.h"
+#include "state/Personnage.h"
 
 using namespace state;
 using namespace ia;
 using namespace engine;
 using namespace std;
 
-Personnage* IAheuristic::cible(std::vector<state::Personnage*> ennemis, int id, state::Etat* etat){
+Personnage* IAheuristic::cible(int id, state::Etat* etat){
     
-    Personnage* perso = ennemis[0];
-    std::vector< state::Personnage* > cibles;
+    std::vector< state::Personnage* > cibles, ennemis;
+    Personnage* perso, *ite;
     std::vector<int> pos_ennemi, pos_joueur, pos_cible;
+    int dmin = 0, index = 0;
+    
     pos_ennemi.resize(2);
     pos_joueur.resize(2);
     pos_cible.resize(2);
-    int dmin = 0, index = 0;
     
     pos_joueur[0] = etat->getRefPersonnage(id).getX();
     pos_joueur[1] = etat->getRefPersonnage(id).getY();
-    
+    /*
+    // Création de la liste d'ennemis
+    for(int i=0; i < etat->getPerso().size(); i++){
+        ite = etat->getRefPersonnage(etat->getPerso().getElement(i)->getElemID());
+        if(ite->getTypeID() == PERSO){
+            ennemis.push_back(ite);
+        }
+        
+    }
+    */
+    perso = ennemis[0];
     cibles.push_back(perso);
     
     
