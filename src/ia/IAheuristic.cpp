@@ -22,16 +22,16 @@ Personnage* IAheuristic::cible(int id, state::Etat* etat){
     
     pos_joueur[0] = etat->getRefPersonnage(id).getX();
     pos_joueur[1] = etat->getRefPersonnage(id).getY();
-    /*
+    
     // Création de la liste d'ennemis
     for(int i=0; i < etat->getPerso().size(); i++){
-        ite = etat->getRefPersonnage(etat->getPerso().getElement(i)->getElemID());
+        ite = &(etat->getRefPersonnage(etat->getPerso().getElement(i)->getElemID()));
         if(ite->getTypeID() == PERSO){
             ennemis.push_back(ite);
         }
         
     }
-    */
+    
     perso = ennemis[0];
     cibles.push_back(perso);
     
