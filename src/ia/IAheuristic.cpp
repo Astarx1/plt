@@ -62,3 +62,86 @@ Personnage* IAheuristic::cible(std::vector<state::Personnage*> ennemis, int id, 
     return perso;  
 }
 
+std::vector<int> IAheuristic::posCible(state::Etat* etat, int id, state::Personnage* ennemi){
+    std::vector<int> pos_cible, pos_ennemi, pos_joueur;
+    int pm = etat->getRefPersonnage(id).getPM();
+    
+    pos_ennemi.resize(2);
+    pos_ennemi[0] = ennemi->getX();
+    pos_ennemi[1] = ennemi->getY();
+    
+    pos_joueur.resize(2);
+    pos_joueur[0] = etat->getRefPersonnage(id).getX();
+    pos_joueur[1] = etat->getRefPersonnage(id).getY();
+    
+    pos_cible.resize(2);
+    
+    while(pm != 0){
+        if(pos_joueur[0] == pos_ennemi[0] && pos_joueur[1] != pos_ennemi[1]){
+            if(pos_joueur[1] < pos_ennemi[1] && pos_joueur[1] != pos_ennemi[1]-1){
+                pos_joueur[1]++;
+                pm--;
+            }
+            else if(pos_joueur[1] > pos_ennemi[1] && pos_joueur[1] != pos_ennemi[1]+1){
+                pos_joueur[1]--;
+                pm--;
+            }
+            else{
+                break;
+            }
+        }
+        else if(pos_joueur[1] == pos_ennemi[1] && pos_joueur[0] != pos_ennemi[0]){
+            if(pos_joueur[0] < pos_ennemi[0] && pos_joueur[0] != pos_ennemi[0]-1){
+                pos_joueur[0]++;
+                pm--;
+            }
+            else if(pos_joueur[0] > pos_ennemi[0] && pos_joueur[0] != pos_ennemi[0]+1){
+                pos_joueur[0]--;
+                pm--;
+            }
+            else{
+                break;
+            }
+        }
+        else{
+            if(pos_joueur[0] < pos_ennemi[0] && pos_joueur[0] != pos_ennemi[0]-1){
+                pos_joueur[0]++;
+                pm--;
+            }
+            else if(pos_joueur[0] > pos_ennemi[0] && pos_joueur[0] != pos_ennemi[0]+1){
+                pos_joueur[0]--;
+                pm--;
+            }
+        }
+    }
+    
+    pos_cible = pos_joueur;
+    
+    return pos_cible;
+    
+}
+
+bool IAheuristic::attaqueCible(state::Etat* etat, int id, state::Personnage* ennemi){
+    bool ret = false;
+    std::vector<int> pos_ennemi, pos_joueur;
+    int dist = 0;
+    
+    pos_ennemi.resize(2);
+    pos_ennemi[0] = ennemi->getX();
+    pos_ennemi[1] = ennemi->getY();
+    
+    pos_joueur.resize(2);
+    pos_joueur[0] = etat->getRefPersonnage(id).getX();
+    pos_joueur[1] = etat->getRefPersonnage(id).getY();
+    
+    dist = sqrt(pow(pos_ennemi[0]-pos_joueur[0],2)+pow(pos_ennemi[1]-pos_joueur[1],2));
+    
+    if(dist == 1){
+        ret = true;
+    }
+    else{
+        ret = false;
+    }
+    
+    return ret;
+}
