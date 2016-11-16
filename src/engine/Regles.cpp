@@ -89,7 +89,7 @@ bool Regles::peutQuitterCombat(state::Etat* e){
     ListeElements persos = e->getPerso();
     
     for(size_t i=0; persos.size(); i++){
-        if(e->getRefPersonnage(i).getTypeID() == TypeID(HEROS) && e->getRefPersonnage(i).getVie() >0){
+        if(e->getRefPersonnage(i).getTypeID() == TypeID(PERSO) && e->getRefPersonnage(i).getVie() >0){
             retH = true;
         }
         if(e->getRefPersonnage(i).getTypeID() == TypeID(MONSTRE) && e->getRefPersonnage(i).getVie() >0){
@@ -161,24 +161,34 @@ int Regles::augmenterPM(state::Etat* e, int id){
     switch(nv){
         case 1:
             return 3;
+        break;
         case 2:
             return 4;
+        break;
         case 3:
             return 5;
+        break;
         case 4:
             return 6;
+        break;
         case 5:
             return 7;
+        break;
         case 6:
             return 8;
+        break;
         case 7:
             return 9;
+        break;
         case 8:
             return 10;
+        break;
         case 9:
             return 11;
+        break;
         case 10:
             return 12;
+        break;
     }
 	return 0;
 }
@@ -189,24 +199,34 @@ int Regles::augmenterPA(state::Etat* e, int id){
     switch(nv){
         case 1:
             return 6;
+        break;
         case 2:
             return 7;
+        break;
         case 3:
             return 8;
+        break;
         case 4:
-            return 9;
+            return 9;       
+        break;
         case 5:
             return 10;
+        break;
         case 6:
             return 11;
+        break;
         case 7:
             return 12;
+        break;
         case 8:
-            return 13;
+            return 13;        
+        break;
         case 9:
             return 14;
+        break;
         case 10:
             return 15;
+        break;
     }
 	return 0;
 }
@@ -217,24 +237,34 @@ int Regles::augmenterPV(state::Etat* e, int id){
     switch(nv){
         case 1:
             return 150;
+        break;
         case 2:
             return 200;
+        break;
         case 3:
             return 250;
+        break;
         case 4:
             return 300;
+        break;
         case 5:
-            return 350;
+            return 350;       
+        break;
         case 6:
             return 400;
+        break;
         case 7:
             return 450;
+        break;
         case 8:
             return 500;
+        break;
         case 9:
             return 550;
+        break;
         case 10:
             return 600;
+        break;
     }
 	return 0;
 }
@@ -245,24 +275,34 @@ int Regles::augmenterForce(state::Etat* e, int id){
     switch(nv){
         case 1:
             return 3;
+        break;
         case 2:
             return 4;
+        break;
         case 3:
             return 5;
+        break;
         case 4:
             return 6;
+        break;
         case 5:
             return 7;
+        break;
         case 6:
             return 8;
+        break;
         case 7:
             return 9;
+        break;
         case 8:
             return 10;
+        break;
         case 9:
             return 11;
+        break;
         case 10:
             return 12;
+        break;
     }
 	return 0;
 }
@@ -296,6 +336,7 @@ std::vector<state::Personnage*> Regles::defMonstreCarte(state::Etat* e){
 		}
             }
             return list;
+        break;
             
         case 2:
             for(int i=0; i<alea_monstre; i++){
@@ -310,11 +351,13 @@ std::vector<state::Personnage*> Regles::defMonstreCarte(state::Etat* e){
                 }
             }
             return list;
+        break;
             
         case 3:
             Monstre p(1,1,10,BOSS);
             list.push_back(&p);
             return list;
+        break;
     }
     
 }
@@ -333,10 +376,12 @@ int Regles::defCarteSuiv (state::Etat* e, int id){
             else if(e->getGrille().isAcces(x,y))
                 mapSuiv = 3;
             return mapSuiv;
+        break;
         case 2:
             if(!combat)
                 mapSuiv = 1;
             return mapSuiv;
+        break;
         case 3:
             if(combat)
                 mapSuiv = 4;
@@ -344,16 +389,19 @@ int Regles::defCarteSuiv (state::Etat* e, int id){
                 mapSuiv = 1;
             else mapSuiv = 5;
             return mapSuiv;
+        break;
         case 4:
             if(!combat)
                 mapSuiv = 3;
             return mapSuiv;
+        break;
         case 5:
             if(combat)
                 mapSuiv = 6;
             else if(e->getGrille().isAcces(x,y))
                 mapSuiv = 3;
             return mapSuiv;
+        break;
             
     }
 }

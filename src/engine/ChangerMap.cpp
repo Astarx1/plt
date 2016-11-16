@@ -4,7 +4,7 @@
 #include <iostream>
 #include <assert.h>
 
-#define TRACE_CM 1
+#define TRACE_CM 0
 
 using namespace state;
 using namespace engine;
@@ -99,7 +99,7 @@ std::vector<state::Personnage*> defMonstreCarte(state::Etat* e){
 				}
 			}
 			return list;
-			break;
+		break;
             
         case 3:
 		break;
@@ -121,18 +121,25 @@ void ChangerMap::run (Etat* e, std::vector<int> params,sf::Time t) {
 			(persos[persos.size() - 1])->setY(pos.y);
 			(persos[persos.size() - 1])->setXobj(pos.x);
 			(persos[persos.size() - 1])->setYobj(pos.y);
+
 			(persos[persos.size() - 1])->setTypePersonnage(ptmp.getTypePersonnage());
+
+			(persos[persos.size() - 1])->setForce(ptmp.getForce());
+			(persos[persos.size() - 1])->setNiveau(ptmp.getNiveau());
+			(persos[persos.size() - 1])->setAttaqueDistance(ptmp.getAttaqueDistance());
+			(persos[persos.size() - 1])->setAttaqueCAC(ptmp.getAttaqueCAC());
+			(persos[persos.size() - 1])->setEtatPerso(ptmp.getEtatPerso());
 		}
   	}
   
   	e->clearPersos();
   	#if TRACE_CM==1
-  		std::cout<<"changer map"<<std::endl;
+  		std::cout<<"ChangerMap::run : changement de map (" << params[0] << ") ..."<<std::endl;
   	#endif
   	GrilleElements& ge = e->getGrille();
   	switch(params[0]) {
   		case 1:
-  			ge.setLongueur(16);
+  			ge.setLongueur(14);
   			ge.setLargeur(20);
   			break;
   		case 2:
@@ -157,6 +164,12 @@ void ChangerMap::run (Etat* e, std::vector<int> params,sf::Time t) {
 		p.setXobj(d->getXobj());
 		p.setY(d->getY());
 		p.setYobj(d->getYobj());
+
+		p.setForce(d->getForce());
+		p.setNiveau(d->getNiveau());
+		p.setAttaqueDistance(d->getAttaqueDistance());
+		p.setAttaqueCAC(d->getAttaqueCAC());
+		p.setEtatPerso(d->getEtatPerso());
 		delete d;
 	}
 
