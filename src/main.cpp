@@ -114,11 +114,14 @@ int main(int argc,char* argv[])
 		  					std::cout << "[" << pos.x << ", " << pos.y << "] : Vide" << std::endl;
 		  				break;
 		  				case TypeID(PERSO):
-		  					std::cout << "[" << pos.x << ", " << pos.y << "] : Heros" << std::endl;
-		  				break;
+		  					v.push_back(1);
+		  					v.push_back(1);
+                    		Commande cmd(e,"a",c.getElapsedTime(),v,0);
+                    		liste.Ajouter(cmd);	
+                    		v.clear();	  				
+                    	break;
                     }
-                    Commande cmd(e,"d",c.getElapsedTime(),v,0);
-                    //liste.Ajouter(cmd);
+
                     v.clear();
 
                     std::cout << "[Main] pos Souris " << x << " et " << y << std::endl;

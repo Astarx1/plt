@@ -81,9 +81,21 @@ Personnage & Etat::getRefPersonnage (int n) {
 }
 
 Personnage & Etat::getRefPersonnage (int i, int j) {
-	Element & o = *(personnages.getElement (i));
-	o.accepte (visiteur);
-	return *(visiteur.getpHeros ());
+	if (getStatutGrille(i,j) == TypeID(PERSO) || getStatutGrille(i,j) == TypeID(MONSTRE)) {
+		int i;
+		for (i = 0; i < personnages.size(); ++i) {
+			sf::Vector2f pos = getGrilleCoord((personnages.getElement(i))->getX(), (personnages.getElement(i))->getY());
+			if (i == pos.x && j == pos.y) {
+				break;
+			} 
+		}
+		Element & o = *(personnages.getElement (i));
+		o.accepte (visiteur);
+		if (o.getTypeID() == TypeID(PERSO))
+			return *(visiteur.getpHeros ());
+		else 
+			return *(visiteur.getpMonstre ());
+	}
 }
 
 void Etat::loadGrille (int n) {
