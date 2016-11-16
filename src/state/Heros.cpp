@@ -14,7 +14,7 @@ bool Heros::isJoueur () {
 }
 
 TypeID Heros::getTypeID () {
-	return TypeID(HEROS);
+	return TypeID(PERSO);
 }
 
 int const Heros::getExp () {

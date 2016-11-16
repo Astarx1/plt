@@ -2,10 +2,11 @@
 #include "Visiteur.h"
 using namespace state;
 
-Monstre::Monstre (int i, int j, int nv) : Personnage (i, HEROS) {
+Monstre::Monstre (int i, int j, int nv) : Personnage (i, TypePersonnage(MONSTRE1)) {
     this->x=i;
     this->y=j;
     this->niveau=nv;
+    this->typeID=MONSTRE;
 }
 
 Monstre::Monstre(int i, int j, int nv, TypePersonnage type):Personnage(nv,type){
@@ -18,7 +19,7 @@ bool Monstre::isJoueur () {
 }
 
 TypeID Monstre::getTypeID () {
-	return TypeID ();
+	return TypeID (MONSTRE);
 }
 
 void Monstre::accepte (IVisiteur & v) {

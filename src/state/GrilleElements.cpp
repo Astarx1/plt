@@ -4,7 +4,7 @@
 #include "../render.h"
 #include <iostream>
 
-#define TRACE_GRILLEELT 1
+#define TRACE_GRILLEELT 0
 
 using namespace state;
 using namespace render;
@@ -14,19 +14,22 @@ GrilleElements::GrilleElements (int nv) {
     {
 		case 1:
 		{
-			this->largeur=600;
-			this->longueur=900;
+			this->largeur=20;
+			this->longueur=16;
 		}
+        break;
 		case 2:
 		{
-			this->largeur=600;
-			this->longueur=900;
+			this->largeur=20;
+			this->longueur=16;
 		}
+        break;
 		case 3:
 		{
-			this->largeur=600;
-			this->longueur=600;
+			this->largeur=20;
+			this->longueur=16;
 		}
+        break;
     }
 }
 
@@ -41,7 +44,7 @@ int GrilleElements::getLargeur () {
 bool const GrilleElements::isAcces (int i, int j) {
     //std::cout<<"GrilleElements::isAcces "<<this->elements.size()<<std::endl;
     for(int k=0; k < elements.size(); k++){
-        if(this->getElement(k)->getX() == i && this->getElement(k)->getY() == j){
+        if((getElement(k))->getX() == i && (getElement(k))->getY() == j){
 			#if TRACE_GRILLEELT == 1
 				std::cout << "GrilleElements::isAcces : On teste si " << i << ", " << j << " est un acces" <<std::endl;
 			#endif
@@ -81,9 +84,10 @@ void GrilleElements::charger (char * nom_fichier) {
 		}
 		
 		Statique * a = getTile(elements.size()-1);
+		
 		a->setTile(l[i]);
-		a->setX(i%largeur);
-		a->setY(sup(i/longueur));
+		a->setX(i%largeur+1);
+		a->setY(sup(i/largeur)-1);
 
 		#if TRACE_GRILLEELT == 1
 			if (a->getTile() == 12)

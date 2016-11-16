@@ -29,16 +29,18 @@ int main(int argc,char* argv[])
 	e->setEnCombat(false);
 
 	cout << "[Main] Rajout des persos" << endl;
-	e->rajouterPerso('h');
-	cout << "[Main] Accès a un perso" << endl;
-	Personnage& p = e->getRefPersonnage(0);
-	cout << "[Main] Parametrisation du perso" << endl;
-	p.setTypePersonnage(TypePersonnage(HEROS));
-	p.setX(200);
-	p.setY(350);
-	p.setDirection(OUEST);
-	p.setEnDeplacement(false);
-	
+	for (int i = 0; i < 4; ++i) {
+		e->rajouterPerso('h');
+		Personnage& p = e->getRefPersonnage(0);
+		cout << "[Main] Parametrisation du perso" << endl;
+		p.setTypePersonnage(TypePersonnage(HEROS));
+		sf::Vector2f pos = e->getGrilleCoord(10,10+i);
+		p.setX(pos.x);
+		p.setY(pos.y);
+		p.setDirection(OUEST);
+		p.setEnDeplacement(false);
+	}
+
 	sf::Clock c;
 	sf::RenderStates rs;
  	ListeCommandes liste;
@@ -85,12 +87,42 @@ int main(int argc,char* argv[])
                     sf::Vector2f pos = e->getGrilleCoord(x,y); 
                     v.push_back(pos.x);
                     v.push_back(pos.y);
+
+                    TypeID typeTmp = e->getStatutGrille(pos.x, pos.y);
+                    /*if (true) {
+  						if (typeTmp == TypeID(ACCES)) {
+  							std::cout << "[" << pos.x << ", " << pos.y << "] : Acces" << std::endl;
+  						}
+		  				else if (typeTmp == TypeID(MONSTRE)){
+		  					std::cout << "[" << pos.x << ", " << pos.y << "] : Monstre" << std::endl;
+		  				}
+		  				else if (typeTmp == TypeID(VIDE)) {
+		  					std::cout << "[" << pos.x << ", " << pos.y << "] : Vide" << std::endl;
+		  				}
+		  				else if (typeTmp == TypeID(PERSO)) {
+		  					std::cout << "[" << pos.x << ", " << pos.y << "] : Heros" << std::endl;
+		  				}
+                    }*/
+                    switch (typeTmp) {
+  						case TypeID(ACCES):
+  							std::cout << "[" << pos.x << ", " << pos.y << "] : Acces" << std::endl;
+  						break;
+		  				case TypeID(MONSTRE):
+		  					std::cout << "[" << pos.x << ", " << pos.y << "] : Monstre" << std::endl;
+		  				break;
+		  				case TypeID(VIDE):
+		  					std::cout << "[" << pos.x << ", " << pos.y << "] : Vide" << std::endl;
+		  				break;
+		  				case TypeID(PERSO):
+		  					std::cout << "[" << pos.x << ", " << pos.y << "] : Heros" << std::endl;
+		  				break;
+                    }
                     Commande cmd(e,"d",c.getElapsedTime(),v,0);
-                    liste.Ajouter(cmd);
+                    //liste.Ajouter(cmd);
                     v.clear();
 
-                    std::cout << "pos Souris " << x << " et " << y << std::endl;
-                    std::cout << "pos Grille " << pos.x << " et " << pos.y << std::endl;
+                    std::cout << "[Main] pos Souris " << x << " et " << y << std::endl;
+                    std::cout << "[Main] pos Grille " << pos.x << " et " << pos.y << std::endl;
                     
                     //cmd1.run();
                 }
@@ -126,16 +158,19 @@ int main(int argc,char* argv[])
 		v.clear();
 		r.run(e, window, c.getElapsedTime(), rs);
 
-  		GrilleElements& ge = e->getGrille();
-  		/*
+  		/*GrilleElements& ge = e->getGrille();
+  		
   		for (int i = 0; i < ge.getLargeur(); i++) {
   			for (int j = 0 ; j < ge.getLongueur(); ++j) {
   				TypeID t = e->getStatutGrille(i,j);
+
   				if (t == TypeID(ACCES))
   					std::cout << "[" << i << ", " << j << "] : Acces" << std::endl;
-  				if (t == TypeID(MONSTRE))
+  				else if (t == TypeID(MONSTRE))
   					std::cout << "[" << i << ", " << j << "] : Monstre" << std::endl;
-  				if (t == TypeID(HEROS))
+  				else if (t == TypeID(VIDE))
+  					std::cout << "[" << i << ", " << j << "] : Vide" << std::endl;
+  				else if (t == TypeID(PERSO))
   					std::cout << "[" << i << ", " << j << "] : Heros" << std::endl;
   			}
   		}

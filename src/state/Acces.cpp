@@ -14,7 +14,7 @@ bool Acces::isAcces () {
 }
 
 TypeID Acces::getTypeID () {
-	return TypeID ();
+	return TypeID (ACCES);
 }
 
 void Acces::accepte (IVisiteur & v) {

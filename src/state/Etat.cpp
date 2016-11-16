@@ -23,19 +23,47 @@ Etat::~Etat () {
 }
 
 TypeID Etat::getStatutGrille (int i, int j) {
+	bool b = true;
 	for (int k = 0; k < personnages.size(); ++k) {
 		sf::Vector2f pos = getGrilleCoord((personnages.getElement(k))->getX(), (personnages.getElement(k))->getY());
-		std::cout << "Etat::getStatutGrille : test du personnage X(" << pos.x << ") Y(" << pos.y << ")" << std::endl;
+		
+		#if TRACE_ETAT == 1 && TRACE_GETSTATUTGRILLE == 1
+			std::cout << "Etat::getStatutGrille : test du personnage X(" << pos.x << ") Y(" << pos.y << ")" << std::endl;
+		#endif
+
 		if (pos.x == i && pos.y == j) {
-			std::cout << "Etat::getStatutGrille : Match des coordonnees" << std::endl;
+			#if TRACE_ETAT == 1  && TRACE_GETSTATUTGRILLE == 1
+				std::cout << "Etat::getStatutGrille : Match des coordonnees" << std::endl;
+				if((personnages.getElement(k))->getTypeID() == TypeID(PERSO))
+					std::cout << "Etat::getStatutGrille : C'est un heros" << std::endl;
+				else if((personnages.getElement(k))->getTypeID() == TypeID(MONSTRE))
+					std::cout << "Etat::getStatutGrille : C'est un monstre" << std::endl;
+				else 
+					std::cout << "Etat::getStatutGrille : C'est autre chose..." << std::endl;
+			#endif
+			b = false;
 			return (personnages.getElement(k))->getTypeID();
 		}
 	}
 
-	if (grille.isAcces(i, j))
-		return ACCES;
-	else
-		return VIDE;
+	if (b) {
+		if (grille.isAcces(i, j)) {
+
+			#if TRACE_ETAT == 1 && TRACE_GETSTATUTGRILLE == 1
+				std::cout << "Etat::getStatutGrille : C'est un acces" << std::endl;
+			#endif
+
+			return ACCES;
+		}
+		else {
+
+			#if TRACE_ETAT == 1 && TRACE_GETSTATUTGRILLE == 1
+				std::cout << "Etat::getStatutGrille : C'est du vide " << std::endl;
+			#endif
+
+			return VIDE;
+		}
+	}
 }
 
 Personnage & Etat::getRefPersonnage (int n) {
@@ -46,7 +74,7 @@ Personnage & Etat::getRefPersonnage (int n) {
 	o.accepte (visiteur);
 	TypeID a = o.getTypeID();
 	
-	if (a == TypeID(HEROS)) 
+	if (a == TypeID(PERSO)) 
 		return *(visiteur.getpHeros ());
 	else  
 		return *(visiteur.getpMonstre ());
@@ -144,15 +172,15 @@ sf::Vector2f Etat::getGrilleCoord(int x, int y){
   	
   	int rx = -1;
   	int ry = -1;
-  	if (x >= sx && x <= sx+DLARGEUR*2*grille.getLargeur()) {
-	      	for (rx = 0; sx+rx*DLARGEUR*2 < x ;rx++) {
+  	if (x >= sx && x <= sx+DLARGEUR*2*grille.getLargeur()) { 	
+  		for (rx = 0; sx+rx*DLARGEUR*2 < x ;rx++) {
 		}
-    	}
+    }
   	
   	if (y >= sy && y <= sy+DHAUTEUR*2*grille.getLongueur()) {
-	      	for (ry = 0; sy+ry*DLARGEUR*2 < y ;ry++) {
+		for (ry = 0; sy+ry*DLARGEUR*2 < y ;ry++) {
 		}
-    	}
+    }
   
   	return sf::Vector2f(rx, ry);
 }
