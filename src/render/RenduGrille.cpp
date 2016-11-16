@@ -97,7 +97,9 @@ bool RenduGrille::charger (const std::string& tileset, sf::Vector2u  tileSize, u
             }
 
         return true;
-
 }
 
-
+void RenduGrille::changeTileset (char * fichier) {
+    Parseur p;
+    level = p.ParsingMap(fichier);
+}
