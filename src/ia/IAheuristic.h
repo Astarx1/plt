@@ -7,6 +7,7 @@
 
 namespace state {
   class Personnage;
+  class Etat;
 }
 
 namespace ia {
@@ -15,7 +16,9 @@ namespace ia {
   class IAheuristic {
     // Operations
   public:
-    state::Personnage* cible (std::vector<state::Personnage* > ennemis);
+    state::Personnage* cible (std::vector<state::Personnage* > ennemis, int id, state::Etat* etat);
+    std::vector< int > posCible (state::Etat* etat, int id, state::Personnage* ennemi);
+    bool attaqueCible (state::Etat* etat, int id, state::Personnage* ennemi);
   };
 
 };
