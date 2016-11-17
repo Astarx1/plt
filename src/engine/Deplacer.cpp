@@ -6,7 +6,7 @@
 using namespace engine;
 using namespace state;
 
-#define ECART 4
+#define ECART 2
 
 int abs (int a) { return a >= 0 ? a : -a; }
 int signe (int a) { return a >= 0 ? 1 : -1; }
@@ -42,6 +42,8 @@ void Deplacer::run(Etat* e, std::vector<int> params,sf::Time t) {
 			p.setY(p.getY() + s * speed * abs (t.asMilliseconds()-p.getTimer().asMilliseconds())+signe(p.getYobj()-p.getY()));
       	}
 		else {
+			p.setY(p.getYobj());
+			p.setX(p.getXobj());
 			p.setEnDeplacement(false);
 		}
 	}
