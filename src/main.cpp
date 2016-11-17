@@ -37,6 +37,7 @@ int main(int argc,char* argv[])
 		sf::Vector2f pos = e->getGrilleCoord(10,10+i);
 		p.setX(pos.x);
 		p.setY(pos.y);
+		p.setVie(100);
 		p.setDirection(OUEST);
 		p.setEnDeplacement(false);
 	}
@@ -57,7 +58,7 @@ int main(int argc,char* argv[])
 	Rendu r;
 
 	std::cout << "[Main] Initialisation de l'IA" << std::endl;
-	IAminimale ias(e);
+	IAcombat ias(e);
 
 	std::cout << "[Main] Application de l'IA aux monstres" << std::endl;
 	std::vector <int> IdPersosMonstres;

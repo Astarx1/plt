@@ -1,7 +1,7 @@
 #include "../render.h"
 #include <iostream>
 
-#define TRACE_RGRILLE 1
+#define TRACE_RGRILLE 0
 
 using namespace render;
 
