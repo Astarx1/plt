@@ -6,7 +6,7 @@
 
 #define TRACE_IAMIN 0
 
-#define MVTPROBABILITY 2400
+#define MVTPROBABILITY 15000
 
 using namespace state;
 using namespace ia;

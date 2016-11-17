@@ -115,10 +115,11 @@ int main(int argc,char* argv[])
 		  				break;
 		  				case TypeID(PERSO):
 		  					v.push_back(1);
-		  					v.push_back(1);
-                    		Commande cmd(e,"a",c.getElapsedTime(),v,0);
+		  					int iatck = e->getIdPersonnage (pos.x, pos.y);
+                    		/*Commande cmd(e,"a",c.getElapsedTime(),v,0);
                     		liste.Ajouter(cmd);	
-                    		v.clear();	  				
+                    		v.clear();	  	*/
+                    		std::cout << "[Main] Personnage " << iatck << std::endl;			
                     	break;
                     }
 

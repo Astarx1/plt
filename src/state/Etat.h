@@ -42,7 +42,7 @@ namespace state {
     ~Etat ();
     TypeID getStatutGrille (int i, int j);
     Personnage& getRefPersonnage (int n);
-    Personnage& getRefPersonnage (int i, int j);
+    int getIdPersonnage (int i, int j);
     void loadGrille (int n);
     GrilleElements& getGrille ();
     bool getEnCombat ();

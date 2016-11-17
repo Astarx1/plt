@@ -8,6 +8,7 @@
 
 #define TRACE_ETAT 1
 #define TRACE_GETSTATUTGRILLE 1
+#define TRACE_GETIDPERSO 1
 
 using namespace state;
 using namespace render;
@@ -80,21 +81,22 @@ Personnage & Etat::getRefPersonnage (int n) {
 		return *(visiteur.getpMonstre ());
 }
 
-Personnage & Etat::getRefPersonnage (int i, int j) {
+int Etat::getIdPersonnage (int i, int j) {
 	if (getStatutGrille(i,j) == TypeID(PERSO) || getStatutGrille(i,j) == TypeID(MONSTRE)) {
-		int i;
-		for (i = 0; i < personnages.size(); ++i) {
-			sf::Vector2f pos = getGrilleCoord((personnages.getElement(i))->getX(), (personnages.getElement(i))->getY());
+		int l;
+		for (l = 0; l < personnages.size(); ++l) {
+			sf::Vector2f pos = getGrilleCoord((personnages.getElement(l))->getX(), (personnages.getElement(l))->getY());
+			#if TRACE_GETIDPERSO == 1 && TRACE_ETAT == 1
+				std::cout << "On verifie " << pos.x << " (" << i << ") - " << pos.y << " (" << j << ")" << std::endl;
+			#endif
 			if (i == pos.x && j == pos.y) {
 				break;
 			} 
 		}
-		Element & o = *(personnages.getElement (i));
-		o.accepte (visiteur);
-		if (o.getTypeID() == TypeID(PERSO))
-			return *(visiteur.getpHeros ());
-		else 
-			return *(visiteur.getpMonstre ());
+		return l;
+	}
+	else {
+		return -1;
 	}
 }
 
