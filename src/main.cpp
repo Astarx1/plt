@@ -48,7 +48,7 @@ int main(int argc,char* argv[])
 
 	// On devrait rajouter dans les commandes une vérification de l'existence des parametres.
 	std::cout << "[Main] Initialisation de la Map" << std::endl;
-	v.push_back(2);
+	v.push_back(4);
 	liste.Ajouter(Commande (e,"im",c.getElapsedTime(),v,0));
 	liste.ToutExecuter();
 	v.clear();
@@ -152,8 +152,8 @@ int main(int argc,char* argv[])
         mapact=1;
         v.push_back(mapact);
         //std::cout<<"[main] changer de map:"<<v[0]<<std::endl;
-		Commande cmd1(e,"cm",c.getElapsedTime(),v,0);
-		liste.Ajouter(cmd1);
+		//Commande cmd1(e,"cm",c.getElapsedTime(),v,0);
+		//liste.Ajouter(cmd1);
 		v.clear();
 		liste.ToutExecuter();
 

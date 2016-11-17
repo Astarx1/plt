@@ -21,6 +21,7 @@ void Attaquer::run(Etat* e, std::vector<int> params,sf::Time t){
 		if (attaque_subit.getVie() - degat <= 0) {
 		    e->enleverPerso(params[1]);
 		}
+		
 		// Inserer ici la fonction pour recuperer le cout en PM
 		int pm = 4;
 		Personnage & attaquant = e->getRefPersonnage(params[0]);
