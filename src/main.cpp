@@ -57,6 +57,7 @@ int main(int argc,char* argv[])
 	std::cout << "[Main] Initialisation du rendu" << std::endl;
 	Rendu r;
 
+
 	std::cout << "[Main] Initialisation de l'IA" << std::endl;
 	IAcombat ias(e);
 
