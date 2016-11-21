@@ -5,6 +5,8 @@
 #include <assert.h>
 
 #define TRACE_CM 1
+#define TRACE_CM_RUN 1
+#define TRACE_CM_DEFMC 1
 
 using namespace state;
 using namespace engine;
@@ -28,7 +30,7 @@ std::vector<state::Personnage*> defMonstreCarte(state::Etat* e){
 			for(int i=12; i<14; i++){
 				for (int j=5; j<10; j++){
 					int y=rand()%20;
-					#if TRACE_CM==1
+					#if TRACE_CM==1 && TRACE_CM_DEFMC == 1
 						std::cout << "ChangerMap::defMonstreCarte : Choix aleatoire : " << y << std::endl;
 					#endif
 					sf::Vector2f pos = e->getCoordTile(i, j);
@@ -116,24 +118,30 @@ void ChangerMap::run (Etat* e, std::vector<int> params,sf::Time t) {
 	    	Personnage& ptmp = e->getRefPersonnage(i);
 	      	if (ptmp.getTypePersonnage() == TypePersonnage(HEROS) || ptmp.getTypePersonnage() == TypePersonnage(HEROINE)) {
 			persos.push_back(new Heros(1, 1, 1));
+
 			sf::Vector2f pos = e->getCoordTile(10, 10+i);
-			(persos[persos.size() - 1])->setX(pos.x);
-			(persos[persos.size() - 1])->setY(pos.y);
-			(persos[persos.size() - 1])->setXobj(pos.x);
-			(persos[persos.size() - 1])->setYobj(pos.y);
+			(persos[persos.size() - 1])->setX (pos.x);
+			(persos[persos.size() - 1])->setY (pos.y);
+			(persos[persos.size() - 1])->setXobj (pos.x);
+			(persos[persos.size() - 1])->setYobj (pos.y);
 
-			(persos[persos.size() - 1])->setTypePersonnage(ptmp.getTypePersonnage());
+			(persos[persos.size() - 1])->setTypePersonnage (ptmp.getTypePersonnage());
 
-			(persos[persos.size() - 1])->setForce(ptmp.getForce());
-			(persos[persos.size() - 1])->setNiveau(ptmp.getNiveau());
-			(persos[persos.size() - 1])->setAttaqueDistance(ptmp.getAttaqueDistance());
-			(persos[persos.size() - 1])->setAttaqueCAC(ptmp.getAttaqueCAC());
-			(persos[persos.size() - 1])->setEtatPerso(ptmp.getEtatPerso());
+			(persos[persos.size() - 1])->setVie (ptmp.getVie());
+			(persos[persos.size() - 1])->setForce (ptmp.getForce());
+			(persos[persos.size() - 1])->setNiveau (ptmp.getNiveau());
+			(persos[persos.size() - 1])->setAttaqueDistance (ptmp.getAttaqueDistance());
+			(persos[persos.size() - 1])->setAttaqueCAC (ptmp.getAttaqueCAC());
+			(persos[persos.size() - 1])->setEtatPerso (ptmp.getEtatPerso());
+
+		  	#if TRACE_CM==1 && TRACE_CM_RUN==1
+		  		std::cout<< "ChangerMap::run : Pointeur perso (" << ptmp.getVie() << " / " << (persos[persos.size() - 1])->getVie() << ") ..." << std::endl;
+		  	#endif
 		}
   	}
   
   	e->clearPersos();
-  	#if TRACE_CM==1
+  	#if TRACE_CM==1 && TRACE_CM_RUN==1
   		std::cout<<"ChangerMap::run : changement de map (" << params[0] << ") ..."<<std::endl;
   	#endif
   	GrilleElements& ge = e->getGrille();
@@ -165,14 +173,22 @@ void ChangerMap::run (Etat* e, std::vector<int> params,sf::Time t) {
 		p.setY(d->getY());
 		p.setYobj(d->getYobj());
 
+		p.setVie(d->getVie());
 		p.setForce(d->getForce());
 		p.setNiveau(d->getNiveau());
 		p.setAttaqueDistance(d->getAttaqueDistance());
 		p.setAttaqueCAC(d->getAttaqueCAC());
 		p.setEtatPerso(d->getEtatPerso());
+
+	  	#if TRACE_CM==1 && TRACE_CM_RUN==1
+	  		std::cout<<"ChangerMap::run : Perso (" << p.getVie() << " / " << d->getVie() << ") ..." << std::endl;
+	  	#endif
+		
 		delete d;
 	}
 
 	defMonstreCarte(e);
         
 }
+
+

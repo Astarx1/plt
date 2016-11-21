@@ -31,7 +31,7 @@ int Personnage::getPM () {
 }
 
 int Personnage::getVie () {
-	return this->vie;
+	return vie;
 }
 
 Attaque Personnage::getAttaqueDistance () {
@@ -67,7 +67,7 @@ void Personnage::setPM (int i) {
 }
 
 void Personnage::setVie (int i) {
-    this->vie = i;
+    vie = i;
 }
 
 void Personnage::setAttaqueDistance (Attaque attaqueDist) {

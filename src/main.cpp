@@ -31,13 +31,13 @@ int main(int argc,char* argv[])
 	cout << "[Main] Rajout des persos" << endl;
 	for (int i = 0; i < 4; ++i) {
 		e->rajouterPerso('h');
-		Personnage& p = e->getRefPersonnage(0);
-		cout << "[Main] Parametrisation du perso" << endl;
+		Personnage& p = e->getRefPersonnage(i);
 		p.setTypePersonnage(TypePersonnage(HEROS));
 		sf::Vector2f pos = e->getGrilleCoord(10,10+i);
 		p.setX(pos.x);
 		p.setY(pos.y);
 		p.setVie(100);
+		cout << "[Main] Parametrisation du perso (" << p.getVie() << " PV)" << endl;
 		p.setDirection(OUEST);
 		p.setEnDeplacement(false);
 	}
@@ -49,7 +49,7 @@ int main(int argc,char* argv[])
 
 	// On devrait rajouter dans les commandes une vérification de l'existence des parametres.
 	std::cout << "[Main] Initialisation de la Map" << std::endl;
-	v.push_back(4);
+	v.push_back(1);
 	liste.Ajouter(Commande (e,"im",c.getElapsedTime(),v,0));
 	liste.ToutExecuter();
 	v.clear();
@@ -59,7 +59,7 @@ int main(int argc,char* argv[])
 
 
 	std::cout << "[Main] Initialisation de l'IA" << std::endl;
-	IAcombat ias(e);
+	IAminimale ias(e);
 
 	std::cout << "[Main] Application de l'IA aux monstres" << std::endl;
 	std::vector <int> IdPersosMonstres;
@@ -116,12 +116,16 @@ int main(int argc,char* argv[])
 		  					std::cout << "[" << pos.x << ", " << pos.y << "] : Vide" << std::endl;
 		  				break;
 		  				case TypeID(PERSO):
-		  					v.push_back(1);
-		  					int iatck = e->getIdPersonnage (pos.x, pos.y);
-                    		/*Commande cmd(e,"a",c.getElapsedTime(),v,0);
-                    		liste.Ajouter(cmd);	
-                    		v.clear();	  	*/
-                    		std::cout << "[Main] Personnage " << iatck << std::endl;			
+                    		if (!e->getEnCombat()) {
+                    			std::cout << "[Main] Rentrée en combat ..." << std::endl;
+                    			v.clear();
+                    			Commande cmdEC(e,"ec",c.getElapsedTime(),v,0);
+								liste.Ajouter(cmdEC);
+                    			v.clear();
+                    		}			
+                    		else {
+                    			std::cout << "[Main] On est déjà en combat ..." << std::endl; 
+                    		}
                     	break;
                     }
 

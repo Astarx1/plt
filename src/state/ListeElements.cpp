@@ -17,7 +17,7 @@ int ListeElements::size () {
 }
 
 Element * ListeElements::getElement (int n) {
-	return (this->elements).at(n);
+	return (elements).at(n);
 }
 
 void ListeElements::setElement (int i, Element * e) {

@@ -27,6 +27,7 @@ void Commande::run (){
             Attaquer a;
             std::vector<int> v;
             v.push_back(id);
+            v.push_back(params[1]);
             a.run(etat,v,temps);
         }
     }

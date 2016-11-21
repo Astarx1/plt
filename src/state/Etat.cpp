@@ -87,7 +87,7 @@ int Etat::getIdPersonnage (int i, int j) {
 		for (l = 0; l < personnages.size(); ++l) {
 			sf::Vector2f pos = getGrilleCoord((personnages.getElement(l))->getX(), (personnages.getElement(l))->getY());
 			#if TRACE_GETIDPERSO == 1 && TRACE_ETAT == 1
-				std::cout << "On verifie " << pos.x << " (" << i << ") - " << pos.y << " (" << j << ")" << std::endl;
+				std::cout << "Etat::getIdPersonnage : On verifie " << pos.x << " (" << i << ") - " << pos.y << " (" << j << ")" << std::endl;
 			#endif
 			if (i == pos.x && j == pos.y) {
 				break;
@@ -178,7 +178,7 @@ Heros& Etat::getRefHeros(int id){
     o.accepte (visiteur);
     TypeID a = o.getTypeID();
 	
-    if (a == TypeID(HEROS)) 
+    if (a == TypeID(PERSO)) 
         return *(visiteur.getpHeros ());
 	 
 }

@@ -19,7 +19,7 @@ void ChangerObjectif::run(Etat* e, std::vector<int> params, sf::Time t) {
 			if (params[2] >= 16) 
 				params[2] = 15;
 			if (params[2] <= 5) 
-				params[1] = 6;
+				params[2] = 6;
 		}
 		else if (e->getMapActuel() == 4) {
 			if (params[1] >= 17) 

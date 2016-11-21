@@ -110,7 +110,7 @@ bool Regles::peutAttaquer(state::Etat* e, int id){
         }
     }
     else{
-        ret = false;
+        ret = true;
     }
     
     return ret;
