@@ -4,7 +4,7 @@
 #include <iostream>
 #include <assert.h>
 
-#define TRACE_CM 1
+#define TRACE_CM 0
 #define TRACE_CM_RUN 1
 #define TRACE_CM_DEFMC 1
 

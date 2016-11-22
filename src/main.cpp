@@ -87,12 +87,13 @@ int main(int argc,char* argv[])
                     int x=event.mouseButton.x;
                     int y=event.mouseButton.y;
                     sf::Vector2f pos = e->getGrilleCoord(x,y); 
+                    /*v.clear();
                     v.push_back(pos.x);
                     v.push_back(pos.y);
                     
-                    Commande cmd(e,"d",c.getElapsedTime(),v,0);
-                    liste.Ajouter(cmd);	
-                    v.clear();
+                    //Commande cmd(e,"d",c.getElapsedTime(),v,0);
+                    //liste.Ajouter(cmd);	
+                    v.clear();*/
 
                     TypeID typeTmp = e->getStatutGrille(pos.x, pos.y);
                     /*if (true) {
@@ -109,32 +110,36 @@ int main(int argc,char* argv[])
 		  					std::cout << "[" << pos.x << ", " << pos.y << "] : Heros" << std::endl;
 		  				}
                     }*/
+                    Commande cmdCM(e,"cm",c.getElapsedTime(),v,0);
+                    Commande cmdEC(e,"ec",c.getElapsedTime(),v,0);
+
                     switch (typeTmp) {
-  						case TypeID(ACCES):{
-  							std::cout << "[" << pos.x << ", " << pos.y << "] : Acces" << std::endl;
-                                                        v.clear();
-  							Commande cmd(e,"cm",c.getElapsedTime(),v,0);
-  							liste.Ajouter(cmd);
-  						   	v.clear();
-                                                break;}
-		  				case TypeID(MONSTRE):
-		  					std::cout << "[" << pos.x << ", " << pos.y << "] : Monstre" << std::endl;
-		  				break;
-		  				case TypeID(VIDE):
-		  					std::cout << "[" << pos.x << ", " << pos.y << "] : Vide" << std::endl;
-		  				break;
-		  				case TypeID(PERSO):
+                      case ACCES:
+                        std::cout << "[" << pos.x << ", " << pos.y << "] : Acces" << std::endl;
+                        v.clear();
+                        liste.Ajouter(cmdCM);
+                        v.clear();
+                        break;
+
+                      case MONSTRE :
+                        std::cout << "[" << pos.x << ", " << pos.y << "] : Monstre" << std::endl;
+                        break;
+
+                      case VIDE :
+                        std::cout << "[" << pos.x << ", " << pos.y << "] : Vide" << std::endl;
+                        break;
+
+                      case PERSO :
                     		if (!e->getEnCombat()) {
                     			std::cout << "[Main] Rentrée en combat ..." << std::endl;
                     			v.clear();
-                    			Commande cmdEC(e,"ec",c.getElapsedTime(),v,0);
-								liste.Ajouter(cmdEC);
-                    			v.clear();
-                    		}			
+                          liste.Ajouter(cmdEC);
+                          v.clear();
+                    		}
                     		else {
                     			std::cout << "[Main] On est déjà en combat ..." << std::endl; 
                     		}
-                    	break;
+                        break;
                     }
 
                     v.clear();

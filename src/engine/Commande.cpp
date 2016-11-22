@@ -79,8 +79,6 @@ void Commande::run (){
             EntrerCombat ec;
             std::vector<int> v;
             v.push_back(id);
-            v.push_back(params[0]);
-            v.push_back(params[1]);
             ec.run(etat,v,temps);
         }
     }

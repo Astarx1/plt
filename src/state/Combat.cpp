@@ -9,6 +9,8 @@ Combat::~Combat () {
 }
 
 void Combat::createListe (ListeElements listePersonnages) {
+	listeTour.clear();
+	
 	for(int i = 0; i < listePersonnages.size(); i++)
 		listeTour.push_back(i);
 	tourActuel = -1;
