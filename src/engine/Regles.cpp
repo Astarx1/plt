@@ -61,7 +61,7 @@ bool Regles::peutEntrerCombat (state::Etat* e, int id){
  */
 bool Regles::peutChangerMap (state::Etat* e, int id){    
     Personnage& perso = e->getRefPersonnage(id);
-    sf::Vector2f vect=e->getGrilleCoord(perso.getX(),perso.getY());
+    sf::Vector2f vect=e->getGrilleCoord(perso.getXobj(),perso.getYobj());
     
     #if TRACE_REGLE==1 && TRACE_REGLE_CHANGER_MAP==1
         std::cout<<"X:"<<vect.x <<" Y:"<<vect.y<<std::endl;
@@ -363,47 +363,46 @@ std::vector<state::Personnage*> Regles::defMonstreCarte(state::Etat* e){
 }
 
 int Regles::defCarteSuiv (state::Etat* e, int id){
+    Personnage& perso = e->getRefPersonnage(id);
     int map_actuel = e->getMapActuel();
     bool combat = e->getEnCombat();
     int mapSuiv = 0;
-    int x = e->getRefHeros(id).getX();
-    int y = e->getRefHeros(id).getY();
+    sf::Vector2f vect=e->getGrilleCoord(perso.getXobj(),perso.getYobj());
+	int x = vect.x;
+	int y = vect.y;
+	#if TRACE_REGLE_CHANGER_MAP==1
+        std::cout<<" Regles::defCarteSuiv : On entre dans la fonction : "<< map_actuel << " x = " << x << " y = " << y <<std::endl;
+    #endif
     
     switch(map_actuel){
         case 1: 
             if(combat)
-                mapSuiv = 2;
+                mapSuiv = 4;
             else if(e->getGrille().isAcces(x,y))
-                mapSuiv = 3;
-            return mapSuiv;
+                mapSuiv = 2;
+            //return mapSuiv;
         break;
         case 2:
-            if(!combat)
-                mapSuiv = 1;
-            return mapSuiv;
-        break;
-        case 3:
-            if(combat)
+			if(combat)
                 mapSuiv = 4;
-            else if(e->getGrille().isAcces(x,y) && x < 5)
-                mapSuiv = 1;
-            else mapSuiv = 5;
-            return mapSuiv;
-        break;
-        case 4:
-            if(!combat)
-                mapSuiv = 3;
-            return mapSuiv;
-        break;
-        case 5:
-            if(combat)
-                mapSuiv = 6;
             else if(e->getGrille().isAcces(x,y))
                 mapSuiv = 3;
-            return mapSuiv;
+            //return mapSuiv;
         break;
+        case 3:
+			if(combat)
+                mapSuiv = 4;
+            else if(e->getGrille().isAcces(x,y))
+                mapSuiv = 2;
+            //return mapSuiv;
+        break;
+        
             
     }
+    #if TRACE_REGLE_CHANGER_MAP==1
+        std::cout<<" Regles::defCarteSuiv : On sort dans la fonction : "<< mapSuiv <<std::endl;
+    #endif
+    return mapSuiv;
 }
 
 };

@@ -89,6 +89,10 @@ int main(int argc,char* argv[])
                     sf::Vector2f pos = e->getGrilleCoord(x,y); 
                     v.push_back(pos.x);
                     v.push_back(pos.y);
+                    
+                    Commande cmd(e,"d",c.getElapsedTime(),v,0);
+                    liste.Ajouter(cmd);	
+                    v.clear();
 
                     TypeID typeTmp = e->getStatutGrille(pos.x, pos.y);
                     /*if (true) {
@@ -106,9 +110,13 @@ int main(int argc,char* argv[])
 		  				}
                     }*/
                     switch (typeTmp) {
-  						case TypeID(ACCES):
+  						case TypeID(ACCES):{
   							std::cout << "[" << pos.x << ", " << pos.y << "] : Acces" << std::endl;
-  						break;
+                                                        v.clear();
+  							Commande cmd(e,"cm",c.getElapsedTime(),v,0);
+  							liste.Ajouter(cmd);
+  						   	v.clear();
+                                                break;}
 		  				case TypeID(MONSTRE):
 		  					std::cout << "[" << pos.x << ", " << pos.y << "] : Monstre" << std::endl;
 		  				break;
