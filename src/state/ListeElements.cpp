@@ -17,7 +17,10 @@ int ListeElements::size () {
 }
 
 Element * ListeElements::getElement (int n) {
-	return (elements).at(n);
+    if(n >= elements.size()) {
+        std::cout << "no such element " << n << " / " << elements.size() << std::endl;
+    }
+    return (elements).at(n);
 }
 
 void ListeElements::setElement (int i, Element * e) {
