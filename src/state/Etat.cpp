@@ -7,7 +7,7 @@
 #define DLARGEUR 24
 
 #define TRACE_ETAT 1
-#define TRACE_GETSTATUTGRILLE 1
+#define TRACE_GETSTATUTGRILLE 0
 #define TRACE_GETIDPERSO 1
 
 using namespace state;
@@ -109,7 +109,7 @@ void Etat::loadGrille (int n) {
 			grille.charger("res/Textures/carte/map2.txt");
 			break;
 		case 4:
-			grille.charger("res/Textures/carte/map4s.txt");
+			grille.charger("res/Textures/carte/map4.txt");
 			break;
 	}
 }

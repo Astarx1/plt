@@ -151,7 +151,8 @@ int main(int argc,char* argv[])
                 }
             }
         }
-                IdPersosMonstres.clear();
+    
+    IdPersosMonstres.clear();
 		for (int i = 0; i < e->getPersoSize(); ++i) {
 			IdPersosMonstres.push_back(i);
 		}
