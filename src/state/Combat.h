@@ -28,7 +28,9 @@ namespace state {
     void createListe (ListeElements listePersonnages);
     void tourSuivant (sf::Time t);
     sf::Time getTimerDebutTour ();
+    int getTour ();
   };
+
 };
 
 #endif
