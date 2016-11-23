@@ -39,7 +39,7 @@ std::vector<state::Personnage*> defMonstreCarte(state::Etat* e){
 						nb_monstre_max--;
 						e->rajouterPerso ('m');
 						Personnage &p = e->getRefPersonnage(e->getPersoSize()-1);
-						p.setTypePersonnage(TypePersonnage(MONSTRE1));
+						p.setTypePersonnage(TypePersonnage(MONSTRE3));
 						p.setEnDeplacement(false);
 						p.setDirection(OUEST);
 						p.setX(pos.x);
@@ -52,7 +52,7 @@ std::vector<state::Personnage*> defMonstreCarte(state::Etat* e){
 						nb_monstre_max--;
 						e->rajouterPerso ('m');
 						Personnage &p = e->getRefPersonnage(e->getPersoSize()-1);
-						p.setTypePersonnage(TypePersonnage(MONSTRE2));
+						p.setTypePersonnage(TypePersonnage(MONSTRE4));
 						p.setEnDeplacement(false);
 						p.setDirection(OUEST);
 						p.setX(pos.x);
@@ -76,7 +76,7 @@ std::vector<state::Personnage*> defMonstreCarte(state::Etat* e){
 						nb_monstre_max--;
 						e->rajouterPerso ('m');
 						Personnage &p = e->getRefPersonnage(e->getPersoSize()-1);
-						p.setTypePersonnage(TypePersonnage(MONSTRE3));
+						p.setTypePersonnage(TypePersonnage(MONSTRE1));
 						p.setEnDeplacement(false);
 						p.setDirection(OUEST);
 						p.setX(pos.x);
@@ -89,7 +89,7 @@ std::vector<state::Personnage*> defMonstreCarte(state::Etat* e){
 						nb_monstre_max--;
 						e->rajouterPerso ('m');
 						Personnage &p = e->getRefPersonnage(e->getPersoSize()-1);
-						p.setTypePersonnage(TypePersonnage(MONSTRE4));
+						p.setTypePersonnage(TypePersonnage(MONSTRE2));
 						p.setEnDeplacement(false);
 						p.setDirection(OUEST);
 						p.setX(pos.x);
