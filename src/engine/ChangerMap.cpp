@@ -152,8 +152,8 @@ void ChangerMap::run (Etat* e, std::vector<int> params,sf::Time t) {
   			break;
   		case 2:
   			std::cout << "[Warning ChangerMap::run] Map 2 non definie" << std::endl;
-  			ge.setLongueur(20);
-  			ge.setLargeur(16);
+  			ge.setLongueur(14);
+  			ge.setLargeur(20);
   			break;
   		case 4:
   			ge.setLongueur(14);
