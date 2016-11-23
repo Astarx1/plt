@@ -14,27 +14,31 @@ void RenduGrille::dessin (sf::RenderTarget&  target, state::Etat* e){
 		switch(e->getMapActuel()) {
 			case 1:
                 level = p.ParsingMap("res/Textures/carte/map1.txt");
+                
                 #if TRACE_RGRILLE == 1
                     std::cout << "Taille level : " << level.size() -1 << " - " << 20 * 16 << std::endl;
                 #endif
-                level.at(level.size()-1) = 1;
+                
                 charger ("res/Textures/carte/tileset.png", sf::Vector2u(48,48), 20, 16);
-				break;
+                level.push_back(1);
+			break;
             case 2:
                 #if TRACE_RGRILLE == 1
                     std::cout << "Taille level : " << level.size() -1 << " - " << 20 * 16 << std::endl;
                 #endif
                 level = p.ParsingMap("res/Textures/carte/map2.txt");
-                level.at(level.size()-1) = 2;
+                
                 charger ("res/Textures/carte/tileset.png", sf::Vector2u(48,48), 20, 16);
+                level.push_back(2);
                 break;
             case 3:
                 #if TRACE_RGRILLE == 1
                     std::cout << "Taille level : " << level.size() -1 << " - " << 20 * 16 << std::endl;
                 #endif
                 level = p.ParsingMap("res/Textures/carte/map3.txt");
-                level.at(level.size()-1) = 3;
+                
                 charger ("res/Textures/carte/tileset.png", sf::Vector2u(48,48), 20, 16);
+                level.push_back(3);
                 break;
                         
             case 4:
@@ -42,8 +46,9 @@ void RenduGrille::dessin (sf::RenderTarget&  target, state::Etat* e){
                     std::cout << "Taille level : " << level.size() -1 << " - " << 20 * 16 << std::endl;
                 #endif
                 level = p.ParsingMap("res/Textures/carte/map4.txt");
-                level.at(level.size()-1) = 4;
+                
                 charger ("res/Textures/carte/tileset.png", sf::Vector2u(48,48), 20, 16);
+                level.push_back(4);
                 break;
 		}
 	}
@@ -83,7 +88,7 @@ RenduGrille::RenduGrille() {
 	Parseur p;
 	level = p.ParsingMap("res/Textures/carte/map1.txt");
 	charger ("res/Textures/carte/tileset.png", sf::Vector2u(48,48), 20, 16);
-    level.push_back(1);
+        level.push_back(1);
 }
 
 RenduGrille::~RenduGrille(){
