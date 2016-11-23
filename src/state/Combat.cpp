@@ -10,7 +10,7 @@ Combat::~Combat () {
 
 void Combat::createListe (ListeElements listePersonnages) {
 	listeTour.clear();
-	
+
 	for(int i = 0; i < listePersonnages.size(); i++)
 		listeTour.push_back(i);
 	tourActuel = -1;
@@ -35,4 +35,8 @@ void Combat::tourSuivant (sf::Time t) {
 
 sf::Time Combat::getTimerDebutTour () {
 	return timerDebutTour;
+}
+
+int Combat::getTour() {
+	return tourActuel;
 }

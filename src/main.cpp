@@ -163,13 +163,18 @@ int main(int argc,char* argv[])
 			liste.Ajouter(cmdUpdate);
 		}
 
-        v.clear();
-        int mapact;
-        if (e->getMapActuel()==1)
-        	mapact=2;
-        else
-        mapact=1;
-        v.push_back(mapact);
+    if (e->getEnCombat()) {
+      sf::Time tps_act = c.getElapsedTime();
+      sf::Time tps_combat = (e->getRefCombat()).getTimerDebutTour();
+    }
+
+    v.clear();
+    int mapact;
+    if (e->getMapActuel()==1)
+    	mapact=2;
+    else
+    mapact=1;
+    v.push_back(mapact);
         //std::cout<<"[main] changer de map:"<<v[0]<<std::endl;
 		//Commande cmd1(e,"cm",c.getElapsedTime(),v,0);
 		//liste.Ajouter(cmd1);
@@ -177,7 +182,7 @@ int main(int argc,char* argv[])
 		liste.ToutExecuter();
 
         // draw the map
-        window.clear();
+    window.clear();
 		v.clear();
 		r.run(e, window, c.getElapsedTime(), rs);
 

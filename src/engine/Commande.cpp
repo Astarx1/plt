@@ -96,6 +96,8 @@ void Commande::run (){
         std::vector<int> v;
         v.push_back(id);
         d.run(etat,v,temps); 
+
+        
     }        
 }
 

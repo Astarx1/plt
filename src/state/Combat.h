@@ -29,7 +29,6 @@ namespace state {
     void tourSuivant (sf::Time t);
     sf::Time getTimerDebutTour ();
   };
-
 };
 
 #endif
