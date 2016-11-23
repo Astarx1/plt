@@ -27,7 +27,7 @@ typedef struct sQD {
 	std::vector<int> Parseur::ParsingMap (char* fichier) {
 		std::ifstream f (fichier);
 		if (!f.is_open ())
-			std::cout << "Pas d'ouverture" << std::endl;
+			std::cout << "Parseur::ParsingMap : Pas d'ouverture (" << fichier << ")" << std::endl;
 
 		std::string str, s_tmp;
 		
