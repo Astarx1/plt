@@ -28,6 +28,15 @@ void RenduGrille::dessin (sf::RenderTarget&  target, state::Etat* e){
                 level.at(level.size()-1) = 2;
                 charger ("res/Textures/carte/tileset.png", sf::Vector2u(48,48), 20, 16);
                 break;
+            case 3:
+                #if TRACE_RGRILLE == 1
+                    std::cout << "Taille level : " << level.size() -1 << " - " << 20 * 16 << std::endl;
+                #endif
+                level = p.ParsingMap("res/Textures/carte/map3.txt");
+                level.at(level.size()-1) = 3;
+                charger ("res/Textures/carte/tileset.png", sf::Vector2u(48,48), 20, 16);
+                break;
+                        
             case 4:
                 #if TRACE_RGRILLE == 1
                     std::cout << "Taille level : " << level.size() -1 << " - " << 20 * 16 << std::endl;
