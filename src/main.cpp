@@ -87,13 +87,13 @@ int main(int argc,char* argv[])
                     int x=event.mouseButton.x;
                     int y=event.mouseButton.y;
                     sf::Vector2f pos = e->getGrilleCoord(x,y); 
-                    /*v.clear();
+                    v.clear();
                     v.push_back(pos.x);
                     v.push_back(pos.y);
                     
-                    //Commande cmd(e,"d",c.getElapsedTime(),v,0);
-                    //liste.Ajouter(cmd);	
-                    v.clear();*/
+                    Commande cmd(e,"d",c.getElapsedTime(),v,0);
+                    liste.Ajouter(cmd);	
+                    v.clear();
 
                     TypeID typeTmp = e->getStatutGrille(pos.x, pos.y);
                     /*if (true) {
@@ -151,7 +151,11 @@ int main(int argc,char* argv[])
                 }
             }
         }
-
+                IdPersosMonstres.clear();
+		for (int i = 0; i < e->getPersoSize(); ++i) {
+			IdPersosMonstres.push_back(i);
+		}
+                
 		// IA 
 		for (int i = 0; i < IdPersosMonstres.size(); ++i) {
 			liste.Ajouter(ias.exec_cmd(IdPersosMonstres[i], c.getElapsedTime())); 	
