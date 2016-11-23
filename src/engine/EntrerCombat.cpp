@@ -39,4 +39,8 @@ void EntrerCombat::run(Etat* e, std::vector<int> params,sf::Time t) {
 	// Il faut penser à initialiser la clock dans createListe
   c.createListe(e->getPerso());
   c.tourSuivant(t);
+
+  #if TRACE_ENTRERCOMBAT==1
+  std::cout << "EntrerCombat::run : On rentre en combat ..." << std::endl;
+  #endif
 }
