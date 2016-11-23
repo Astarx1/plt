@@ -145,7 +145,7 @@ void RenduPerso::dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Time c
 			break;
 
 			case MONSTRE3:
-				th1 = pp.ParsingTextures ("res/Textures/heros/monstre3.txt");
+				th1 = pp.ParsingTextures ("res/Textures/monstres/monstre3.txt");
 					if (th1.size()>0) {
 						quad[3].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][0][0],th1[spr_hauteur][spr_longueur][0][1]);
 						quad[2].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][1][0],th1[spr_hauteur][spr_longueur][1][1]);
@@ -165,7 +165,7 @@ void RenduPerso::dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Time c
 			break;
 
 			case MONSTRE4:
-				th1 = pp.ParsingTextures ("res/Textures/heros/monstre4.txt");
+				th1 = pp.ParsingTextures ("res/Textures/monstres/monstre4.txt");
 					if (th1.size()>0) {
 						quad[3].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][0][0],th1[spr_hauteur][spr_longueur][0][1]);
 						quad[2].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][1][0],th1[spr_hauteur][spr_longueur][1][1]);
@@ -185,7 +185,7 @@ void RenduPerso::dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Time c
 			break;
 
 			case BOSS:
-				th1 = pp.ParsingTextures ("res/Textures/heros/boss.txt");
+				th1 = pp.ParsingTextures ("res/Textures/monstres/boss.txt");
 					if (th1.size()>0) {
 						quad[3].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][0][0],th1[spr_hauteur][spr_longueur][0][1]);
 						quad[2].texCoords = sf::Vector2f(th1[spr_hauteur][spr_longueur][1][0],th1[spr_hauteur][spr_longueur][1][1]);
