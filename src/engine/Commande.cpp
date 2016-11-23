@@ -2,11 +2,19 @@
 #include <vector>
 #include <iostream>
 
-#define TRACE_COMMANDE 1
+#define TRACE_COMMANDE 0
 
 using namespace std;
 
-namespace engine{
+namespace engine {
+
+int approx (float a) {
+  int i = 0;
+  while (i < a) i++;
+  if (i-a<=0.5) return i;
+  if (i-a>0.5) return i-1;
+}
+
 void Commande::run (){
     Regles r;
     
@@ -35,7 +43,7 @@ void Commande::run (){
     else if (type =="cm"){  
         if (r.peutChangerMap(etat,id)){
             #if TRACE_COMMANDE==1
-                std::cout << "Execution de la commande ChangerMap" << std::endl;
+                std::cout << "Commande::run : Execution de la commande ChangerMap" << std::endl;
             #endif
             ChangerMap cm;
             std::vector<int> v;
@@ -52,7 +60,7 @@ void Commande::run (){
     else if (type =="im"){  
         if (true){
             #if TRACE_COMMANDE==1
-                std::cout << "Execution de la commande ChangerMap" << std::endl;
+                std::cout << "Commande::run : Execution de la commande ChangerMap" << std::endl;
             #endif
             ChangerMap cm;
             std::vector<int> v;
@@ -98,6 +106,16 @@ void Commande::run (){
         d.run(etat,v,temps); 
 
         
+        if (etat->getEnCombat()) {
+            sf::Time tps_combat = (etat->getRefCombat()).getTimerDebutTour();
+            int s = approx(temps.asSeconds() - tps_combat.asSeconds());
+            if (s == 5) {
+                (etat->getRefCombat()).tourSuivant(temps);
+                #if TRACE_COMMANDE==1
+                   std::cout << "Commande::run : Changement de tour (" << (etat->getRefCombat()).getTour() << std::endl;
+                #endif       
+            }
+        }
     }        
 }
 

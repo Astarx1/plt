@@ -72,6 +72,7 @@ int main(int argc,char* argv[])
 	std::cout << "[Main] Debut de la boucle" << std::endl;
 	std::cout << "/!\\ Si jamais, il n'y a qu'un seul personnage sur la carte, relancer le jeu"  << std::endl;
 
+  int s = 0;
     while (window.isOpen())
     {
         // handle events
@@ -151,7 +152,8 @@ int main(int argc,char* argv[])
                 }
             }
         }
-                IdPersosMonstres.clear();
+    
+    IdPersosMonstres.clear();
 		for (int i = 0; i < e->getPersoSize(); ++i) {
 			IdPersosMonstres.push_back(i);
 		}
@@ -166,11 +168,6 @@ int main(int argc,char* argv[])
 			Commande cmdUpdate(e,"u",c.getElapsedTime(),v,i);
 			liste.Ajouter(cmdUpdate);
 		}
-
-    if (e->getEnCombat()) {
-      sf::Time tps_act = c.getElapsedTime();
-      sf::Time tps_combat = (e->getRefCombat()).getTimerDebutTour();
-    }
 
     v.clear();
     int mapact;

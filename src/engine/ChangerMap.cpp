@@ -29,7 +29,7 @@ std::vector<state::Personnage*> defMonstreCarte(state::Etat* e){
         case 1: 
 			for(int i=12; i<14; i++){
 				for (int j=5; j<10; j++){
-					int y=rand()%20;
+					int y=rand()%5;
 					#if TRACE_CM==1 && TRACE_CM_DEFMC == 1
 						std::cout << "ChangerMap::defMonstreCarte : Choix aleatoire : " << y << std::endl;
 					#endif
@@ -152,8 +152,8 @@ void ChangerMap::run (Etat* e, std::vector<int> params,sf::Time t) {
   			break;
   		case 2:
   			std::cout << "[Warning ChangerMap::run] Map 2 non definie" << std::endl;
-  			ge.setLongueur(20);
-  			ge.setLargeur(16);
+  			ge.setLongueur(14);
+  			ge.setLargeur(20);
   			break;
   		case 4:
   			ge.setLongueur(14);

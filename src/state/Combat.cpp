@@ -31,6 +31,7 @@ void Combat::tourSuivant (sf::Time t) {
 	else {
 		tourActuel = 0;
 	}
+	timerDebutTour = t;
 }
 
 sf::Time Combat::getTimerDebutTour () {
