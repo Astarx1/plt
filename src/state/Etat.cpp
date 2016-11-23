@@ -109,7 +109,7 @@ void Etat::loadGrille (int n) {
 			grille.charger("res/Textures/carte/map2.txt");
 			break;
 		case 4:
-			grille.charger("res/Textures/carte/mapCombat.txt");
+			grille.charger("res/Textures/carte/map4s.txt");
 			break;
 	}
 }
