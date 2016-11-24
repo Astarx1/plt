@@ -25,3 +25,4 @@ int Noeud::getID () {
 state::Element * Noeud::getLien () {
 	return lien;
 }
+

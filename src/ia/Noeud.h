@@ -35,6 +35,7 @@ namespace ia {
     float getF ();
     int getID ();
     state::Element * getLien ();
+    state::Element * MinMax (bool heros);
   };
 
 };
