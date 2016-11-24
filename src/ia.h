@@ -6,7 +6,7 @@
 #include "ia/IAminimale.h"
 #include "ia/IAheuristic.h"
 #include "ia/IAcombat.h"
-#include "ia/Arbre.h"
 #include "ia/Noeud.h"
+#include "ia/Arbre.h"
 #include "ia/MinMaxIA.h"
 #endif

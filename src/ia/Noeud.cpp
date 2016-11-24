@@ -4,6 +4,8 @@
 #include <algorithm>
 #include <iostream>
 
+#define INF 10000
+
 using namespace state;
 using namespace ia;
 
@@ -33,11 +35,13 @@ Noeud * Noeud::getPere() {
 	return pere;
 }
 
-state::Element * Noeud::MinMax (bool heros) {
+void Noeud::MinMax (bool heros) {
 	if (fils.size() > 0) {
 		for (int i = 0; i < fils.size(); ++i) {
 			if (fils[i] != nullptr) {
 				(fils[i])->MinMax(heros);
+
+				f = f > (fils[i])->getF() ? f : (fils[i])->getF();
 			}
 		}
 	}
@@ -61,12 +65,27 @@ state::Element * Noeud::MinMax (bool heros) {
 			}
 
 			if (pos.size() > 1) {
-				if (std::count (morts.begin(), morts.end(), ids[i]->getID()) == 0)
+				if ((std::count (morts.begin(), morts.end(), ids[i]->getID()) == 0) || morts.size() == 0)
 					morts.push_back(ids[i]->getID());
 			}
 		}
+		
+		f = 0;
 
 		for (int i = 0; i < morts.size(); ++i) {
+			TypeID tid = ((ids[morts[i]])->getLien())->getTypeID();
+			if (tid == TypeID(PERSO)) {
+				if (heros)
+					f = f-20;
+				else
+					f = f + 40;
+			}
+			else {
+				if (heros)
+					f = f + 40;
+				else
+					f = f - 20;
+			}
 		}
 	}
 }

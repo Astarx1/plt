@@ -11,10 +11,13 @@ namespace state {
   class ListeElements;
 }
 
+#include "Noeud.h"
+
 namespace ia {
 
   /// class Arbre - 
   class Arbre {
+    // Associations
     // Attributes
   protected:
     int profondeur;

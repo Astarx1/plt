@@ -10,15 +10,20 @@ namespace ia {
 };
 namespace engine {
   class Commande;
+};
+namespace ia {
+  class IA;
 }
 
 #include "Arbre.h"
 #include "engine/Commande.h"
+#include "IA.h"
 
 namespace ia {
 
   /// class MinMaxIA - 
-  class MinMaxIA {
+  class MinMaxIA : public ia::IA {
+    // Associations
     // Attributes
   protected:
     Arbre tmp_arbre;
