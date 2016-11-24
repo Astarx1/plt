@@ -68,7 +68,7 @@ void ListeElements::clear() {
 	elements.clear();
 }
 
-void eraseElem(int i) {
+void ListeElements::eraseElem(int i) {
 	delete elements.at(i);
-	elements.erase(i);
+	elements.erase(elements.begin() + i);
 }

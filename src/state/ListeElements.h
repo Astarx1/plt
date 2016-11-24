@@ -38,6 +38,7 @@ namespace state {
     void ajoutElement (Element * e);
     Statique* getTile (int i);
     void clear ();
+    void eraseElem (int i);
   };
 
 };
