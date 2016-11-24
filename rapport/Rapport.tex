@@ -623,4 +623,124 @@ Méthode(s): peutDeplacer(), peutEntrerCombat(), peutChangerMap(), peutQuitterCo
   \caption{\emph{Package engine}}
 \end{figure}
 
-\end{document}
+\newpage
+
+\section{Intelligence Artificielle}
+\subsection{Stratégie}
+La stratégie d'intelligence artificielle optée dans un premier est basée sur une intelligence simple.
+\subsubsection{Intelligence artificielle minimale}
+Dans une première approche, une intelligence artificielle minimale est adoptée et est basée selon les déplacements d'un personnages. Les déplacements de l'IA s'effectuent de manière aléatoire selon les quatres directions (nord, sud, est et ouest).
+\subsubsection{Intelligence artificielle en combat}
+Dans une seconde approche, une intelligence artificielle en combat est implantée et est basée sur une stratégie d'évolution en combat. Cette stratégie consiste à effectuer des déplacements et des attaques précis selon l'ensemble d'heuristiques défini ci-après:
+\begin{enumerate}
+ 
+ \item Chercher la cible
+  \begin{enumerate}
+   \item L'IA choisi la cible ennemi ayant le moins de point de vie (PV).
+   \item Si plusieurs ennemis ont le même nombre de PV minimal alors l'IA choisi celui qui est le plus proche.
+  \end{enumerate}
+ 
+ \item Se déplacer
+  \begin{enumerate}
+   \item L'IA se déplace vers sa cible en utilisant autant de point de mouvement (PM) que nécessaire.
+  \end{enumerate}
+ 
+ \item Attaquer
+  \begin{enumerate}
+   \item L'IA attaque sa cible en utilisant autant de point d'action (PA) que nécessaire.
+   \item Si la cible et l'IA sont côte à côte alors l'IA effectue une attaque corps à corps.
+   \item Sinon, l'IA effectue une attaque à distance.
+  \end{enumerate}
+
+\end{enumerate}
+
+\subsubsection{Intelligence artificielle basée sur les arbres de recherche}
+Dans une dernière approche, une intelligence artificielle en combat est implantée et est basée sur les arbres de recherche.
+Cette stratégie d'intelligence artificielle est fondée suivant l'algorithme du 'MinMax' qui consiste, de manière générale, à maximiser son gain et à minimiser le gain de l'adversaire.
+Ainsi, cette stratégie permet au joueur de faire un choix parmi l'ensemble de ses actions possibles en anticipant les choix des actions de son adversaire.
+
+
+\subsection{Conception logiciel}
+\textbf{Classe IA.} Cette classe abstraite permet de créer un objet de type IA qui gère l'exécution des commandes de jeu.
+
+\textbf{Classe IAminimale.} Cette classe hérite de la classe IA et permet de générer des commandes simples de déplacement du personnage.\\
+
+\textbf{Classe IAcombat.} Cette classe hérite de la classe IA et permet de générer des commandes de déplacement et d'attaque précises.
+
+\textbf{Classe IAheuristic.} Cette classe permet de gérer l'ensemble d'heuristiques de l'IA en combat.
+
+\textbf{Classe MinMaxIA.} Cette classe hérite de la classe IA et permet de gérer la stratégie basée sur l'algorithme du MinMax.
+
+\textbf{Classe Arbre.} Cette classe permet de créer un objet de type Arbre.
+
+\textbf{Classe Noeud.} Cette classe permet de créer un objet de type Noeud. Un ensemble de noeuds constitue un arbre.\\
+
+Le tableau ci-dessous résume l'ensemble des classes utiles et présentes pour définir l'intelligence artificielle ainsi que leur rôle respectif.\\
+
+\begin{tabularx}{\textwidth}{ |l|X| }
+\hline
+   \textbf{Nom} & \textbf{Role}
+ \\
+\hline
+
+   IA & Cette classe abstraite permet de créer un objet de type IA.
+   
+Attribut(s): etat
+\newline
+Méthode(s): IA(), ~IA(), exec\_cmd()
+ \\
+\hline
+
+    IAminimale & Cette classe hérite de la classe IA permet de généner de simple commandes de déplacement.
+
+Méthode(s): IAminimale(), ~IAminimale(), exec\_cmd()
+  \\
+\hline
+
+    IAcombat & Cette classe hérité de la classe IA permet de générer des commandes de déplacemement et d'attaque précises.
+    
+Attribut(s): strat
+\newline
+Méthode(s): IAcombat(), ~IAcombat(), getHeuristic(), exec\_cmd()
+  \\
+\hline
+
+    IAheuristic & Cette classe permet de gérer l'ensemble d'heuristiques en combat.
+
+Méthode(s): cible(), posCible(), attaqueCible()
+  \\
+\hline
+
+    MinMaxIA & Cette classe héritée de la classe IA permet de gérer la stratégie suivant l'algorithme du MinMax.
+
+Attibut(s): tmp\_arbre
+\newline
+Méthode(s): MinMaxIA(), exec\_cmd()
+  \\
+\hline
+
+    Arbre & Cette classe permet de créer un objet de type Arbre.
+    
+Attribut(s): profondeur, racine
+\newline
+Méthode(s): Arbre(), ~Arbre(), creerArbre(), MinMax()
+  \\
+\hline
+
+    Noeud & Cette classe permet de créer un objet de type Noeud.
+    
+Attibut(s): lien, pere, f, id, fils
+\newline
+Méthode(s): Noeud(), ~Noeud(), createFils(), setF(), getF(), getID(), getLien(), getPere(), MinMax()
+  \\
+\hline
+
+\end{tabularx}\\ \\*
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.45]{img/ia.png}
+  \caption{\emph{Package ia}}
+\end{figure}
+
+\end{document}\grid
