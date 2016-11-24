@@ -63,5 +63,12 @@ Statique * ListeElements::getTile (int n) {
 }
 
 void ListeElements::clear() {
+	for (int i = 0; i < elements.size(); ++i)
+		delete elements.at(i);
 	elements.clear();
+}
+
+void eraseElem(int i) {
+	delete elements.at(i);
+	elements.erase(i);
 }
