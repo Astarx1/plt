@@ -52,7 +52,7 @@ namespace state {
     Combat& getRefCombat ();
     int  getMapActuel ();
     void setMapActuel (int i);
-    ListeElements getPerso ();
+    ListeElements& getPerso ();
     int getPersoSize ();
     int getGrilleSize ();
     Statique& getTile (int i);

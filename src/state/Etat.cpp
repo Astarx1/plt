@@ -149,7 +149,7 @@ void Etat::setMapActuel (int i) {
 	loadGrille(i);
 }
 
-ListeElements Etat::getPerso (){
+ListeElements& Etat::getPerso (){
 	return personnages;
 }
 
