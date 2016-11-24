@@ -10,7 +10,11 @@ using namespace state;
 using namespace ia;
 
 Noeud::Noeud (Noeud * npere, int nid, state::Element * lien) : pere(npere), lien(lien), id(nid) { ; }
-Noeud::~Noeud () { ; }
+
+Noeud::~Noeud () { 
+	for (int i = 0; i < fils.size(); ++i) delete fils[i]; 
+}
+
 void Noeud::createFils (state::ListeElements& lp, int p) {
 	for (int i = 0; i < lp.size(); ++i) {
 		fils.push_back(new Noeud (this, i, lp.getElement(i)));
@@ -18,15 +22,19 @@ void Noeud::createFils (state::ListeElements& lp, int p) {
 			(fils[fils.size()-1])->createFils(lp, p-1);
 	}
 }
+
 void Noeud::setF (float nf) {
 	f = nf;
 }
+
 float Noeud::getF () {
 	return f;
 }
+
 int Noeud::getID () {
 	return id;
 }
+
 state::Element * Noeud::getLien () {
 	return lien;
 }
@@ -35,15 +43,38 @@ Noeud * Noeud::getPere() {
 	return pere;
 }
 
-void Noeud::MinMax (bool heros) {
+int Noeud::MinMax (bool heros) {
 	if (fils.size() > 0) {
+		int id;
+		bool first = true;
 		for (int i = 0; i < fils.size(); ++i) {
 			if (fils[i] != nullptr) {
 				(fils[i])->MinMax(heros);
+				
+				if (first){
+					first = false;
+					id = i;
+					f = (fils[i])->getF();
+				}
+				else {
+					TypeID tid = lien->getTypeID();
 
-				f = f > (fils[i])->getF() ? f : (fils[i])->getF();
+					if ((heros && tid == TypeID(PERSO)) || (!heros && tid == TypeID(MONSTRE))) {
+						if (f > (fils[i])->getF()) {
+							id = i;
+							f = (fils[i])->getF();
+						}
+					}
+					else {
+						if (f < (fils[i])->getF()) {
+							id = i;
+							f = (fils[i])->getF();
+						}					
+					}	
+				}	
 			}
 		}
+		return id;
 	}
 	else {
 		std::vector<Noeud *> ids;
@@ -87,5 +118,6 @@ void Noeud::MinMax (bool heros) {
 					f = f - 20;
 			}
 		}
+		return -1;
 	}
 }

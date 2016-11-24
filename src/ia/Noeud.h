@@ -36,7 +36,7 @@ namespace ia {
     int getID ();
     state::Element * getLien ();
     Noeud * getPere ();
-    void MinMax (bool heros);
+    int MinMax (bool heros);
   };
 
 };

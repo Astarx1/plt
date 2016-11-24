@@ -30,7 +30,7 @@ namespace ia {
     /// @param lp		(???) 
     /// @param npro		(???) 
     void creerArbre (state::ListeElements& lp, int npro);
-    void MinMax (bool heros);
+    int MinMax (bool heros);
   };
 
 };
