@@ -2,6 +2,7 @@
 #include "../state.h"
 
 #include <algorithm>
+#include <iostream>
 
 using namespace state;
 using namespace ia;
@@ -42,9 +43,11 @@ state::Element * Noeud::MinMax (bool heros) {
 	}
 	else {
 		std::vector<Noeud *> ids;
-		Noeud * t = p;
+		ids.push_back(this);
 
-		while (t->getPere != nullptr) {
+		Noeud * t = pere;
+
+		while (t->getPere() != nullptr) {
 			ids.push_back(t);
 			t = t->getPere();
 		}
@@ -53,19 +56,17 @@ state::Element * Noeud::MinMax (bool heros) {
 		for (int i = 0; i < ids.size(); ++i) {
 			std::vector <int> pos; 
 			for (int j = ids.size() - 1; j > 0 ; j--) {
-				if (ids[j].getID() == ids[i].getID())
+				if (ids[j]->getID() == ids[i]->getID())
 					pos.push_back(j);
 			}
+
 			if (pos.size() > 1) {
-				morts.push_back(i);
-				for (int j = 1; j < pos.size(); ++j) {
-					ids.erase(ids.begin() + pos[j]);
-				}
+				if (std::count (morts.begin(), morts.end(), ids[i]->getID()) == 0)
+					morts.push_back(ids[i]->getID());
 			}
 		}
 
 		for (int i = 0; i < morts.size(); ++i) {
-			getTypeID
 		}
 	}
 }

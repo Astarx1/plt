@@ -8,4 +8,5 @@
 #include "ia/IAcombat.h"
 #include "ia/Arbre.h"
 #include "ia/Noeud.h"
+#include "ia/MinMaxIA.h"
 #endif

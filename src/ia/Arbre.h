@@ -16,7 +16,7 @@ namespace ia {
   /// class Arbre - 
   class Arbre {
     // Attributes
-  public:
+  protected:
     int profondeur;
     Noeud * Racine;
     // Operations
@@ -27,6 +27,7 @@ namespace ia {
     /// @param lp		(???) 
     /// @param npro		(???) 
     void creerArbre (state::ListeElements& lp, int npro);
+    void MinMax (bool heros);
   };
 
 };
