@@ -383,10 +383,14 @@ int Regles::defCarteSuiv (state::Etat* e, int id){
             //return mapSuiv;
         break;
         case 2:
-			if(combat)
+            if(combat)
                 mapSuiv = 4;
-            else if(e->getGrille().isAcces(x,y))
-                mapSuiv = 3;
+            else if(e->getGrille().isAcces(x,y)){
+                if(x < 10)
+                    mapSuiv = 1;
+                else
+                   mapSuiv = 3;
+            }                
             //return mapSuiv;
         break;
         case 3:
