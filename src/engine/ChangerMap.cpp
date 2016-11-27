@@ -122,7 +122,7 @@ std::vector<state::Personnage*> defMonstreCarte(state::Etat* e){
 }
 
 void ChangerMap::run (Etat* e, std::vector<int> params,sf::Time t) {
-	assert(params[0] == 1 || params[0] == 2 || params[0] == 4);
+	assert(params[0] == 1 || params[0] == 2 || params[0] == 3 || params[0] == 4);
 
   	// On commence par sauvegarder les personnages joueurs
 	std::vector<Personnage*> persos;

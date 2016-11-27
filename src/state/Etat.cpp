@@ -103,14 +103,17 @@ int Etat::getIdPersonnage (int i, int j) {
 void Etat::loadGrille (int n) {
 	switch (n) {
 		case 1:
-			grille.charger("res/Textures/carte/map1.txt");
-			break;
+                    grille.charger("res/Textures/carte/map1.txt");
+		break;
 		case 2:
-			grille.charger("res/Textures/carte/map2.txt");
-			break;
+                    grille.charger("res/Textures/carte/map2.txt");
+		break;
+                case 3:
+                    grille.charger("res/Textures/carte/map3.txt");
+		break;
 		case 4:
-			grille.charger("res/Textures/carte/map4.txt");
-			break;
+                    grille.charger("res/Textures/carte/map4.txt");
+		break;
 	}
 }
 
