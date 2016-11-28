@@ -12,6 +12,7 @@
 #include "state/ListeElements.h"
 #include "state/GrilleElements.h"
 #include "state/Combat.h"
+#include "state/Observable.h"
 #include "state/Etat.h"
 #include "state/Statique.h"
 #include "state/Vide.h"

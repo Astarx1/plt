@@ -13,6 +13,7 @@ namespace state {
   class Personnage;
   class Statique;
   class Heros;
+  class Observable;
   class IVisiteur;
 }
 
@@ -21,12 +22,13 @@ namespace state {
 #include "Combat.h"
 #include "Visiteur.h"
 #include "TypeID.h"
+#include "Observable.h"
 #include "IVisiteur.h"
 
 namespace state {
 
   /// class Etat - 
-  class Etat {
+  class Etat : public state::Observable {
     // Associations
     // Attributes
   protected:
@@ -64,6 +66,7 @@ namespace state {
     void clearPersos ();
     void clearGrille ();
     void addPerso (Personnage * p);
+    void notifyObserver ();
   };
 
 };

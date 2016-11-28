@@ -12,15 +12,19 @@ namespace render {
 };
 namespace state {
   class Etat;
+};
+namespace render {
+  class Observer;
 }
 
 #include "RenduGrille.h"
 #include "RenduPerso.h"
+#include "Observer.h"
 
 namespace render {
 
   /// class Rendu - 
-  class Rendu {
+  class Rendu : public render::Observer {
     // Associations
     // Attributes
   public:
@@ -28,8 +32,9 @@ namespace render {
     RenduPerso rp;
     // Operations
   public:
-    void run (state::Etat* e, sf::RenderWindow& sw, sf::Time cl, sf::RenderStates rs);
     Rendu ();
+    void run (state::Etat* e, sf::RenderWindow& sw, sf::Time cl, sf::RenderStates rs);
+    void maj (state::Etat * e, char typechang);
   };
 
 };
