@@ -128,6 +128,7 @@ void ChangerMap::run (Etat* e, std::vector<int> params,sf::Time t) {
 	std::vector<Personnage*> persos;
   	for (int i = 0; i < e->getPersoSize(); ++i) {
 	    	Personnage& ptmp = e->getRefPersonnage(i);
+                sf::Vector2f pos = e->getGrilleCoord(ptmp.getX(),ptmp.getY()); 
 	      	if (ptmp.getTypePersonnage() == TypePersonnage(HEROS) || ptmp.getTypePersonnage() == TypePersonnage(HEROINE)) {
 			persos.push_back(new Heros(1, 1, 1));
 
@@ -149,6 +150,28 @@ void ChangerMap::run (Etat* e, std::vector<int> params,sf::Time t) {
 		  	#if TRACE_CM==1 && TRACE_CM_RUN==1
 		  		std::cout<< "ChangerMap::run : Pointeur perso (" << ptmp.getVie() << " / " << (persos[persos.size() - 1])->getVie() << ") ..." << std::endl;
 		  	#endif
+		}
+                else if(pos.x == params[1] && pos.y == params[2]){
+			#if TRACE_CM_RUN==1
+				std::cout<<" Type = " << ptmp.getTypePersonnage()<< " X = " << params[1]<< " Y = "<<params[2]<< std::endl;
+			#endif
+			
+			persos.push_back(new Monstre(1,1,1));
+				
+			 sf::Vector2f pos = e->getCoordTile(16, 5+i);
+			(persos[persos.size() - 1])->setX (pos.x);
+			(persos[persos.size() - 1])->setY (pos.y);
+			(persos[persos.size() - 1])->setXobj (pos.x);
+			(persos[persos.size() - 1])->setYobj (pos.y);
+			(persos[persos.size() - 1])->setTypePersonnage (ptmp.getTypePersonnage());
+			(persos[persos.size() - 1])->setVie (ptmp.getVie());
+			(persos[persos.size() - 1])->setForce (ptmp.getForce());
+			(persos[persos.size() - 1])->setNiveau (ptmp.getNiveau());
+			(persos[persos.size() - 1])->setAttaqueDistance (ptmp.getAttaqueDistance());
+			(persos[persos.size() - 1])->setAttaqueCAC (ptmp.getAttaqueCAC());
+			(persos[persos.size() - 1])->setEtatPerso (ptmp.getEtatPerso());
+			
+				
 		}
   	}
   
@@ -179,7 +202,10 @@ void ChangerMap::run (Etat* e, std::vector<int> params,sf::Time t) {
 
 		p.setTypePersonnage(d->getTypePersonnage());
 		p.setEnDeplacement(false);
-		p.setDirection(OUEST);
+		if(d->getTypePersonnage()==HEROS || d->getTypePersonnage()==HEROINE)
+                    p.setDirection(OUEST);
+		else
+                    p.setDirection(EST);
 		p.setX(d->getX());
 		p.setXobj(d->getXobj());
 		p.setY(d->getY());
