@@ -4,11 +4,11 @@
 
 #include <vector>
 
-namespace render {
+namespace state {
   class Observer;
 }
 
-#include "render/Observer.h"
+#include "Observer.h"
 
 namespace state {
 
@@ -17,12 +17,12 @@ namespace state {
     // Associations
     // Attributes
   public:
-    std::vector<render::Observer *> observers;
+    std::vector<Observer *> observers;
     // Operations
   public:
     virtual ~Observable ();
     virtual void notifyObserver ( );
-    void registerObserver (render::Observer * obs);
+    void registerObserver (Observer * obs);
   };
 
 };

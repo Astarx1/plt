@@ -2,6 +2,8 @@
 #ifndef RENDER__RENDU__H
 #define RENDER__RENDU__H
 
+#include <vector>
+#include <mutex>
 #include "../state.h"
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
@@ -9,32 +11,35 @@
 namespace render {
   class RenduGrille;
   class RenduPerso;
+  class cmdRendu;
 };
 namespace state {
   class Etat;
-};
-namespace render {
   class Observer;
 }
 
 #include "RenduGrille.h"
 #include "RenduPerso.h"
-#include "Observer.h"
+#include "cmdRendu.h"
+#include "state/Observer.h"
 
 namespace render {
 
   /// class Rendu - 
-  class Rendu : public render::Observer {
+  class Rendu : public state::Observer {
     // Associations
     // Attributes
   public:
     RenduGrille rg;
     RenduPerso rp;
+    std::vector<cmdRendu> cmd_buf;
+    std::vector<cmdRendu> cmd;
+    std::mutex mut_cmdbuf;
     // Operations
   public:
     Rendu ();
     void run (state::Etat* e, sf::RenderWindow& sw, sf::Time cl, sf::RenderStates rs);
-    void maj (state::Etat * e, char typechang);
+    void maj (state::Etat * e, char typechang, sf::Time t);
   };
 
 };

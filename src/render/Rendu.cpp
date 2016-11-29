@@ -1,4 +1,6 @@
-#include "Rendu.h"
+#include "../render.h"
+
+#include <mutex>
 #include <iostream>
 
 using namespace render;
@@ -12,15 +14,7 @@ void Rendu::run (Etat* e, sf::RenderWindow& sw, sf::Time cl, sf::RenderStates rs
 Rendu::Rendu () {  
 }
 
-void Rendu::maj(state::Etat* e, char typechang){
-    if(typechang == 'g'){
-        rg.testChgtMap(e);
-        
-    }
-    else if(typechang == 'p'){
-        
-    }
-    else{
-        std::cout<<"[Warning] Rendu::maj: Cette mise à jour n'est pas définie"<<std::endl;
-    }
+void Rendu::maj(state::Etat* e, char typechang, sf::Time t){
+	std::lock_guard<std::mutex> lock(mut_cmdbuf);
+	cmd_buf.push_back(cmdRendu(e, typechang, t));
 }
