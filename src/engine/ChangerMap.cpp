@@ -224,6 +224,7 @@ void ChangerMap::run (Etat* e, std::vector<int> params,sf::Time t) {
 	}
 
 	defMonstreCarte(e);
+	e->notifyObserver('g',t);
 		
 }
 

@@ -4,7 +4,6 @@
 
 #include <vector>
 #include <mutex>
-#include "../state.h"
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 

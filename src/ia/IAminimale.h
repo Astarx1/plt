@@ -2,7 +2,6 @@
 #ifndef IA__IAMINIMALE__H
 #define IA__IAMINIMALE__H
 
-#include "../state.h"
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 

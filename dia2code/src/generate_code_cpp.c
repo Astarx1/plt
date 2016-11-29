@@ -732,10 +732,10 @@ void print_include_stdlib(struct stdlib_includes* si,char* name) {
            print ("#include <SFML/Graphics.hpp>\n#include <SFML/Audio.hpp>\n");
            si->graphics = 1;
        }
-       if (!si->state && strstr(name,"state::")) {
+       /*if (!si->state && strstr(name,"state::")) {
            print ("#include \"../state.h\"\n");
            si->state = 1;
-       }
+       }*/
     }
 }
 

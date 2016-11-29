@@ -1,10 +1,11 @@
 #include "ListeElements.h"
 #include <iostream>
-#include <bits/stl_vector.h>
+#include "../state.h"
 
 using namespace state;
 
-ListeElements::ListeElements () {
+ListeElements::ListeElements (Etat* etat) {
+	this->etat = etat;
 	factory = new ElementFactory();
 }
 
@@ -29,6 +30,7 @@ void ListeElements::setElement (int i, Element * e) {
 
 void ListeElements::ajoutElement (char e) {
 	Element * ne = factory->newInstance(e);
+	ne->setEtat(etat);
 	elements.push_back (ne);
 }
 
@@ -71,4 +73,8 @@ void ListeElements::clear() {
 void ListeElements::eraseElem(int i) {
 	delete elements.at(i);
 	elements.erase(elements.begin() + i);
+}
+
+Etat* ListeElements::getEtat(){
+    return etat;
 }

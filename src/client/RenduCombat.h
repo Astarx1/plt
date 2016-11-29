@@ -4,7 +4,6 @@
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
-#include "../state.h"
 
 namespace client {
   class RectTexte;

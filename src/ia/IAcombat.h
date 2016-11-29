@@ -2,7 +2,6 @@
 #ifndef IA__IACOMBAT__H
 #define IA__IACOMBAT__H
 
-#include "../state.h"
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 

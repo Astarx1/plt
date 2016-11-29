@@ -39,6 +39,8 @@ void ChangerObjectif::run(Etat* e, std::vector<int> params, sf::Time t) {
 		#endif
 		p.setXobj(r.x);
 		p.setYobj(r.y);
+		
+		e->notifyObserver('p',t);
 	}
 }
 

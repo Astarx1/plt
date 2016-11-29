@@ -4,6 +4,7 @@
 
 
 namespace state {
+  class Etat;
   class Element;
   class ListeElements;
 }
@@ -20,7 +21,7 @@ namespace state {
     int largeur;
     // Operations
   public:
-    GrilleElements (int nv);
+    GrilleElements (int nv, Etat* etat);
     int getLongueur ();
     int getLargeur ();
     bool const isAcces (int i, int j);

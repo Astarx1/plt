@@ -14,7 +14,7 @@
 using namespace state;
 using namespace render;
 
-Etat::Etat () : grille(1), personnages() {
+Etat::Etat () : grille(1,this), personnages(this) {
 	mapActuel = 1;
 	loadGrille (1);
 	enCombat = false;
@@ -134,6 +134,9 @@ void Etat::setEnCombat (bool b) {
 
 void Etat::rajouterPerso (char e) { 
 	personnages.ajoutElement (e);
+	for(int i =0; i < observers.size(); i++){
+        (personnages.getElement(personnages.size()-1))->registerObserver(observers[i]);
+    }
 }
 
 void Etat::enleverPerso (int i) {
@@ -232,6 +235,14 @@ void Etat::addPerso (Personnage * p) {
 	personnages.ajoutElement(p);
 }
 
-void Etat::notifyObserver () {
+void Etat::notifyObserver(char typeChg, sf::Time time){
+	if(typeChg == 'g')
+		std::cout<<"[Warning] Etat::notifyObserver: Etat notifie chgt Grille à Rendu !"<<std::endl;
+	else
+		std::cout<<"[Warning] Etat::notifyObserver: Etat notifie chgt Perso à Rendu !"<<std::endl;
 	
+	for(int i =0; i < observers.size();i++){
+		observers[i]->maj(this,typeChg,time);
+				
+	}
 }

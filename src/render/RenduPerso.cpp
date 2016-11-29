@@ -1,5 +1,6 @@
 #include "RenduPerso.h"
 #include "../render.h"
+#include "../state.h"
 #include <iostream>
 
 /* Temps en milliseconde durant lequel un sprite sera affiche */
@@ -27,7 +28,7 @@ int valeurEntiere (float a) {
 	}
 }
 
-void RenduPerso::dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Time cl, sf::RenderStates rs){
+void RenduPerso::testChgtPerso(state::Etat * e, sf::Time cl){
 	int nb_perso = (e->getPerso()).size();
 
 	vertices.clear();
@@ -38,7 +39,7 @@ void RenduPerso::dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Time c
 	Parseur pp;
 	
 	for (int i = 0; i < nb_perso; ++i) {
-		Personnage& p = (e->getRefPersonnage(i));
+        Personnage& p = (e->getRefPersonnage(i));
 		int h_sprite = 0;
 		int l_sprite = 0;
 		int x_sprite = p.getX();
@@ -209,7 +210,12 @@ void RenduPerso::dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Time c
 		quad[1].position = sf::Vector2f(x_sprite , y_sprite+h_sprite/2);
 		quad[3].position = sf::Vector2f(x_sprite - l_sprite, y_sprite-h_sprite/2);
 		quad[2].position = sf::Vector2f(x_sprite, y_sprite-h_sprite/2);             
-	} 
+	}
+}
+
+void RenduPerso::dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Time cl, sf::RenderStates rs){
+	
+	testChgtPerso(e,cl); 
 	rs.texture = &tileset;
 	w.draw(vertices,rs);
 }

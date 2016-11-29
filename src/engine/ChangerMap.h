@@ -2,7 +2,6 @@
 #ifndef ENGINE__CHANGERMAP__H
 #define ENGINE__CHANGERMAP__H
 
-#include "../state.h"
 #include <vector>
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>

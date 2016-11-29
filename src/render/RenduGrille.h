@@ -6,7 +6,6 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <vector>
-#include "../state.h"
 #include <string>
 
 namespace state {

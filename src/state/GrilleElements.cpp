@@ -9,7 +9,7 @@
 using namespace state;
 using namespace render;
 
-GrilleElements::GrilleElements (int nv) {
+GrilleElements::GrilleElements (int nv,Etat* etat) : ListeElements(etat) {
     switch (nv)
     {
 		case 1:

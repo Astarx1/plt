@@ -2,7 +2,6 @@
 #ifndef ENGINE__ACTION__H
 #define ENGINE__ACTION__H
 
-#include "../state.h"
 #include <vector>
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>

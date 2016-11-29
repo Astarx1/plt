@@ -4,7 +4,6 @@
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
-#include "../state.h"
 
 namespace state {
   class Etat;
@@ -28,6 +27,7 @@ namespace render {
     void dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Time cl, sf::RenderStates rs);
     RenduPerso ();
     ~RenduPerso ();
+    void testChgtPerso (state::Etat* e, sf::Time cl);
   };
 
 };

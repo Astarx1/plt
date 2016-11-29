@@ -66,7 +66,7 @@ namespace state {
     void clearPersos ();
     void clearGrille ();
     void addPerso (Personnage * p);
-    void notifyObserver ();
+    void notifyObserver (char typeChg, sf::Time time);
   };
 
 };

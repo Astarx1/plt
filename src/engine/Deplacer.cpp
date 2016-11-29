@@ -46,5 +46,7 @@ void Deplacer::run(Etat* e, std::vector<int> params,sf::Time t) {
 			p.setX(p.getXobj());
 			p.setEnDeplacement(false);
 		}
+		
+		e->notifyObserver('p',t);
 	}
 }

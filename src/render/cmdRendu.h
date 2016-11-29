@@ -2,7 +2,6 @@
 #ifndef RENDER__CMDRENDU__H
 #define RENDER__CMDRENDU__H
 
-#include "../state.h"
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 

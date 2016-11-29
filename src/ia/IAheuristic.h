@@ -2,7 +2,6 @@
 #ifndef IA__IAHEURISTIC__H
 #define IA__IAHEURISTIC__H
 
-#include "../state.h"
 #include <vector>
 
 namespace state {

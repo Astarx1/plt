@@ -2,21 +2,28 @@
 #ifndef STATE__ELEMENT__H
 #define STATE__ELEMENT__H
 
+#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 namespace state {
+  class Etat;
   class IVisiteur;
+  class Observable;
   class IAccepteVisite;
 }
 
 #include "TypeID.h"
+#include "Observable.h"
 #include "IAccepteVisite.h"
 
 namespace state {
 
   /// class Element - 
-  class Element : public state::IAccepteVisite {
+  class Element : public state::Observable, public state::IAccepteVisite {
     // Associations
     // Attributes
+  public:
+    Etat* etat;
   protected:
     int x;
     int y;
@@ -34,6 +41,8 @@ namespace state {
     void setY (int const y);
     int getElemID ();
     void setElemID (int i);
+    void notifyObserver (char typeChg, sf::Time time);
+    void setEtat (Etat* netat);
   };
 
 };

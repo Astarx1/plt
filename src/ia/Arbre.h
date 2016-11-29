@@ -2,7 +2,6 @@
 #ifndef IA__ARBRE__H
 #define IA__ARBRE__H
 
-#include "../state.h"
 
 namespace ia {
   class Noeud;

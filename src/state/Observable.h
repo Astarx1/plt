@@ -3,6 +3,8 @@
 #define STATE__OBSERVABLE__H
 
 #include <vector>
+#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 namespace state {
   class Observer;
@@ -21,7 +23,7 @@ namespace state {
     // Operations
   public:
     virtual ~Observable ();
-    virtual void notifyObserver ( );
+    virtual void notifyObserver (char typeChg, sf::Time time);
     void registerObserver (Observer * obs);
   };
 

@@ -6,6 +6,7 @@
 
 namespace state {
   class Visiteur;
+  class Etat;
   class Element;
   class ElementFactory;
   class Statique;
@@ -23,12 +24,13 @@ namespace state {
     // Attributes
   public:
     Visiteur visiteur;
+    Etat* etat;
   protected:
     std::vector<Element*>  elements;
     ElementFactory* factory;
     // Operations
   public:
-    ListeElements ();
+    ListeElements (Etat* etat);
     ~ListeElements ();
     int size ();
     Element* getElement (int i);
@@ -39,6 +41,7 @@ namespace state {
     Statique* getTile (int i);
     void clear ();
     void eraseElem (int i);
+    Etat* getEtat ();
   };
 
 };

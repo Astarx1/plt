@@ -2,7 +2,6 @@
 #ifndef ENGINE__COMMANDE__H
 #define ENGINE__COMMANDE__H
 
-#include "../state.h"
 #include <string>
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>

@@ -2,7 +2,6 @@
 #ifndef STATE__OBSERVER__H
 #define STATE__OBSERVER__H
 
-#include "../state.h"
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 

@@ -2,7 +2,6 @@
 #ifndef IA__NOEUD__H
 #define IA__NOEUD__H
 
-#include "../state.h"
 #include <vector>
 
 namespace state {

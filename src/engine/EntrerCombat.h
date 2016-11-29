@@ -2,7 +2,6 @@
 #ifndef ENGINE__ENTRERCOMBAT__H
 #define ENGINE__ENTRERCOMBAT__H
 
-#include "../state.h"
 #include <vector>
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
