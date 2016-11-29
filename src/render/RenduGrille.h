@@ -2,6 +2,7 @@
 #ifndef RENDER__RENDUGRILLE__H
 #define RENDER__RENDUGRILLE__H
 
+#include <mutex>
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <vector>
@@ -22,6 +23,8 @@ namespace render {
   /// class RenduGrille - 
   class RenduGrille {
     // Attributes
+  public:
+    std::mutex mut_lvl;
   private:
     sf::VertexArray m_vertices;
     sf::Texture m_tileset;

@@ -81,8 +81,9 @@ int main(int argc,char* argv[])
         sf::Event event;
         while (window.pollEvent(event))
         {
-            if(event.type == sf::Event::Closed || event.type == sf::Event::KeyPressed)
-                window.close();
+            if(event.type == sf::Event::Closed || event.type == sf::Event::KeyPressed) {
+              window.close();
+            }
             if (event.type == sf::Event::MouseButtonPressed)
             {
                 if (event.mouseButton.button == sf::Mouse::Left)

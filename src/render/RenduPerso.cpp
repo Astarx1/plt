@@ -38,7 +38,7 @@ void RenduPerso::dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Time c
 	Parseur pp;
 	
 	for (int i = 0; i < nb_perso; ++i) {
-                Personnage& p = (e->getRefPersonnage(i));
+		Personnage& p = (e->getRefPersonnage(i));
 		int h_sprite = 0;
 		int l_sprite = 0;
 		int x_sprite = p.getX();

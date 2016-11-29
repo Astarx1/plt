@@ -1,5 +1,8 @@
 #include "../engine.h"
+
 #include <iostream>
+#include <chrono>
+#include <thread>
 
 #define TRACE_LC 1
 
@@ -28,7 +31,7 @@ void ListeCommandes::ToutExecuter (){
 					#if TRACE_LC == 1
 					std:: cout << "ListeCommandes::ToutExecuter : On a clear les commandes " << std::endl;
 					#endif
-							
+					//std::this_thread::sleep_for(std::chrono::milliseconds(5));
 					break;
 				}
 			}

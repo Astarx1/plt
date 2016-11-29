@@ -7,7 +7,8 @@
 #define DLARGEUR 24
 
 #define TRACE_ETAT 1
-#define TRACE_GETSTATUTGRILLE 0
+#define TRACE_GETSTATUTGRILLE 1
+#define TRACE_ETAT_LOADGRILLE 1
 #define TRACE_GETIDPERSO 1
 
 using namespace state;
@@ -69,7 +70,6 @@ TypeID Etat::getStatutGrille (int i, int j) {
 
 Personnage & Etat::getRefPersonnage (int n) {
 	// TODO: insert return statement here
-	
 	Element & o = *(personnages.getElement(n));
 	
 	o.accepte (visiteur);
@@ -101,18 +101,21 @@ int Etat::getIdPersonnage (int i, int j) {
 }
 
 void Etat::loadGrille (int n) {
+	#if TRACE_ETAT == 1 && TRACE_ETAT_LOADGRILLE == 1
+	std::cout << "Etat::loadGrille : Chargement map " << n << std::endl;
+	#endif
 	switch (n) {
 		case 1:
-                    grille.charger("res/Textures/carte/map1.txt");
+			grille.charger("res/Textures/carte/map1.txt");
 		break;
 		case 2:
-                    grille.charger("res/Textures/carte/map2.txt");
+			grille.charger("res/Textures/carte/map2.txt");
 		break;
-                case 3:
-                    grille.charger("res/Textures/carte/map3.txt");
+		case 3:
+			grille.charger("res/Textures/carte/map3.txt");
 		break;
 		case 4:
-                    grille.charger("res/Textures/carte/map4.txt");
+			grille.charger("res/Textures/carte/map4.txt");
 		break;
 	}
 }
@@ -175,38 +178,38 @@ Statique & Etat::getTile (int n) {
 }
 
 Heros& Etat::getRefHeros(int id){
-    
-    Element & o = *(personnages.getElement(id));
 	
-    o.accepte (visiteur);
-    TypeID a = o.getTypeID();
+	Element & o = *(personnages.getElement(id));
 	
-    if (a == TypeID(PERSO)) 
-        return *(visiteur.getpHeros ());
+	o.accepte (visiteur);
+	TypeID a = o.getTypeID();
+	
+	if (a == TypeID(PERSO)) 
+		return *(visiteur.getpHeros ());
 	 
 }
 
 sf::Vector2f Etat::getGrilleCoord(int x, int y){
 	int sx = grille.getTile(0)->getX();
 	int sy = grille.getTile(0)->getY();
-  	
-  	int rx = -1;
-  	int ry = -1;
-  	if (x >= sx && x <= sx+DLARGEUR*2*grille.getLargeur()) { 	
-  		for (rx = 0; sx+rx*DLARGEUR*2 < x ;rx++) {
+	
+	int rx = -1;
+	int ry = -1;
+	if (x >= sx && x <= sx+DLARGEUR*2*grille.getLargeur()) { 	
+		for (rx = 0; sx+rx*DLARGEUR*2 < x ;rx++) {
 		}
-    }
-  	
-  	if (y >= sy && y <= sy+DHAUTEUR*2*grille.getLongueur()) {
+	}
+	
+	if (y >= sy && y <= sy+DHAUTEUR*2*grille.getLongueur()) {
 		for (ry = 0; sy+ry*DLARGEUR*2 < y ;ry++) {
 		}
-    }
+	}
   
-  	return sf::Vector2f(rx, ry);
+	return sf::Vector2f(rx, ry);
 }
 
 sf::Vector2f Etat::getCoordTile(int x, int y){
-  	return sf::Vector2f(x*DLARGEUR*2, y*DHAUTEUR*2);
+	return sf::Vector2f(x*DLARGEUR*2, y*DHAUTEUR*2);
 }
 
 sf::Vector2f Etat::getGrilleTile (int id) {
