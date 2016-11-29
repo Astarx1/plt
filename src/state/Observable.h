@@ -20,9 +20,9 @@ namespace state {
     std::vector<render::Observer *> observers;
     // Operations
   public:
+    virtual ~Observable ();
     virtual void notifyObserver ( );
     void registerObserver (render::Observer * obs);
-    virtual ~Observable ();
   };
 
 };

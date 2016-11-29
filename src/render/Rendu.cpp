@@ -11,3 +11,7 @@ void Rendu::run (Etat* e, sf::RenderWindow& sw, sf::Time cl, sf::RenderStates rs
 
 Rendu::Rendu () {  
 }
+
+void Rendu::maj (state::Etat* e, char typechang) {
+
+}

@@ -229,3 +229,6 @@ void Etat::addPerso (Personnage * p) {
 	personnages.ajoutElement(p);
 }
 
+void Etat::notifyObserver () {
+	
+}

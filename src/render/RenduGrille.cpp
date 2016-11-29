@@ -51,9 +51,6 @@ RenduGrille::~RenduGrille(){
 }
 
 void RenduGrille::testChgtMap(state::Etat * e) {
-    #if TRACE_RGRILLE == 1
-        std::cout << "RenduGrille::dessin : On compare " << e->getMapActuel() << " et " << level[level.size()-1] << std::endl;
-    #endif
     if (e->getMapActuel() != level.at(level.size()-1)) {
         Parseur p;
         switch(e->getMapActuel()) {

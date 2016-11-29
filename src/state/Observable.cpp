@@ -6,4 +6,6 @@ Observable::~Observable() {
 	
 }
 
+void Observable::notifyObserver ( ) { }
+
 }
