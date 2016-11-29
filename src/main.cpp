@@ -1,4 +1,6 @@
 #include <iostream>
+#include <vector>
+#include <thread>
 
 //test Les lignes suivantes ne servent qu'à vérifier que la compilation avec SFML fonctionne
 #include <SFML/Graphics.hpp>
@@ -6,7 +8,7 @@
 #include "./render.h"
 #include "./engine.h"
 #include "./ia.h"
-#include <vector>
+
 
 // Fin test SFML
 
@@ -37,21 +39,21 @@ int main(int argc,char* argv[])
 		p.setX(pos.x);
 		p.setY(pos.y);
 		p.setVie(100);
-		cout << "[Main] Parametrisation du perso (" << p.getVie() << " PV)" << endl;
 		p.setDirection(OUEST);
 		p.setEnDeplacement(false);
 	}
 
+  std::cout << "[Main] Lancement de l'interface de commande" << std::endl;
 	sf::Clock c;
 	sf::RenderStates rs;
  	ListeCommandes liste;
+  thread th_engine (&ListeCommandes::ToutExecuter, &liste);
 	std::vector<int> v;
 
 	// On devrait rajouter dans les commandes une vérification de l'existence des parametres.
 	std::cout << "[Main] Initialisation de la Map" << std::endl;
 	v.push_back(1);
 	liste.Ajouter(Commande (e,"im",c.getElapsedTime(),v,0));
-	liste.ToutExecuter();
 	v.clear();
 
 	std::cout << "[Main] Initialisation du rendu" << std::endl;
@@ -180,7 +182,6 @@ int main(int argc,char* argv[])
 		//Commande cmd1(e,"cm",c.getElapsedTime(),v,0);
 		//liste.Ajouter(cmd1);
 		v.clear();
-		liste.ToutExecuter();
 
         // draw the map
     window.clear();
