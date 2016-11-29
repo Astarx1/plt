@@ -29,7 +29,7 @@ RenduGrille::~RenduGrille(){
 }
 
 void RenduGrille::testChgtMap(state::Etat * e) {
-    
+
     if (e->getMapActuel() != level.at(level.size()-1)) {
         Parseur p;
         switch(e->getMapActuel()) {

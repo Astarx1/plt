@@ -14,8 +14,8 @@ namespace render {
   class Observer {
     // Operations
   public:
-    virtual void maj (state::Etat* e, char typechang) = 0;
     virtual ~Observer ();
+    virtual void maj (state::Etat* e, char typechang) = 0;
   };
 
 };

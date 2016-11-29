@@ -3,6 +3,7 @@
 #define ENGINE__LISTECOMMANDES__H
 
 #include <vector>
+#include <mutex>
 
 namespace engine {
   class Commande;
@@ -17,6 +18,8 @@ namespace engine {
     // Attributes
   public:
     std::vector<Commande> commandes;
+    std::vector<Commande> commandes_buf;
+    std::mutex mut_buf;
     // Operations
   public:
     void Ajouter (Commande cmd);
