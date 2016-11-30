@@ -28,7 +28,9 @@ int valeurEntiere (float a) {
 	}
 }
 
-void RenduPerso::testChgtPerso(state::Etat * e, sf::Time cl){
+void RenduPerso::testChgtPerso (state::Etat * e, sf::Time cl) {
+	(e->accesPerso())->lock();
+
 	int nb_perso = (e->getPerso()).size();
 
 	vertices.clear();
@@ -39,7 +41,15 @@ void RenduPerso::testChgtPerso(state::Etat * e, sf::Time cl){
 	Parseur pp;
 	
 	for (int i = 0; i < nb_perso; ++i) {
-        Personnage& p = (e->getRefPersonnage(i));
+		Personnage* ptr;
+		try {
+	        ptr = &(e->getRefPersonnage(i));
+	    }
+		catch (const std::out_of_range& oor) {
+			std::cerr << "RenduPerso::testChgtPerso : Out of Range error: " << oor.what() << '\n';
+			return;
+		}
+		Personnage& p = *ptr;
 		int h_sprite = 0;
 		int l_sprite = 0;
 		int x_sprite = p.getX();
@@ -211,11 +221,11 @@ void RenduPerso::testChgtPerso(state::Etat * e, sf::Time cl){
 		quad[3].position = sf::Vector2f(x_sprite - l_sprite, y_sprite-h_sprite/2);
 		quad[2].position = sf::Vector2f(x_sprite, y_sprite-h_sprite/2);             
 	}
+	(e->accesPerso())->unlock();
 }
 
 void RenduPerso::dessin (sf::RenderWindow& w, state::Etat* e, int id, sf::Time cl, sf::RenderStates rs){
-	
-	testChgtPerso(e,cl); 
+	//testChgtPerso(e,cl); 
 	rs.texture = &tileset;
 	w.draw(vertices,rs);
 }

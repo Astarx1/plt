@@ -18,24 +18,31 @@ namespace engine {
  * À compléter!!!
  */   
 bool Regles::peutDeplacer(state::Etat* e, int id, int newX, int newY){
-    Personnage& perso = e->getRefPersonnage(id);
-    if(e->getEnCombat()){
-        // Si le personnage est en combat
-        if(perso.getPM() == 0){
-            return false;
+    //(e->accesPerso())->lock();
+    if (id < e->getPersoSize()) {
+        Personnage& perso = e->getRefPersonnage(id);
+        if(e->getEnCombat()){
+            // Si le personnage est en combat
+            if(perso.getPM() == 0){
+                return false;
+            }
+            else if(!(e->getPerso()).isPerso(newX,newY)){
+                return false;
+                // Penser au cas en réseau où il peut y avoir d'autre héros
+            }
         }
-        else if(!(e->getPerso()).isPerso(newX,newY)){
-            return false;
-            // Penser au cas en réseau où il peut y avoir d'autre héros
+        else{
+            // Si le personnage n'est pas en combat
+            if((newY > 1000 || newX > 1000) || (newX < 1 || newY < 1)){
+                // Seuil à ajuster!
+                return false;
+            }
         }
     }
-    else{
-        // Si le personnage n'est pas en combat
-        if((newY > 1000 || newX > 1000) || (newX < 1 || newY < 1)){
-            // Seuil à ajuster!
-            return false;
-        }
+    else {
+        return false;
     }
+    //(e->accesPerso())->unlock();
     return true;
 }
 
@@ -313,6 +320,7 @@ int Regles::augmenterForce(state::Etat* e, int id){
  * À prévoir la génération des positions aléatoires pour l'instanciation des monstres.
  */
 std::vector<state::Personnage*> Regles::defMonstreCarte(state::Etat* e){
+
     srand(time(NULL));
     std::vector<state::Personnage*> list;
 	GrilleElements g = e->getGrille();
@@ -364,49 +372,54 @@ std::vector<state::Personnage*> Regles::defMonstreCarte(state::Etat* e){
 }
 
 int Regles::defCarteSuiv (state::Etat* e, int id){
-    Personnage& perso = e->getRefPersonnage(id);
-    int map_actuel = e->getMapActuel();
-    bool combat = e->getEnCombat();
-    int mapSuiv = 0;
-    sf::Vector2f vect=e->getGrilleCoord(perso.getXobj(),perso.getYobj());
-	int x = vect.x;
-	int y = vect.y;
-	#if TRACE_REGLE_CHANGER_MAP==1
-        std::cout<<" Regles::defCarteSuiv : On entre dans la fonction : "<< map_actuel << " x = " << x << " y = " << y <<std::endl;
-    #endif
-    
-    switch(map_actuel){
-        case 1: 
-            if(combat)
-                mapSuiv = 4;
-            else if(e->getGrille().isAcces(x,y))
-                mapSuiv = 2;
-            //return mapSuiv;
-        break;
-        case 2:
-            if(combat)
-                mapSuiv = 4;
-            else if(e->getGrille().isAcces(x,y)){
-                if(x < 10)
-                    mapSuiv = 1;
-                else
-                   mapSuiv = 3;
-            }                
-            //return mapSuiv;
-        break;
-        case 3:
-			if(combat)
-                mapSuiv = 4;
-            else if(e->getGrille().isAcces(x,y))
-                mapSuiv = 2;
-            //return mapSuiv;
-        break;
+    int mapSuiv = e->getMapActuel();
+    //(e->accesPerso())->lock();
+    if (id < e->getPersoSize()) {
+        Personnage& perso = e->getRefPersonnage(id);
+        int map_actuel = e->getMapActuel();
+        bool combat = e->getEnCombat();
+        mapSuiv = 0;
+        sf::Vector2f vect=e->getGrilleCoord(perso.getXobj(),perso.getYobj());
+    	int x = vect.x;
+    	int y = vect.y;
+    	#if TRACE_REGLE_CHANGER_MAP==1
+            std::cout<<" Regles::defCarteSuiv : On entre dans la fonction : "<< map_actuel << " x = " << x << " y = " << y <<std::endl;
+        #endif
         
+        switch(map_actuel){
+            case 1: 
+                if(combat)
+                    mapSuiv = 4;
+                else if(e->getGrille().isAcces(x,y))
+                    mapSuiv = 2;
+                //return mapSuiv;
+            break;
+            case 2:
+                if(combat)
+                    mapSuiv = 4;
+                else if(e->getGrille().isAcces(x,y)){
+                    if(x < 10)
+                        mapSuiv = 1;
+                    else
+                       mapSuiv = 3;
+                }                
+                //return mapSuiv;
+            break;
+            case 3:
+    			if(combat)
+                    mapSuiv = 4;
+                else if(e->getGrille().isAcces(x,y))
+                    mapSuiv = 2;
+                //return mapSuiv;
+            break;
             
+                
+        }
+        #if TRACE_REGLE_CHANGER_MAP==1
+            std::cout<<" Regles::defCarteSuiv : On sort dans la fonction : "<< mapSuiv <<std::endl;
+        #endif
     }
-    #if TRACE_REGLE_CHANGER_MAP==1
-        std::cout<<" Regles::defCarteSuiv : On sort dans la fonction : "<< mapSuiv <<std::endl;
-    #endif
+    //(e->accesPerso())->unlock();
     return mapSuiv;
 }
 

@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-#define TRACE_CO 1
+#define TRACE_CO 0
 
 using namespace state;
 using namespace engine;

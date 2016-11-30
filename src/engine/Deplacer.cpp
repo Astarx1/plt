@@ -21,8 +21,8 @@ void Deplacer::run(Etat* e, std::vector<int> params,sf::Time t) {
 	Personnage & p = e->getRefPersonnage(params[0]);
 	if (p.getEnDeplacement()) { 
 		// Appel à la regle pour obtenir la vitesse du personnage !
-		int speed = 0.2;
-      
+		int speed = 0.3;
+	  
 		if (abs(p.getX()-p.getXobj()) > ECART) {   
 			int s = signe(p.getXobj()-p.getX());
 			if (s == 1)
@@ -40,7 +40,7 @@ void Deplacer::run(Etat* e, std::vector<int> params,sf::Time t) {
 				p.setDirection(Direction(NORD));
 			
 			p.setY(p.getY() + s * speed * abs (t.asMilliseconds()-p.getTimer().asMilliseconds())+signe(p.getYobj()-p.getY()));
-      	}
+		}
 		else {
 			p.setY(p.getYobj());
 			p.setX(p.getXobj());

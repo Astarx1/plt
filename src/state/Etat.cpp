@@ -7,9 +7,10 @@
 #define DLARGEUR 24
 
 #define TRACE_ETAT 1
-#define TRACE_GETSTATUTGRILLE 1
-#define TRACE_ETAT_LOADGRILLE 1
-#define TRACE_GETIDPERSO 1
+#define TRACE_GETSTATUTGRILLE 0
+#define TRACE_ETAT_LOADGRILLE 0
+#define TRACE_GETIDPERSO 0
+#define TRACE_NOTIFY 1
 
 using namespace state;
 using namespace render;
@@ -236,13 +237,19 @@ void Etat::addPerso (Personnage * p) {
 }
 
 void Etat::notifyObserver(char typeChg, sf::Time time){
+	#if TRACE_NOTIFY == 1
 	if(typeChg == 'g')
 		std::cout<<"[Warning] Etat::notifyObserver: Etat notifie chgt Grille à Rendu !"<<std::endl;
 	else
 		std::cout<<"[Warning] Etat::notifyObserver: Etat notifie chgt Perso à Rendu !"<<std::endl;
+	#endif
 	
 	for(int i =0; i < observers.size();i++){
 		observers[i]->maj(this,typeChg,time);
 				
 	}
+}
+
+std::mutex * Etat::accesPerso() {
+	return &(mut_cm);
 }

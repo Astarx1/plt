@@ -7,7 +7,7 @@
 using namespace render;
 
 void RenduGrille::dessin (sf::RenderTarget&  target, state::Etat* e){
-	testChgtMap(e);
+	//testChgtMap(e);
 	
 	sf::RenderStates states;
 	// apply the tileset texture
@@ -34,7 +34,7 @@ RenduGrille::~RenduGrille(){
 
 void RenduGrille::testChgtMap(state::Etat * e) {
 
-	if (e->getMapActuel() != level.at(level.size()-1)) {
+	if (true) {
 		Parseur p;
 		switch(e->getMapActuel()) {
 			case 1:

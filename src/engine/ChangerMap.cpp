@@ -4,7 +4,7 @@
 #include <iostream>
 #include <assert.h>
 
-#define TRACE_CM 1
+#define TRACE_CM 0
 #define TRACE_CM_RUN 1
 #define TRACE_CM_DEFMC 1
 
@@ -17,7 +17,7 @@ Toudoux : Clear les perso d'Etat, clear la grille
 Regle renvoyant les monstres sous formes de std::vector<Personnages&>
 */
 
-std::vector<state::Personnage*> defMonstreCarte(state::Etat* e){
+std::vector<state::Personnage*> defMonstreCarte(state::Etat* e) {
 	srand(time(NULL));
 	std::vector<state::Personnage*> list;
 	//GrilleElements g = e->getGrille();
@@ -124,6 +124,7 @@ std::vector<state::Personnage*> defMonstreCarte(state::Etat* e){
 void ChangerMap::run (Etat* e, std::vector<int> params,sf::Time t) {
 	assert(params[0] == 1 || params[0] == 2 || params[0] == 3 || params[0] == 4);
 
+  	(e->accesPerso())->lock();
 	// On commence par sauvegarder les personnages joueurs
 	std::vector<Personnage*> persos;
 	for (int i = 0; i < e->getPersoSize(); ++i) {
@@ -224,8 +225,8 @@ void ChangerMap::run (Etat* e, std::vector<int> params,sf::Time t) {
 	}
 
 	defMonstreCarte(e);
+	(e->accesPerso())->unlock();
 	e->notifyObserver('g',t);
-		
 }
 
 

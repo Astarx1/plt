@@ -13,9 +13,17 @@ namespace render {
 
   /// class cmdRendu - 
   class cmdRendu {
+    // Attributes
+  public:
+    state::Etat * e;
+    char tc;
+    sf::Time t;
     // Operations
   public:
-    cmdRendu (state::Etat* e, char typeChang, sf::Time t);
+    cmdRendu (state::Etat* ne, char typeChang, sf::Time nt);
+    state::Etat * getEtat ();
+    sf::Time getTime ();
+    char getTC ();
   };
 
 };

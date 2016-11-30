@@ -30,6 +30,10 @@ int main(int argc,char* argv[])
 	Etat* e = new Etat; 
 	e->setEnCombat(false);
 
+  std::cout << "[Main] Initialisation du rendu" << std::endl;
+  Rendu r;
+  e->registerObserver(&r);
+  
 	cout << "[Main] Rajout des persos" << endl;
 	for (int i = 0; i < 4; ++i) {
 		e->rajouterPerso('h');
@@ -55,10 +59,6 @@ int main(int argc,char* argv[])
 	v.push_back(1);
 	liste.Ajouter(Commande (e,"im",c.getElapsedTime(),v,0));
 	v.clear();
-
-	std::cout << "[Main] Initialisation du rendu" << std::endl;
-	Rendu r;
-
 
 	std::cout << "[Main] Initialisation de l'IA" << std::endl;
 	IAminimale ias(e);
@@ -185,8 +185,6 @@ int main(int argc,char* argv[])
 		v.clear();
 
         // draw the map
-    window.clear();
-		v.clear();
 		r.run(e, window, c.getElapsedTime(), rs);
 
   		/*GrilleElements& ge = e->getGrille();

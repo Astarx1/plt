@@ -2,6 +2,7 @@
 #ifndef STATE__ETAT__H
 #define STATE__ETAT__H
 
+#include <mutex>
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 
@@ -31,6 +32,8 @@ namespace state {
   class Etat : public state::Observable {
     // Associations
     // Attributes
+  public:
+    std::mutex mut_cm;
   protected:
     ListeElements personnages;
     GrilleElements grille;
@@ -67,6 +70,7 @@ namespace state {
     void clearGrille ();
     void addPerso (Personnage * p);
     void notifyObserver (char typeChg, sf::Time time);
+    std::mutex * accesPerso ();
   };
 
 };

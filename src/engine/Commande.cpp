@@ -17,7 +17,7 @@ int approx (float a) {
 
 void Commande::run (){
 	Regles r;
-	
+
 	if (type =="d"){
 		if (r.peutDeplacer(etat,id,params[0],params[1])){ 
 			ChangerObjectif cb; 
@@ -109,6 +109,7 @@ void Commande::run (){
 		Deplacer d;
 		std::vector<int> v;
 		v.push_back(id);
+		
 		d.run(etat,v,temps); 
 
 		
