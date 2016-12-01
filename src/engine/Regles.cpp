@@ -4,7 +4,7 @@
 #include "../state.h"
 
 #define TRACE_REGLE 0
-#define TRACE_REGLE_CHANGER_MAP 1
+#define TRACE_REGLE_CHANGER_MAP 0
 
 using namespace state;
 using namespace sf;
@@ -382,7 +382,7 @@ int Regles::defCarteSuiv (state::Etat* e, int id){
         sf::Vector2f vect=e->getGrilleCoord(perso.getXobj(),perso.getYobj());
     	int x = vect.x;
     	int y = vect.y;
-    	#if TRACE_REGLE_CHANGER_MAP==1
+    	#if TRACE_REGLE_CHANGER_MAP==1 && TRACE_REGLE==1
             std::cout<<" Regles::defCarteSuiv : On entre dans la fonction : "<< map_actuel << " x = " << x << " y = " << y <<std::endl;
         #endif
         
@@ -415,7 +415,7 @@ int Regles::defCarteSuiv (state::Etat* e, int id){
             
                 
         }
-        #if TRACE_REGLE_CHANGER_MAP==1
+        #if TRACE_REGLE_CHANGER_MAP==1 && TRACE_REGLE==1
             std::cout<<" Regles::defCarteSuiv : On sort dans la fonction : "<< mapSuiv <<std::endl;
         #endif
     }
