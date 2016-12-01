@@ -13,7 +13,7 @@ using namespace ia;
 using namespace engine;
 
 IAminimale::IAminimale(state::Etat* etat){
-    this->etat = etat;
+	this->etat = etat;
 }
 
 IAminimale::~IAminimale(){
@@ -21,12 +21,23 @@ IAminimale::~IAminimale(){
 }
 
 Commande IAminimale::exec_cmd(int id, sf::Time time){
-    Personnage& perso = this->etat->getRefPersonnage(id);
-    
-    std::vector<int> params;
-    params.resize(2);
+	Personnage* ptr;
+	std::vector<int> params;
+	params.resize(2);
+	try {
+		ptr = &(etat->getRefPersonnage(id));
+	}
+	catch (const std::out_of_range& oor) {
+		std::cerr << "[Catch] IAminimale::exec_cmd : Out of Range error: " << oor.what() << '\n';
+		params[0] = -1;
+		params[1] = -1;
+		Commande c(etat, "d" ,time,params,id);
+		return c;
+	}
+	Personnage& perso = *ptr;
+	
 	if (true) {
-	    if(!perso.getEnDeplacement()){
+		if(!perso.getEnDeplacement()){
 			int a = rand() % MVTPROBABILITY;
 			if (a != 0) {
 				#if TRACE_IAMIN==1
@@ -43,16 +54,16 @@ Commande IAminimale::exec_cmd(int id, sf::Time time){
 					std::cout << "IAminimale::exec_cmd (" << id << ") : On ne se deplace pas, et on choisit de se deplacer : X (" << params[0] << ") Y (" << params[1] << ")" << std::endl;
 				#endif
 			}
-	    }
-	    else { 
+		}
+		else { 
 			#if TRACE_IAMIN==1
 				std::cout << "IAminimale::exec_cmd (" << id << ") : On se deplace ... on attend" << std::endl;
 			#endif
 			sf::Vector2f obj = etat->getGrilleCoord(perso.getXobj(), perso.getYobj());
 			params[0]= obj.x;
 			params[1]= obj.y;		
-	    }
+		}
 	}
-    Commande c(etat, "d" ,time,params,id);
-    return c;
+	Commande c(etat, "d" ,time,params,id);
+	return c;
 }

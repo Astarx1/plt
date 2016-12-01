@@ -2,7 +2,7 @@
 #include <vector>
 #include <iostream>
 
-#define TRACE_COMMANDE 1
+#define TRACE_COMMANDE 0
 
 using namespace std;
 

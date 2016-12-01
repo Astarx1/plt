@@ -4,7 +4,7 @@
 #include "../render.h"
 #include <iostream>
 
-#define TRACE_GRILLEELT 1
+#define TRACE_GRILLEELT 0
 
 using namespace state;
 using namespace render;

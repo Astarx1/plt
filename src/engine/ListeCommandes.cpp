@@ -4,7 +4,7 @@
 #include <chrono>
 #include <thread>
 
-#define TRACE_LC 1
+#define TRACE_LC 0
 
 using namespace engine;
 using namespace std;

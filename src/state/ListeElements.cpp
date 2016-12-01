@@ -7,6 +7,7 @@ using namespace state;
 ListeElements::ListeElements (Etat* etat) {
 	this->etat = etat;
 	factory = new ElementFactory();
+	soldatInconnu = new Heros (0, 0,0);
 }
 
 ListeElements::~ListeElements () {
@@ -21,7 +22,14 @@ Element * ListeElements::getElement (int n) {
     if(n >= elements.size()) {
         std::cout << "no such element " << n << " / " << elements.size() << std::endl;
     }
-    return (elements).at(n);
+
+	try {
+		return (elements).at(n);
+	}
+	catch (const std::out_of_range& oor) {
+		std::cerr << "ListeElements::getElement : Capture" << std::endl;
+		return soldatInconnu;
+	}
 }
 
 void ListeElements::setElement (int i, Element * e) {

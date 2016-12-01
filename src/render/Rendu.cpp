@@ -3,9 +3,9 @@
 #include <mutex>
 #include <iostream>
 
-#define TRACE_RENDU 1
+#define TRACE_RENDU 0
 #define TRACE_RENDU_RUN 0
-#define TRACE_RENDU_MAJ 1
+#define TRACE_RENDU_MAJ 0
 
 using namespace render;
 using namespace state;
@@ -24,13 +24,16 @@ void Rendu::run (Etat* e, sf::RenderWindow& sw, sf::Time cl, sf::RenderStates rs
 			std::cout << "Rendu::run : On met à jour les persos" << std::endl;
 			#endif
 			r_perso = true;
-			rp.testChgtPerso(e, cmd[i].getTime()); 
+			rp.testChgtPerso(e, cl); 
 		}
 		else if (cmd[i].getTC() == 'g' && !r_grille) {
+			#if TRACE_RENDU == 1 && TRACE_RENDU_RUN == 1
+			std::cout << "Rendu::run : On met à jour les persos" << std::endl;
+			#endif
 			r_grille = true;
 			rg.testChgtMap(e); 
 			r_perso = true;
-			rp.testChgtPerso(e, cmd[i].getTime()); 
+			rp.testChgtPerso(e, cl); 
 		}
 	}
 	sw.clear();

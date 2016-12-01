@@ -13,7 +13,7 @@ Params :
 #include <iostream>
 #include <vector>
 
-#define TRACE_ENTRERCOMBAT 1
+#define TRACE_ENTRERCOMBAT 0
 
 using namespace engine;
 using namespace state;

@@ -7,6 +7,7 @@
 namespace state {
   class Visiteur;
   class Etat;
+  class Personnage;
   class Element;
   class ElementFactory;
   class Statique;
@@ -25,6 +26,7 @@ namespace state {
   public:
     Visiteur visiteur;
     Etat* etat;
+    Personnage * soldatInconnu;
   protected:
     std::vector<Element*>  elements;
     ElementFactory* factory;

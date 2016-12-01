@@ -3,7 +3,7 @@
 #include <iostream>
 #include "../state.h"
 
-#define TRACE_REGLE 1
+#define TRACE_REGLE 0
 #define TRACE_REGLE_CHANGER_MAP 1
 
 using namespace state;

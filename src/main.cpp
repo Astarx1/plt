@@ -33,7 +33,7 @@ int main(int argc,char* argv[])
   std::cout << "[Main] Initialisation du rendu" << std::endl;
   Rendu r;
   e->registerObserver(&r);
-  
+
 	cout << "[Main] Rajout des persos" << endl;
 	for (int i = 0; i < 4; ++i) {
 		e->rajouterPerso('h');
@@ -73,6 +73,7 @@ int main(int argc,char* argv[])
     // run the main loop
 	std::cout << "[Main] Debut de la boucle" << std::endl;
 	std::cout << "/!\\ Si jamais, il n'y a qu'un seul personnage sur la carte, relancer le jeu"  << std::endl;
+  std::cout << "/!\\ Pour changer de map, cliquer juste au dessus de la lanterne"  << std::endl;
 
   int s = 0;
     while (window.isOpen())
@@ -116,6 +117,7 @@ int main(int argc,char* argv[])
                     }*/
                     Commande cmdCM(e,"cm",c.getElapsedTime(),v,0);
                     Commande cmdEC(e,"ec",c.getElapsedTime(),v,0);
+                    std::cout << "[Main] Clic Souris (" << x << " - " << pos.x << ", " << y << " - " << pos.y << ")" << std::endl;
 
                     switch (typeTmp) {
                       case ACCES:
@@ -130,7 +132,6 @@ int main(int argc,char* argv[])
                         break;
 
                       case VIDE :
-                        std::cout << "[" << pos.x << ", " << pos.y << "] : Vide" << std::endl;
                         break;
 
                       case PERSO :
@@ -148,8 +149,6 @@ int main(int argc,char* argv[])
 
                     v.clear();
 
-                    std::cout << "[Main] pos Souris " << x << " et " << y << std::endl;
-                    std::cout << "[Main] pos Grille " << pos.x << " et " << pos.y << std::endl;
                     
                     //cmd1.run();
                 }
