@@ -743,4 +743,41 @@ Méthode(s): Noeud(), ~Noeud(), createFils(), setF(), getF(), getID(), getLien()
   \caption{\emph{Package ia}}
 \end{figure}
 
+\section{Modularisation}
+  \subsection{Répartition sur différents threads}
+  Dans cette partie l'objectif est de distinguer le moteur de jeu de celui du rendu. Pour ce faire, il suffit de placer le moteur du rendu dans un thread et celui du jeu (exécution des commandes) dans un second thread.
+  Les commandes ainsi que les notifications du rendu transitent d'un module à un autre. Cette communication entre modules est essentiellement basée sur une stratégie utilisant le ``pattern observer''. En effet, chaque changement d'état est notifié au rendu via ce pattern observable/observer.
+
+  \subsection{Conception Logiciel}
+  Pour la conception logiciel concernant la modularisation, il a fallu apporter quelques modifications dans les packages suivants: State, Render et Engine.\\
+  
+  \textbf{Package State. } Le pattern Observable/Observer a été implanté dans le package State. Ainsi, tout objet héritant de la classe Observer est un observeur et tout objet héritant de la classe Observable devient un objet observé. Ce dernier notifie tout changement éventuel à l'observateur dont il est associé.
+  La méthode AccesPerso permet maintenant d'accéder à un mutex d'une source de segfault lors des changements de map.
+  
+  \textbf{Package Render. } La classe cmdRendu a été ajoutée dans le package Render et permet de stocker les informations nécessaires à l'exécution d'une commande.
+  La méthode testChgtMap dans la classe RenduGrille est appelée après une notification de changement de grille.
+  La méthode testChgtPerso dans la classe RenduPerso est appeleée après une notification de changement de personnages.
+  
+  \textbf{Package Engine. } La méthode toutExecuter dans la classe ListeCommandes contient une boucle infinie qui est exécutée dans un thread et copie le buffer, puis le vide et exécute les commandes qu'il contenait.\\
+  
+  Voici les modifications apportées dans les diagrammes de classes:
+  
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.35]{img/state_mod.png}
+  \caption{\emph{Modification du Package state}}
+\end{figure}
+  
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.45]{img/rendu_mod.png}
+  \caption{\emph{Modification du Package render}}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.45]{img/engine_mod.png}
+  \caption{\emph{Modification du Package engine}}
+\end{figure}
+
 \end{document}\grid
