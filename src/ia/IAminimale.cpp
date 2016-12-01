@@ -6,7 +6,7 @@
 
 #define TRACE_IAMIN 0
 
-#define MVTPROBABILITY 15000
+#define MVTPROBABILITY 10000
 
 using namespace state;
 using namespace ia;
@@ -21,14 +21,16 @@ IAminimale::~IAminimale(){
 }
 
 Commande IAminimale::exec_cmd(int id, sf::Time time){
+	//(etat->accesPerso())->lock();
+	std::lock_guard<std::mutex> lock(*(etat->accesPerso()));
 	Personnage* ptr;
 	std::vector<int> params;
 	params.resize(2);
-	try {
+	if (id < etat->getPersoSize()) {
 		ptr = &(etat->getRefPersonnage(id));
 	}
-	catch (const std::out_of_range& oor) {
-		std::cerr << "[Catch] IAminimale::exec_cmd : Out of Range error: " << oor.what() << '\n';
+	else {
+		std::cerr << "[Catched] IAminimale::exec_cmd : Out of Range error" << std::endl;
 		params[0] = -1;
 		params[1] = -1;
 		Commande c(etat, "d" ,time,params,id);
@@ -66,4 +68,5 @@ Commande IAminimale::exec_cmd(int id, sf::Time time){
 	}
 	Commande c(etat, "d" ,time,params,id);
 	return c;
+	//(etat->accesPerso())->unlock();
 }

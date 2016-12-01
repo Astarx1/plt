@@ -8,6 +8,8 @@ using namespace state;
 
 #define ECART 2
 
+#define DEPLACER_CERR_ACTIVE 1
+
 int abs (int a) { return a >= 0 ? a : -a; }
 int signe (int a) { return a >= 0 ? 1 : -1; }
 
@@ -18,7 +20,18 @@ Besoin : clock ! > Changer le constructeur
 */
 
 void Deplacer::run(Etat* e, std::vector<int> params,sf::Time t) {
-	Personnage & p = e->getRefPersonnage(params[0]);
+	std::lock_guard<std::mutex> lock(*(e->accesPerso()));
+	Personnage * ptr;
+	if (params[0] < e->getPersoSize()) {
+		ptr = &(e->getRefPersonnage(params[0]));
+	}
+	else {
+		#if DEPLACER_CERR_ACTIVE==1
+		std::cerr << "[Catched] Deplacer::run : Out of Range error" << std::endl;
+		#endif
+		return ;
+	}
+	Personnage& p = *ptr;
 	if (p.getEnDeplacement()) { 
 		// Appel à la regle pour obtenir la vitesse du personnage !
 		int speed = 0.3;
