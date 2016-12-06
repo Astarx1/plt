@@ -25,85 +25,84 @@ std::vector<state::Personnage*> defMonstreCarte(state::Etat* e) {
 	int nb_monstre_max = 4;
 	int alea_monstre = 1;
 
-	switch(map_actuel){
-		case 1: 
-			for(int i=12; i<14; i++){
-				for (int j=5; j<10; j++){
-					int y=rand()%5;
-					#if TRACE_CM==1 && TRACE_CM_DEFMC == 1
-						std::cout << "ChangerMap::defMonstreCarte : Choix aleatoire : " << y << std::endl;
-					#endif
-					sf::Vector2f pos = e->getCoordTile(i, j);
-					
-					if(y == 0 && nb_monstre_max > 0){
-						nb_monstre_max--;
-						e->rajouterPerso ('m');
-						Personnage &p = e->getRefPersonnage(e->getPersoSize()-1);
-						p.setTypePersonnage(TypePersonnage(MONSTRE3));
-						p.setEnDeplacement(false);
-						p.setDirection(OUEST);
-						p.setX(pos.x);
-						p.setXobj(pos.x);
-						p.setY(pos.y);
-						p.setYobj(pos.y);
-						list.push_back(&p);
-					}
-					else if (y == 1 && nb_monstre_max > 0){
-						nb_monstre_max--;
-						e->rajouterPerso ('m');
-						Personnage &p = e->getRefPersonnage(e->getPersoSize()-1);
-						p.setTypePersonnage(TypePersonnage(MONSTRE4));
-						p.setEnDeplacement(false);
-						p.setDirection(OUEST);
-						p.setX(pos.x);
-						p.setXobj(pos.x);
-						p.setY(pos.y);
-						p.setYobj(pos.y);
-						list.push_back(&p);
-					}
+	if (map_actuel == 1) { 
+		for(int i=12; i<14; i++){
+			for (int j=5; j<10; j++){
+				int y=rand()%5;
+				#if TRACE_CM==1 && TRACE_CM_DEFMC == 1
+					std::cout << "ChangerMap::defMonstreCarte : Choix aleatoire : " << y << std::endl;
+				#endif
+				sf::Vector2f pos = e->getCoordTile(i, j);
+				
+				if(y == 0 && nb_monstre_max > 0){
+					nb_monstre_max--;
+					e->rajouterPerso ('m');
+					Personnage &p = e->getRefPersonnage(e->getPersoSize()-1);
+					p.setTypePersonnage(TypePersonnage(MONSTRE3));
+					p.setEnDeplacement(false);
+					p.setDirection(OUEST);
+					p.setX(pos.x);
+					p.setXobj(pos.x);
+					p.setY(pos.y);
+					p.setYobj(pos.y);
+					list.push_back(&p);
+				}
+				else if (y == 1 && nb_monstre_max > 0){
+					nb_monstre_max--;
+					e->rajouterPerso ('m');
+					Personnage &p = e->getRefPersonnage(e->getPersoSize()-1);
+					p.setTypePersonnage(TypePersonnage(MONSTRE4));
+					p.setEnDeplacement(false);
+					p.setDirection(OUEST);
+					p.setX(pos.x);
+					p.setXobj(pos.x);
+					p.setY(pos.y);
+					p.setYobj(pos.y);
+					list.push_back(&p);
 				}
 			}
-			return list;
-		break;
+		}
+		return list;
+	}
 
-		case 2:
-			for(int i=12; i<14; i++){
-				for (int j=5; j<10; j++){
-					int y=rand()%20;
-					sf::Vector2f pos = e->getCoordTile(i, j);
-					
-					if(y == 0 && nb_monstre_max > 0){
-						nb_monstre_max--;
-						e->rajouterPerso ('m');
-						Personnage &p = e->getRefPersonnage(e->getPersoSize()-1);
-						p.setTypePersonnage(TypePersonnage(MONSTRE1));
-						p.setEnDeplacement(false);
-						p.setDirection(OUEST);
-						p.setX(pos.x);
-						p.setXobj(pos.x);
-						p.setY(pos.y);
-						p.setYobj(pos.y);
-						list.push_back(&p);
-					}
-					else if (y == 1 && nb_monstre_max > 0){
-						nb_monstre_max--;
-						e->rajouterPerso ('m');
-						Personnage &p = e->getRefPersonnage(e->getPersoSize()-1);
-						p.setTypePersonnage(TypePersonnage(MONSTRE2));
-						p.setEnDeplacement(false);
-						p.setDirection(OUEST);
-						p.setX(pos.x);
-						p.setXobj(pos.x);
-						p.setY(pos.y);
-						p.setYobj(pos.y);
-						list.push_back(&p);
-					}
+	else if (map_actuel == 2) { 
+		for(int i=12; i<14; i++){
+			for (int j=5; j<10; j++){
+				int y=rand()%20;
+				sf::Vector2f pos = e->getCoordTile(i, j);
+				
+				if(y == 0 && nb_monstre_max > 0){
+					nb_monstre_max--;
+					e->rajouterPerso ('m');
+					Personnage &p = e->getRefPersonnage(e->getPersoSize()-1);
+					p.setTypePersonnage(TypePersonnage(MONSTRE1));
+					p.setEnDeplacement(false);
+					p.setDirection(OUEST);
+					p.setX(pos.x);
+					p.setXobj(pos.x);
+					p.setY(pos.y);
+					p.setYobj(pos.y);
+					list.push_back(&p);
+				}
+				else if (y == 1 && nb_monstre_max > 0){
+					nb_monstre_max--;
+					e->rajouterPerso ('m');
+					Personnage &p = e->getRefPersonnage(e->getPersoSize()-1);
+					p.setTypePersonnage(TypePersonnage(MONSTRE2));
+					p.setEnDeplacement(false);
+					p.setDirection(OUEST);
+					p.setX(pos.x);
+					p.setXobj(pos.x);
+					p.setY(pos.y);
+					p.setYobj(pos.y);
+					list.push_back(&p);
 				}
 			}
-			return list;
-		break;
-			
-		case 3:
+		}
+		return list;
+	}
+		
+	else if (map_actuel == 3) { 
 		sf::Vector2f pos = e->getCoordTile(15, 10);
 		e->rajouterPerso ('m');
 		Personnage &p = e->getRefPersonnage(e->getPersoSize()-1);
@@ -116,9 +115,47 @@ std::vector<state::Personnage*> defMonstreCarte(state::Etat* e) {
 		p.setYobj(pos.y);
 				list.push_back(&p);
 		return list;
-		break;
 	}
-	
+
+	else if (map_actuel == 4) { 
+		for(int i=12; i<14; i++){
+			for (int j=5; j<10; j++){
+				int y=rand()%5;
+				#if TRACE_CM==1 && TRACE_CM_DEFMC == 1
+					std::cout << "ChangerMap::defMonstreCarte : Choix aleatoire : " << y << std::endl;
+				#endif
+				sf::Vector2f pos = e->getCoordTile(i, j);
+				
+				if(y == 0 && nb_monstre_max > 0){
+					nb_monstre_max--;
+					e->rajouterPerso ('m');
+					Personnage &p = e->getRefPersonnage(e->getPersoSize()-1);
+					p.setTypePersonnage(TypePersonnage(MONSTRE3));
+					p.setEnDeplacement(false);
+					p.setDirection(OUEST);
+					p.setX(pos.x);
+					p.setXobj(pos.x);
+					p.setY(pos.y);
+					p.setYobj(pos.y);
+					list.push_back(&p);
+				}
+				else if (y == 1 && nb_monstre_max > 0){
+					nb_monstre_max--;
+					e->rajouterPerso ('m');
+					Personnage &p = e->getRefPersonnage(e->getPersoSize()-1);
+					p.setTypePersonnage(TypePersonnage(MONSTRE4));
+					p.setEnDeplacement(false);
+					p.setDirection(OUEST);
+					p.setX(pos.x);
+					p.setXobj(pos.x);
+					p.setY(pos.y);
+					p.setYobj(pos.y);
+					list.push_back(&p);
+				}
+			}
+		}
+		return list;
+	}
 }
 
 void ChangerMap::run (Etat* e, std::vector<int> params,sf::Time t) {

@@ -23,10 +23,11 @@ bool Regles::peutDeplacer(state::Etat* e, int id, int newX, int newY){
         Personnage& perso = e->getRefPersonnage(id);
         if(e->getEnCombat()){
             // Si le personnage est en combat
+            TypeID typeTmp = e->getStatutGrille(newX,newY);
             if(perso.getPM() == 0){
                 return false;
             }
-            else if(!(e->getPerso()).isPerso(newX,newY)){
+            else if (typeTmp != PERSO && typeTmp != MONSTRE){
                 return false;
                 // Penser au cas en réseau où il peut y avoir d'autre héros
             }
