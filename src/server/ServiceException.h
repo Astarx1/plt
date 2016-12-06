@@ -2,6 +2,7 @@
 #ifndef SERVER__SERVICEEXCEPTION__H
 #define SERVER__SERVICEEXCEPTION__H
 
+#include <string>
 
 namespace server {
   class AbstractService;
@@ -17,10 +18,11 @@ namespace server {
     // Associations
     // Attributes
   protected:
-    string msg;
+    std::string msg;
+    HttpStatus httpStatus;
     // Operations
   public:
-    ServiceException (HttpStatus status, string msg);
+    ServiceException (HttpStatus status, std::string msg);
     HttpStatus status () const;
     const char* what () const;
   };

@@ -2,7 +2,7 @@
 #ifndef SERVER__UTILISATEURSERVICE__H
 #define SERVER__UTILISATEURSERVICE__H
 
-
+#include <json/json.h>
 namespace server {
   class AbstractService;
 }
@@ -18,7 +18,7 @@ namespace server {
   public:
     UtilisateurService ();
     HttpStatus put (Json::Value& out, const Json::Value& in);
-    HttpStatus delete (int id);
+    HttpStatus remove (int id);
   };
 
 };

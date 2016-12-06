@@ -651,6 +651,7 @@ struct stdlib_includes {
    int mutex;
    int graphics;
    int state;
+   int json;
 };
 
 void print_include_stdlib(struct stdlib_includes* si,char* name) {
@@ -731,6 +732,10 @@ void print_include_stdlib(struct stdlib_includes* si,char* name) {
        if (!si->graphics && strstr(name,"sf::")) {
            print ("#include <SFML/Graphics.hpp>\n#include <SFML/Audio.hpp>\n");
            si->graphics = 1;
+       }
+       if (!si->json && strstr(name,"Json::")) {
+           print ("#include <json/json.h>");
+           si->json = 1;
        }
        /*if (!si->state && strstr(name,"state::")) {
            print ("#include \"../state.h\"\n");

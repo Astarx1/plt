@@ -16,7 +16,7 @@ namespace server {
     // Associations
     // Attributes
   public:
-    ServiceManager service_manag;
+    ServicesManager service_manag;
     // Operations
   public:
     Server ();
