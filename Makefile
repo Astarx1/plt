@@ -3,7 +3,7 @@
 HEADERS:=$(shell find src -type f -name '*.h')
 DIA2CODE_DIR:=./dia2code
 
-all: | clean dia2code configure build
+all: | clean dia2code configure build server
 
 clean:
 	@rm -rf bin build ${HEADERS}
@@ -26,6 +26,9 @@ fast:
 
 build:
 	@make -s -j4 -C build
+
+server:
+	@make -s -j4 -C build server
 
 run: build
 	./bin/run

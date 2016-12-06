@@ -125,6 +125,7 @@ int main(int argc,char* argv[]) {
 
 						case MONSTRE :
 							std::cout << "[Main] [" << pos.x << ", " << pos.y << "] : Monstre" << std::endl;
+							if (true);
 						break;
 
 						case VIDE :

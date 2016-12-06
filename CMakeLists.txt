@@ -22,12 +22,20 @@ ENDIF(CMAKE_COMPILER_IS_GNUCC)
 set(DIA2CODE "${PROJECT_SOURCE_DIR}/dia2code/bin/dia2code")
 exec_program(${DIA2CODE} ARGS -d ../src -t cpp ../src/state.dia)
 
+# jsoncpp
+include_directories ("${PROJECT_SOURCE_DIR}/extern/jsoncpp-0.10.5/dist")
+file(GLOB jsoncpp_sources "${PROJECT_SOURCE_DIR}/extern/jsoncpp-0.10.5/dist/jsoncpp.cpp")
+
 # Sources
 file(GLOB_RECURSE main_sources src/*.cpp)
 
-
 # Executables
 add_executable(run ${main_sources})
+add_executable(server ${main_sources})
+
+# libmicrohttpd
+include_directories ("${PROJECT_SOURCE_DIR}/extern/libmicrohttpd/include")
+target_link_libraries(server "${PROJECT_SOURCE_DIR}/extern/libmicrohttpd/lib/libmicrohttpd.so")
 
 # SFML
 if(WIN32)
@@ -40,5 +48,6 @@ find_package(SFML 2 COMPONENTS graphics window system)
 if(SFML_FOUND)
   include_directories(${SFML_INCLUDE_DIR})
   target_link_libraries(run ${SFML_LIBRARIES})
+  target_link_libraries(server ${SFML_LIBRARIES})
 endif()
 
