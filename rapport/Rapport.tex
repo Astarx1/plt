@@ -13,6 +13,10 @@
 \usepackage{listings}
 \usepackage{float}
 
+\usepackage{xcolor}
+\usepackage{listings}
+
+
 \newcommand\defeq{\mathrel{\stackrel{\makebox[0pt]{\mbox{\normalfont\tiny def}}}{=}}}
 
 \pagestyle{fancy}
@@ -21,7 +25,31 @@
 \fancyhead[R]{Projet Logiciel Transversal}
 \fancyfoot[L]{\emph{Rapport de Jalon 1}}
 \fancyfoot[R]{\today}
+
 \begin{document}
+
+\lstset{literate=
+{é}{{\'e}}1
+{à}{{\`a}}1
+{â}{{\^a}}1
+}
+\definecolor{orange}{rgb}{0.8,0.4,0.0}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.6}
+\definecolor{cyan}{rgb}{0.0,0.6,0.6}
+\lstdefinelanguage{JSON}
+{
+   basicstyle=\normalsize,
+   columns=fullflexible,
+   showstringspaces=false,
+   commentstyle=\color{gray}\upshape,
+   morestring=[b]",
+   morestring=[s]{>}{<},
+   morecomment=[s]{<?}{?>},
+   stringstyle=\color{orange},
+   identifierstyle=\color{darkblue},
+   keywordstyle=\color{blue},
+   morekeywords={string,number,array,object}% list your attributes here
+}
 
 \title{Rapport de jalon de Projet Logiciel Transversal}
 
@@ -779,5 +807,189 @@ Méthode(s): Noeud(), ~Noeud(), createFils(), setF(), getF(), getID(), getLien()
   \includegraphics[scale=0.45]{img/engine_mod.png}
   \caption{\emph{Modification du Package engine}}
 \end{figure}
+
+\section{Définition des API Web}
+Dans cette partie l'objectif est de définir une interface entre le client et le serveur. Pour ce faire, il est nécessaire de définir une API.
+Dans ce projet, l'API adoptée est basée sur le format d'API REST et d'un encodage utilisant du JSON.
+  \subsection{API basée sur REST/JSON}
+  Voici la définition de l'API implanté dans le cadre de ce propjet:\\
+  \subsubsection{Services des commandes}
+  \textbf{- Méthode PUT }
+  
+  \begin{enumerate}
+   \item \underline{Requête :}
+    \begin{enumerate}
+     \item Méthode HTTP et URI : PUT/commande/
+     \item Données:
+	\begin{lstlisting}[language=JSON]
+	type: "object",
+	properties: {
+	  "cmd": { type:string, pattern: "(d|a|cm|im|qc|ec|pt|u)" },
+	  "params": { type:array, items: {type: int} },
+	  "epoque": { type:int },
+	  "perso_id": { type:int},
+	},
+	required: [ "cmd", "params", "epoque", "perso_id" ]
+	\end{lstlisting}      
+    \end{enumerate}
+
+   \item \underline{Réponse :}
+   \begin{itemize}
+    \item Cas où la commande est validée:
+    \begin{enumerate}
+     \item Status: 200 (= OK)
+     \item Données:
+	\begin{lstlisting}[language=JSON]
+	type: "object",
+	properties: {
+	  "epoque": { type:int },
+	},
+	required: [ "epoque" ]
+	\end{lstlisting} 
+    \end{enumerate}
+
+    \item Cas où la commande n'est pas validée:
+    \begin{enumerate}
+     \item Status:400 (= BAD\_REQUEST)
+     \item Données: Pas de données\\
+    \end{enumerate}
+
+    \item Cas où la commande est imcomplète:
+    \begin{enumerate}
+     \item Status:206 (= PARTIAL\_CONTENT)
+     \item Données: Pas de données
+    \end{enumerate}
+    
+   \end{itemize}
+
+  \end{enumerate}
+
+  \newpage
+  \textbf{- Méthode GET }
+  
+  \begin{enumerate}
+   \item \underline{Requête :}
+    \begin{enumerate}
+     \item Méthode HTTP et URI : GET/commande/<epoque>
+     \item Données: Pas de données
+	     
+    \end{enumerate}
+
+   \item \underline{Réponse :}
+   \begin{itemize}
+    \item Cas où <epoque> est positif et inférieur à l'époque maximum:
+    \begin{enumerate}
+     \item Status: 200 (= OK)
+     \item Données:
+	\begin{lstlisting}[language=JSON]
+	type: "object",
+	properties: {
+	  "cmd": { type:string, pattern: "(d|a|cm|im|qc|ec|pt|u)" },
+	  "params": { type:array, items: {type: int} },
+	  "epoque": { type:int },
+	  "perso_id": { type:int},
+	},
+	required: [ "cmd", "params", "epoque", "perso_id" ]
+	\end{lstlisting} 
+    \end{enumerate}
+
+    \item Cas où <epoque> n'existe pas:
+    \begin{enumerate}
+     \item Status:404 (= NOT\_FOUND)
+     \item Données: Pas de données
+    \end{enumerate}
+    
+   \end{itemize}
+
+  \end{enumerate}
+  
+  \subsubsection{Services des utilisateurs}
+  \textbf{- Méthode PUT}
+  
+  \begin{enumerate}
+   \item \underline{Requête :}
+    \begin{enumerate}
+     \item Méthode HTTP et URI : PUT/connexion/
+     \item Données:
+	\begin{lstlisting}[language=JSON]
+	type: "object",
+	properties: {
+	  "male": { type:bool },
+	},
+	required: [ "male" ]
+	\end{lstlisting}
+	     
+    \end{enumerate}
+
+   \item \underline{Réponse :}
+   \begin{itemize}
+    \item Cas où la connexion est validée:
+    \begin{enumerate}
+     \item Status: 200 (= OK)
+     \item Données:
+	\begin{lstlisting}[language=JSON]
+	type: "object",
+	properties: {
+	  "id_perso": { type:int },
+	},
+	required: [ "id_perso" ]
+	\end{lstlisting} 
+    \end{enumerate}
+
+    \item Cas où <la connexion n'est pas validée:
+    \begin{enumerate}
+     \item Status:400 (= BAD\_REQUEST)
+     \item Données: Pas de données\\
+    \end{enumerate}
+    
+   \end{itemize}
+
+  \end{enumerate}
+  
+  \textbf{Méthode DELETE}
+  
+  \begin{enumerate}
+   \item \underline{Requête :}
+    \begin{enumerate}
+     \item Méthode HTTP et URI : DELETE/connexion/<id\_perso>
+     \item Données:
+	\begin{lstlisting}[language=JSON]
+	type: "object",
+	properties: {
+	  "id_perso": { type:int },
+	},
+	required: [ "id_perso" ]
+	\end{lstlisting}
+	     
+    \end{enumerate}
+
+   \item \underline{Réponse :}
+   \begin{itemize}
+    \item Cas où la déconnexion est validée:
+    \begin{enumerate}
+     \item Status: 200 (= OK)
+     \item Données:Pas de données\\	 
+    \end{enumerate}
+    \item Cas où <id> n'existe pas:
+    \begin{enumerate}
+     \item Status:404 (= NOT\_FOUND)
+     \item Données: Pas de données\\
+    \end{enumerate}    
+    \item Cas où la déconnexion n'est pas validée:
+    \begin{enumerate}
+     \item Status:400 (= BAD\_REQUEST)
+     \item Données: Pas de données\\
+    \end{enumerate}
+    
+   \end{itemize}
+
+  \end{enumerate}
+  
+
+
+  
+
+
+  \subsection{Conception logiciel}
 
 \end{document}\grid
