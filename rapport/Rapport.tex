@@ -936,9 +936,9 @@ Dans ce projet, l'API adoptée est basée sur le format d'API REST et d'un encod
 	\end{lstlisting} 
     \end{enumerate}
 
-    \item Cas où <la connexion n'est pas validée:
+    \item Cas où la connexion n'est pas validée:
     \begin{enumerate}
-     \item Status:400 (= BAD\_REQUEST)
+     \item Status:403 (= FORBIDDEN)
      \item Données: Pas de données\\
     \end{enumerate}
     
@@ -952,15 +952,8 @@ Dans ce projet, l'API adoptée est basée sur le format d'API REST et d'un encod
    \item \underline{Requête :}
     \begin{enumerate}
      \item Méthode HTTP et URI : DELETE/connexion/<id\_perso>
-     \item Données:
-	\begin{lstlisting}[language=JSON]
-	type: "object",
-	properties: {
-	  "id_perso": { type:int },
-	},
-	required: [ "id_perso" ]
-	\end{lstlisting}
-	     
+     \item Données:Pas de donnée autre que id\_perso
+		     
     \end{enumerate}
 
    \item \underline{Réponse :}
@@ -977,7 +970,7 @@ Dans ce projet, l'API adoptée est basée sur le format d'API REST et d'un encod
     \end{enumerate}    
     \item Cas où la déconnexion n'est pas validée:
     \begin{enumerate}
-     \item Status:400 (= BAD\_REQUEST)
+     \item Status:403 (= FORBIDDEN)
      \item Données: Pas de données\\
     \end{enumerate}
     
