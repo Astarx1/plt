@@ -30,8 +30,8 @@ file(GLOB jsoncpp_sources "${PROJECT_SOURCE_DIR}/extern/jsoncpp-0.10.5/dist/json
 file(GLOB_RECURSE main_sources src/*.cpp)
 
 # Executables
-add_executable(run ${main_sources})
-add_executable(server ${main_sources})
+add_executable(run ${main_sources} ${jsoncpp_sources} )
+add_executable(server ${main_sources} ${jsoncpp_sources})
 
 # libmicrohttpd
 include_directories ("${PROJECT_SOURCE_DIR}/extern/libmicrohttpd/include")

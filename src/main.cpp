@@ -125,7 +125,12 @@ int main(int argc,char* argv[]) {
 
 						case MONSTRE :
 							std::cout << "[Main] [" << pos.x << ", " << pos.y << "] : Monstre" << std::endl;
-							if (true);
+							if (e->getEnCombat()) {
+								std::cout << "[Main] Ajout de la commande d'attaque" << std::endl;
+								
+								liste.Ajouter(cmdEC);
+								v.clear();								
+							}
 						break;
 
 						case VIDE :
@@ -133,10 +138,10 @@ int main(int argc,char* argv[]) {
 
 						case PERSO :
 							if (!e->getEnCombat()) {
-							std::cout << "[Main] Rentrée en combat ..." << std::endl;
-							v.clear();
-							liste.Ajouter(cmdEC);
-							v.clear();
+								std::cout << "[Main] Rentrée en combat ..." << std::endl;
+								v.clear();
+								liste.Ajouter(cmdEC);
+								v.clear();
 							}
 							else {
 							std::cout << "[Main] On est déjà en combat ..." << std::endl; 

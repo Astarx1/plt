@@ -1,5 +1,4 @@
 
-
 HEADERS:=$(shell find src -type f -name '*.h')
 DIA2CODE_DIR:=./dia2code
 
