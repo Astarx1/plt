@@ -812,9 +812,9 @@ Méthode(s): Noeud(), ~Noeud(), createFils(), setF(), getF(), getID(), getLien()
 Dans cette partie l'objectif est de définir une interface entre le client et le serveur. Pour ce faire, il est nécessaire de définir une API.
 Dans ce projet, l'API adoptée est basée sur le format d'API REST et d'un encodage utilisant du JSON.
   \subsection{API basée sur REST/JSON}
-  Voici la définition de l'API implanté dans le cadre de ce propjet:\\
+  Voici la définition de l'API implantée dans le cadre de ce propjet:\\
   \subsubsection{Services des commandes}
-  \textbf{- Méthode PUT }
+  \textbf{- Méthode PUT } : générer une commande
   
   \begin{enumerate}
    \item \underline{Requête :}
@@ -865,7 +865,7 @@ Dans ce projet, l'API adoptée est basée sur le format d'API REST et d'un encod
   \end{enumerate}
 
   \newpage
-  \textbf{- Méthode GET }
+  \textbf{- Méthode GET } : obtenir la commande d'identifiant <epoque>
   
   \begin{enumerate}
    \item \underline{Requête :}
@@ -904,7 +904,7 @@ Dans ce projet, l'API adoptée est basée sur le format d'API REST et d'un encod
   \end{enumerate}
   
   \subsubsection{Services des utilisateurs}
-  \textbf{- Méthode PUT}
+  \textbf{- Méthode PUT} : générer une connexion d'un utilisateur
   
   \begin{enumerate}
    \item \underline{Requête :}
@@ -946,7 +946,7 @@ Dans ce projet, l'API adoptée est basée sur le format d'API REST et d'un encod
 
   \end{enumerate}
   
-  \textbf{Méthode DELETE}
+  \textbf{Méthode DELETE} : gérer la déconnexion de l'utilisateur d'identifiant <id\_perso>
   
   \begin{enumerate}
    \item \underline{Requête :}
