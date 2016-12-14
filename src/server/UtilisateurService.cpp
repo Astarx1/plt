@@ -24,11 +24,21 @@ HttpStatus UtilisateurService::put (Json::Value& out, const Json::Value& in){
     
     out["id_perso"] = etat->getPersoSize()-1;
     
+    return HttpStatus::CREATED;
+    
 
 }
 
 HttpStatus UtilisateurService::remove (int id){
-    throw ServiceException(HttpStatus::NOT_IMPLEMENTED,"Non implanté");
+    //throw ServiceException(HttpStatus::NOT_IMPLEMENTED,"Non implanté");
+    
+    Personnage &p = etat->getRefPersonnage(id);
+    /*if (!p)
+        throw ServiceException(HttpStatus::NOT_FOUND,"Invalid user id");*/
+    
+    etat->getPerso().eraseElem(id);
+    
+    return HttpStatus::NO_CONTENT;
 
 }
 
