@@ -144,4 +144,12 @@ std::string const Commande::getType (){
 void Commande::setType (std::string cmd){
 	type=cmd;
 }
+
+std::vector<int> Commande::getParams (){
+    return params;
+}
+
+int Commande::getId(){
+    return id;
+}
 }
