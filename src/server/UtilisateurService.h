@@ -3,17 +3,25 @@
 #define SERVER__UTILISATEURSERVICE__H
 
 #include <json/json.h>
+namespace state {
+  class Etat;
+};
 namespace server {
   class AbstractService;
 }
 
 #include "HttpStatus.h"
 #include "AbstractService.h"
+#include "state/Etat.h"
 
 namespace server {
 
   /// class UtilisateurService - 
   class UtilisateurService : public server::AbstractService {
+    // Associations
+    // Attributes
+  public:
+    state::Etat* etat;
     // Operations
   public:
     UtilisateurService ();
