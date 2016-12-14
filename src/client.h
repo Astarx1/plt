@@ -5,4 +5,5 @@
 #include "client/RectTexte.h"
 #include "client/CerTexte.h"
 #include "client/RenduCombat.h"
+#include "client/RenduMenuJeu.h"
 #endif
