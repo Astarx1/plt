@@ -3,10 +3,14 @@
 #define SERVER__COMMANDESERVICE__H
 
 #include <json/json.h>
+namespace engine {
+  class ListeCommandes;
+};
 namespace server {
   class AbstractService;
 }
 
+#include "engine/ListeCommandes.h"
 #include "HttpStatus.h"
 #include "AbstractService.h"
 
@@ -14,6 +18,9 @@ namespace server {
 
   /// class CommandeService - 
   class CommandeService : public server::AbstractService {
+    // Attributes
+  public:
+    engine::ListeCommandes commandes;
     // Operations
   public:
     CommandeService ();

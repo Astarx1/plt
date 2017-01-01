@@ -24,6 +24,7 @@ namespace engine {
   public:
     void Ajouter (Commande cmd);
     void ToutExecuter ();
+    Commande getCommande (int epoque);
   };
 
 };

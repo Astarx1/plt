@@ -39,6 +39,8 @@ namespace engine {
     void run ();
     std::string const getType ();
     void setType (std::string cmd);
+    std::vector<int> getParams ();
+    int getId ();
   };
 
 };

@@ -40,3 +40,14 @@ void ListeCommandes::ToutExecuter (){
 	}
 }
 
+Commande ListeCommandes::getCommande(int epoque){
+    Commande *ret;
+    
+    if(epoque > commandes.size())
+        cout<<"Epoque demandée non existante!"<<endl;
+    
+    ret = &(commandes.at(epoque));
+    
+    return *ret;
+}
+
