@@ -189,7 +189,7 @@ void ChangerMap::run (Etat* e, std::vector<int> params,sf::Time t) {
 			#if TRACE_CM==1 && TRACE_CM_RUN==1
 				std::cout<< "ChangerMap::run : Pointeur perso (" << ptmp.getVie() << " / " << (persos[persos.size() - 1])->getVie() << ") ..." << std::endl;
 			#endif
-		}
+		}/*
 		else if(pos.x == params[1] && pos.y == params[2]){
 			#if TRACE_CM_RUN==1
 				std::cout<<" Type = " << ptmp.getTypePersonnage()<< " X = " << params[1]<< " Y = "<<params[2]<< std::endl;
@@ -209,7 +209,7 @@ void ChangerMap::run (Etat* e, std::vector<int> params,sf::Time t) {
 			(persos[persos.size() - 1])->setAttaqueDistance (ptmp.getAttaqueDistance());
 			(persos[persos.size() - 1])->setAttaqueCAC (ptmp.getAttaqueCAC());
 			(persos[persos.size() - 1])->setEtatPerso (ptmp.getEtatPerso());			
-		}
+		}*/
 	}
   
 	e->clearPersos();

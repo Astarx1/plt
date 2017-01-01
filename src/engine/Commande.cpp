@@ -89,11 +89,20 @@ void Commande::run (){
 			#if TRACE_COMMANDE==1
 				std::cout << "Commande::run : Execution de la commande RentrerCombat" << std::endl;
 			#endif
-		if (r.peutEntrerCombat(etat,id)){
-			EntrerCombat ec;
+		if (params.size() < 1) {
+			if (r.peutEntrerCombat(etat,id)){
+				EntrerCombat ec;
+				std::vector<int> v;
+				v.push_back(id);
+				ec.run(etat,v,temps);
+			}
+		}
+		else {
+			Attaquer a;
 			std::vector<int> v;
 			v.push_back(id);
-			ec.run(etat,v,temps);
+			v.push_back(params[1]);
+			a.run(etat,v,temps);
 		}
 	}
 	

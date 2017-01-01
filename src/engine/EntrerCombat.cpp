@@ -13,7 +13,7 @@ Params :
 #include <iostream>
 #include <vector>
 
-#define TRACE_ENTRERCOMBAT 0
+#define TRACE_ENTRERCOMBAT 1
 
 using namespace engine;
 using namespace state;
@@ -25,8 +25,8 @@ void EntrerCombat::run(Etat* e, std::vector<int> params,sf::Time t) {
 	ChangerMap cm;
 	std::vector<int> v;
 	v.push_back(4);
-	v.push_back(params[1]);
-	v.push_back(params[2]);
+	// v.push_back(params.at(1));
+	// v.push_back(params.at(2));
 	cm.run(e,v,t);
 	
 	#if TRACE_ENTRERCOMBAT==1

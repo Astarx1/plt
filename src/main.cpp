@@ -111,16 +111,18 @@ int main(int argc,char* argv[]) {
 					std::cout << "[" << pos.x << ", " << pos.y << "] : Heros" << std::endl;
 					}
 					}*/
+					v.clear();
 					Commande cmdCM(e,"cm",c.getElapsedTime(),v,0);
+					v.clear();
+					if (typeTmp == TypeID(MONSTRE))
+						v.push_back(e->getIdPersonnage(pos.x,pos.y));
 					Commande cmdEC(e,"ec",c.getElapsedTime(),v,0);
 					std::cout << "[Main] Clic Souris (" << x << " - " << pos.x << ", " << y << " - " << pos.y << ")" << std::endl;
 
 					switch (typeTmp) {
 						case ACCES:
 							std::cout << "[Main] [" << pos.x << ", " << pos.y << "] : Acces" << std::endl;
-							v.clear();
 							liste.Ajouter(cmdCM);
-							v.clear();
 						break;
 
 						case MONSTRE :
@@ -129,7 +131,6 @@ int main(int argc,char* argv[]) {
 								std::cout << "[Main] Ajout de la commande d'attaque" << std::endl;
 								
 								liste.Ajouter(cmdEC);
-								v.clear();								
 							}
 						break;
 
@@ -139,9 +140,7 @@ int main(int argc,char* argv[]) {
 						case PERSO :
 							if (!e->getEnCombat()) {
 								std::cout << "[Main] Rentrée en combat ..." << std::endl;
-								v.clear();
 								liste.Ajouter(cmdEC);
-								v.clear();
 							}
 							else {
 							std::cout << "[Main] On est déjà en combat ..." << std::endl; 
