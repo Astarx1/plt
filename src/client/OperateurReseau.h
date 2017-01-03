@@ -17,9 +17,7 @@ namespace client {
   class OperateurReseau {
     // Attributes
   public:
-    std::vector<engine::Commande> buf_in_cmd_list;
     std::vector<engine::Commande> in_cmd_list;
-    std::vector<engine::Commande> buf_out_cmd_list;
     std::vector<engine::Commande> out_cmd_list;
     std::mutex mut_in;
     std::mutex mut_out;
@@ -28,7 +26,7 @@ namespace client {
     void th_in ();
     void th_out ();
     std::vector<engine::Commande> getCmd ();
-    putCmd (engine::Commande cmd);
+    void putCmd (engine::Commande cmd);
   };
 
 };
