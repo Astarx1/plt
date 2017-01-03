@@ -4,6 +4,9 @@
 
 #include <vector>
 #include <mutex>
+#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+#include <SFML/Network.hpp>
 
 namespace engine {
   class Commande;
@@ -21,6 +24,8 @@ namespace client {
     std::vector<engine::Commande> out_cmd_list;
     std::mutex mut_in;
     std::mutex mut_out;
+    sf::TcpSocket sender;
+    sf::TcpListener listener;
     // Operations
   public:
     void th_in ();

@@ -730,7 +730,7 @@ void print_include_stdlib(struct stdlib_includes* si,char* name) {
            si->memory = 1;
        }
        if (!si->graphics && strstr(name,"sf::")) {
-           print ("#include <SFML/Graphics.hpp>\n#include <SFML/Audio.hpp>\n");
+           print ("#include <SFML/Graphics.hpp>\n#include <SFML/Audio.hpp>\n#include <SFML/Network.hpp>\n");
            si->graphics = 1;
        }
        if (!si->json && strstr(name,"Json::")) {

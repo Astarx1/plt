@@ -5,9 +5,11 @@ using namespace client;
 void OperateurReseau::th_in () {
 
 }
+
 void OperateurReseau::th_out () {
 
 }
+
 std::vector<engine::Commande> OperateurReseau::getCmd () {
 	std::vector<engine::Commande> tmp;
 	mut_in.lock();
@@ -17,6 +19,7 @@ std::vector<engine::Commande> OperateurReseau::getCmd () {
 
 	return tmp;
 }
+
 void OperateurReseau::putCmd (engine::Commande cmd) {
 	mut_out.lock();
 	out_cmd_list.push_back(cmd);

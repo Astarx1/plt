@@ -5,6 +5,7 @@
 #include <mutex>
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
+#include <SFML/Network.hpp>
 #include <vector>
 #include <string>
 
