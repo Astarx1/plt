@@ -32,6 +32,8 @@ namespace client {
     void th_out ();
     std::vector<engine::Commande> getCmd ();
     void putCmd (engine::Commande cmd);
+    OperateurReseau ();
+    ~OperateurReseau ();
   };
 
 };

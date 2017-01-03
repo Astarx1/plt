@@ -3,7 +3,7 @@
 using namespace client;
 
 void OperateurReseau::th_in () {
-
+	
 }
 
 void OperateurReseau::th_out () {
