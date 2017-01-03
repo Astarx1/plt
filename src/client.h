@@ -6,4 +6,5 @@
 #include "client/CerTexte.h"
 #include "client/RenduCombat.h"
 #include "client/RenduMenuJeu.h"
+#include "client/OperateurReseau.h"
 #endif
