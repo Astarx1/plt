@@ -19,13 +19,15 @@ namespace client {
   /// class OperateurReseau - 
   class OperateurReseau {
     // Attributes
-  public:
+  protected:
     std::vector<engine::Commande> in_cmd_list;
     std::vector<engine::Commande> out_cmd_list;
+    std::vector<engine::Commande> in_th_buf;
     std::mutex mut_in;
     std::mutex mut_out;
     sf::TcpSocket sender;
-    sf::TcpListener listener;
+    bool active;
+    int epoque_locale;
     // Operations
   public:
     void th_in ();
@@ -34,6 +36,7 @@ namespace client {
     void putCmd (engine::Commande cmd);
     OperateurReseau ();
     ~OperateurReseau ();
+    void run ();
   };
 
 };

@@ -1,6 +1,7 @@
 #include "../engine.h"
 #include <vector>
 #include <iostream>
+#include "json/json.h"
 
 #define TRACE_COMMANDE 0
 
@@ -150,15 +151,29 @@ std::string const Commande::getType (){
 	return type;
 }
 
+std::string Commande::serialize (int epoque){
+	Json::Value jsonObject_out;
+	Json::Value params;
+
+	jsonObject_out["cmd"] = type;
+	jsonObject_out["epoque"] = epoque;
+	jsonObject_out["perso_id"] = id;
+	for (auto d : params)
+		params.append(Json::Value(d));
+	jsonObject_out["params"] = params;
+	
+	return jsonObject_out.toStyledString();
+}
+
 void Commande::setType (std::string cmd){
 	type=cmd;
 }
 
 std::vector<int> Commande::getParams (){
-    return params;
+	return params;
 }
 
 int Commande::getId(){
-    return id;
+	return id;
 }
 }

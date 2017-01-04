@@ -42,6 +42,7 @@ namespace engine {
     void setType (std::string cmd);
     std::vector<int> getParams ();
     int getId ();
+    std::string serialize (int epoque);
   };
 
 };
