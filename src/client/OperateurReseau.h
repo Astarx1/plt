@@ -10,6 +10,9 @@
 
 namespace engine {
   class Commande;
+};
+namespace state {
+  class Etat;
 }
 
 #include "engine/Commande.h"
@@ -28,13 +31,14 @@ namespace client {
     sf::TcpSocket sender;
     bool active;
     int epoque_locale;
+    state::Etat * e;
     // Operations
   public:
     void th_in ();
     void th_out ();
     std::vector<engine::Commande> getCmd ();
     void putCmd (engine::Commande cmd);
-    OperateurReseau ();
+    OperateurReseau (state::Etat * ne);
     ~OperateurReseau ();
     void run ();
   };
