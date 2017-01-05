@@ -28,14 +28,12 @@ namespace client {
     std::vector<engine::Commande> in_th_buf;
     std::mutex mut_in;
     std::mutex mut_out;
-    sf::TcpSocket sender;
     bool active;
     int epoque_locale;
     state::Etat * e;
+    sf::Http http;
     // Operations
   public:
-    void th_in ();
-    void th_out ();
     std::vector<engine::Commande> getCmd ();
     void putCmd (engine::Commande cmd);
     OperateurReseau (state::Etat * ne);
