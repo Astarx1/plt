@@ -979,10 +979,142 @@ Dans ce projet, l'API adoptée est basée sur le format d'API REST et d'un encod
   \end{enumerate}
   
 
+  \subsection{Conception logiciel}
+  Pour implanter cette API, il a fallu définir deux nouveaux packages: le package Server et le package Client.
+  
+  \textbf{Classe Server.} Cette classe permet de créer un objet de type Server.
+  
+  \textbf{Classe ServiceException.} Cette classe permet de gérer les exceptions HTTP.
+  
+  \textbf{Classe AbstractService.} Cette classe abstraite permet de définir les différentes méthodes de l'API REST.
+  
+  \textbf{CLasse CommandeService.} Cette classe permet de définir les méthodes de l'API REST pour les commandes.
+  
+  \textbf{Classe UtilisateurService.} Cette classe permet de définir les méthodes de l'API REST pour les utilisateurs.
+  
+  \textbf{Classe ServiceManager.} Cette classe permet de gérer les différentes requêtes.\\
+  
+  \textbf{Classe RenduCombat.} Cette classe permet de gérer l'affichage du rendu en mode combat.
+  
+  \textbf{Classe RectTexte.} Cette classe permet de définir les icônes de type rectangulaire.
+  
+  \textbf{Classe CerTexte.} Cette classe permet de définir les icônes de type circulaire.
+  
+  \textbf{OperateurReseau.} Cette classe permet de gérer les opérations en réseau.\\
 
   
+  Le tableau ci-dessous résume l'ensemble des classes utiles et présentes pour définir le package Server ainsi que leur rôle respectif.\\
+ 
+ \begin{tabularx}{\textwidth}{ |l|X| }
+\hline
+   \textbf{Nom} & \textbf{Role}
+ \\
+\hline
 
+   Server & Cette classe permet de créer un objet de type Server.
+   
+Attribut(s): service\_manag
+\newline
+Méthode(s): Server(),run()
+ \\
+\hline
 
-  \subsection{Conception logiciel}
+    ServiceException & Cette classe permet de gérer les exceptions HTTP.
+    
+Attribut(s): msg, httpStatus
+\newline
+Méthode(s): ServiceException(), status(), what()
+  \\
+\hline
+
+    AbstractService & Cette classe abstraite permet de définir les différentes méthodes de l'API REST.
+    
+Attribut(s): pattern
+\newline
+Méthode(s): AbstractService(), ~AbstractService(), getPattern(), setPattern(), get(), post(), put(), remove()
+  \\
+\hline
+
+    CommandeService & Cette classe permet de définir les méthodes de l'API REST pour les commandes.
+
+Attribut(s): commandes
+\newline
+Méthode(s): CommandeService(), get(), put()
+  \\
+\hline
+
+    UtilisateurService & Cette classe permet de définir les méthodes de l'API REST pour les utilisateurs.
+
+Attibut(s): etat
+\newline
+Méthode(s): UtilisateurService(), put(), remove()
+  \\
+\hline
+
+    ServiceManager & Cette classe permet de gérer les différentes requêtes.
+    
+Attribut(s): services
+\newline
+Méthode(s): registerService(), findService(), queryService()
+  \\
+\hline
+
+   
+\end{tabularx}\\ \\*
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.40]{img/package_Server.png}
+  \caption{\emph{Package server}}
+\end{figure}
+
+Le tableau ci-dessous résume l'ensemble des classes utiles et présentes pour définir le package Client ainsi que leur rôle respectif.\\
+
+\begin{tabularx}{\textwidth}{ |l|X| }
+\hline
+   \textbf{Nom} & \textbf{Role}
+ \\
+\hline
+
+   RenduCombat & Cette classe permet de gérer l'affichage du rendu en mode combat.
+   
+Attribut(s): iconeAttaqueDist, iconeAttaqueCAC, iconePA, iconePM, iconeVie, iconeTemps, iconeTourSuiv
+\newline
+Méthode(s): dessin(), RenduCombat(),~RenduCombat()
+ \\
+\hline
+
+    RectTexte & Cette classe permet de définir les icônes de type rectangulaire.
+    
+Attribut(s): texte, rect, font
+\newline
+Méthode(s): ChangeText(), RectTexte(), ~RectTexte()
+  \\
+\hline
+
+    CerTexte & Cette classe permet de définir les icônes de type circulaire.
+    
+Attribut(s): texte, cercle, font
+\newline
+Méthode(s): ChangeTexte(), CerTexte(), ~CerTexte()
+  \\
+\hline
+
+    OperateurReseau & Cette classe permet de gérer les opérations en réseau.
+
+Attribut(s): in\_cmd\_list, out\_cmd\_list, in\_th\_buf, mut\_in, mut\_out, sender, active, epoque\_locale, e, http
+\newline
+Méthode(s): th\_in(), th\_out(), getCmd(), putCmd(), OperateurReseau(), ~OperateurReseau(), run()
+  \\
+\hline
+
+      
+\end{tabularx}\\ \\*
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.45]{img/package_Client.png}
+  \caption{\emph{Package client}}
+\end{figure}
 
 \end{document}\grid
